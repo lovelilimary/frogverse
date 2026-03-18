@@ -1,0 +1,30 @@
+<!-- Modal Overlay — Full-screen dimmed backdrop -->
+<div class="modal-overlay" id="myModal">
+  <div class="card-container">
+    <div class="card-container__border"></div>
+    <div class="card-container__inner">
+      <div class="card-container__content">
+        <h2 class="modal-title">Modal Title</h2>
+        <p class="modal-subtitle">Optional subtitle</p>
+
+        <div class="modal-info-list">
+          <!-- Info rows here -->
+        </div>
+
+        <p class="modal-notice">Notice text goes here.</p>
+
+        <div class="confirm-actions">
+          <button class="game-btn game-btn--gray" data-modal-close="myModal">
+            <span class="game-btn__text">Cancel</span>
+          </button>
+          <button class="game-btn game-btn--green">
+            <span class="game-btn__text">Confirm</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open trigger -->
+<button data-modal-open="myModal">Open Modal</button>

@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Frogverse — Frog Wallet Page Styles
+   ========================================================================== */
+
+/* ================================================================
+   WALLET CONTENT — Scrollable inner
+   ================================================================ */
+.wallet-content {
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+  max-height: calc(100dvh - 60px);
+  padding-bottom: 30px;
+}
+
+.wallet-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wallet-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wallet-content::-webkit-scrollbar-thumb {
+  background: rgba(221, 175, 74, 0.3);
+  border-radius: 2px;
+}
+
+/* ================================================================
+   BALANCE HERO
+   ================================================================ */
+.wallet-balance {
+  text-align: center;
+  padding: 20px 0 24px;
+}
+
+.wallet-balance__label {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.wallet-balance__amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wallet-balance__value {
+  font-family: var(--font-family-display);
+  font-size: 42px;
+  font-weight: var(--font-weight-bold);
+  color: #51FF51;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.wallet-balance__currency {
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ================================================================
+   TOTALS SECTION
+   ================================================================ */
+.wallet-totals {
+  padding: 16px 0;
+}
+
+/* ================================================================
+   WITHDRAW BUTTON
+   ================================================================ */
+.wallet-withdraw {
+  padding: 8px 0 24px;
+}
+
+.wallet-withdraw__btn {
+  width: 100%;
+}
+
+/* ================================================================
+   SECTION TITLE
+   ================================================================ */
+.wallet-section-title {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+/* ================================================================
+   LIMIT BARS
+   ================================================================ */
+.wallet-limit {
+  margin-bottom: 12px;
+}
+
+.wallet-limit__bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.wallet-limit__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #269F38 0%, #51FF51 100%);
+  border-radius: 3px;
+  transition: width var(--transition-normal);
+}
+
+/* ================================================================
+   EMPTY STATE
+   ================================================================ */
+.wallet-empty {
+  font-family: var(--font-family-primary);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  padding: 16px 0;
+  margin: 0;
+}
+
+/* ================================================================
+   WALLET ACTIVITY
+   ================================================================ */
+.wallet-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.wallet-activity__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wallet-activity__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wallet-activity__icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.wallet-activity__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wallet-activity__title {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+}
+
+.wallet-activity__date {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}
+
+.wallet-activity__amount {
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.wallet-activity__amount--positive {
+  color: #51FF51;
+}
+
+.wallet-activity__amount--negative {
+  color: #e92e43;
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Frogverse — Frog Details">
+  <meta name="theme-color" content="#FDCC34">
+  <title>Frogverse — Frog Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/t0W3XMIZ+HaLayEPQ4/CPZ2eFCrGKH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&family=Alice&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/my-frog-detail.css">
+</head>
+<body>
+  <div class="device-simulator">
+  <div class="app" id="app">
+
+    <main class="page-shell" id="frogDetailPage">
+      <div class="game-frame card-content frog-detail-content">
+
+            <!-- ============ HERO: FROG IMAGE ============ -->
+            <div class="frog-detail-hero" id="frogHero">
+              <!-- Navigation -->
+              <div class="frog-detail-hero__nav">
+                <button class="hex-btn" id="btnBack" aria-label="Back">
+                  <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 1L3 6L8 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <span class="frog-detail-hero__title">My Frogs</span>
+                <button class="hex-btn" id="btnClose" aria-label="Close">
+                  <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Frog Image -->
+              <div class="frog-detail-hero__image">
+                <img src="../assets/Main image.webp" alt="Frog King" class="frog-detail-hero__img">
+              </div>
+
+              <!-- Rank Badge -->
+              <div class="frog-detail-hero__badge">
+                <img src="../assets/Frame.svg" alt="Rank badge" class="frog-detail-hero__badge-img">
+              </div>
+            </div>
+
+            <!-- ============ FROG NAME & ID ============ -->
+            <div class="frog-detail-name" data-aos="fade-up">
+              <h2 class="frog-detail-name__title">Frog King</h2>
+              <span class="frog-detail-name__id">#FROG-1AC40E</span>
+            </div>
+
+            <!-- ============ TABS: My Frogs / Frog Details ============ -->
+            <div class="frog-detail-tabs" data-aos="fade-up" data-aos-delay="100">
+              <button class="frog-detail-tab frog-detail-tab--active" data-tab="stats" id="tabStats">My Frogs</button>
+              <button class="frog-detail-tab" data-tab="info" id="tabInfo">Frog Details</button>
+            </div>
+
+            <!-- ============ TAB CONTENT: STATS VIEW ============ -->
+            <div class="frog-detail-panel" id="panelStats" data-aos="fade-up" data-aos-delay="150">
+              <div class="frog-stats-grid">
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Date1.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Activation Date</span>
+                  </div>
+                  <span class="frog-stat-card__value">03/05/26</span>
+                </div>
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Coin.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Value</span>
+                  </div>
+                  <span class="frog-stat-card__value">50 USDT</span>
+                </div>
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Date2.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Total Days</span>
+                  </div>
+                  <span class="frog-stat-card__value">360 days</span>
+                </div>
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Hourglass.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Cycle Days Left</span>
+                  </div>
+                  <span class="frog-stat-card__value">31 days</span>
+                </div>
+                <div class="frog-stat-card frog-stat-card--xp">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Star1.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">XP</span>
+                  </div>
+                  <span class="frog-stat-card__value text-primary">100%</span>
+                </div>
+                <div class="frog-stat-card frog-stat-card--health">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Heart.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Health</span>
+                  </div>
+                  <span class="frog-stat-card__value text-success">HEALTHY</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ TAB CONTENT: INFO VIEW ============ -->
+            <div class="frog-detail-panel" id="panelInfo" hidden>
+              <div class="frog-info-section">
+                <div class="frog-info-section__header">
+                  <img src="../assets/icons/Doc.svg" alt="" class="info-row__icon-inline">
+                  <span class="frog-info-section__title">Information</span>
+                </div>
+
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Tier</span>
+                  <span class="frog-info-row__value text-primary">Prince Consort</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Rental Price</span>
+                  <span class="frog-info-row__value text-success">0.00 USDT</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Rented Date</span>
+                  <span class="frog-info-row__value">Mar 05, 2026</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Contract Duration</span>
+                  <span class="frog-info-row__value">365 Days</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Payment Type</span>
+                  <span class="frog-info-row__value">USDT</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Feed Compat.</span>
+                  <span class="frog-info-row__value">MTT, OFC</span>
+                </div>
+                <div class="frog-info-row">
+                  <span class="frog-info-row__label">Bonus</span>
+                  <span class="frog-info-row__value text-success">+5%</span>
+                </div>
+              </div>
+            </div>
+
+      </div>
+
+      <!-- ============ AUTO FEED MODAL ============ -->
+      <div class="modal-overlay" id="autoFeedModal">
+        <div class="game-frame card-content">
+              <h2 class="modal-title">Auto Feed</h2>
+              <p class="modal-subtitle">Prince Consort</p>
+
+              <div class="modal-info-list">
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">Price per Month</span>
+                  <span class="info-row__value text-success">2.00 USDT</span>
+                </div>
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">Duration</span>
+                  <span class="info-row__value">1 Month</span>
+                </div>
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">Auto Renew</span>
+                  <span class="info-row__value">
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-switch__slider"></span>
+                    </label>
+                  </span>
+                </div>
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">Auto Renew</span>
+                  <span class="info-row__value">10,099.22 USDT</span>
+                </div>
+              </div>
+
+              <p class="modal-notice">Your frogs will be automatically fed daily. Make sure you have enough tokens in your wallet.</p>
+
+              <div class="confirm-actions">
+                <button class="game-btn game-btn--gray" onclick="closeModal('autoFeedModal')">
+                  <span class="game-btn__text">Cancel</span>
+                </button>
+                <button class="game-btn game-btn--green">
+                  <span class="game-btn__text">Save</span>
+                </button>
+              </div>
+        </div>
+      </div>
+
+      <!-- ============ AUTO FEED SETTINGS MODAL ============ -->
+      <div class="modal-overlay" id="autoFeedSettingsModal">
+        <div class="game-frame card-content">
+              <h2 class="modal-title">Auto Feed Settings</h2>
+
+              <div class="modal-info-list">
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">
+                    <img src="../assets/icons/Chart.svg" alt="" class="info-row__icon-inline">
+                    Quota Mode
+                    <img src="../assets/icons/Info.svg" alt="" class="info-row__hint">
+                  </span>
+                  <span class="info-row__value">
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-switch__slider"></span>
+                    </label>
+                  </span>
+                </div>
+
+                <!-- Target dropdown -->
+                <div class="settings-dropdown">
+                  <select class="settings-dropdown__select" id="targetSelect">
+                    <option>Target</option>
+                    <option>Min</option>
+                    <option>Max</option>
+                  </select>
+                  <svg class="settings-dropdown__arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">
+                    <img src="../assets/icons/power.svg" alt="" class="info-row__icon-inline">
+                    Enable Auto Feed
+                    <img src="../assets/icons/Info.svg" alt="" class="info-row__hint">
+                  </span>
+                  <span class="info-row__value">
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-switch__slider"></span>
+                    </label>
+                  </span>
+                </div>
+
+                <div class="info-row info-row--no-padding">
+                  <span class="info-row__label">
+                    <img src="../assets/icons/gear.svg" alt="" class="info-row__icon-inline">
+                    Auto Renew
+                    <img src="../assets/icons/Info.svg" alt="" class="info-row__hint">
+                  </span>
+                  <span class="info-row__value">
+                    <label class="toggle-switch">
+                      <input type="checkbox" checked>
+                      <span class="toggle-switch__slider"></span>
+                    </label>
+                  </span>
+                </div>
+              </div>
+
+              <p class="modal-notice text-primary">Changes will take effect on the next auto feed cycle. Your subscription remains active.</p>
+
+              <div class="confirm-actions">
+                <button class="game-btn game-btn--gray" onclick="closeModal('autoFeedSettingsModal')">
+                  <span class="game-btn__text">Cancel</span>
+                </button>
+                <button class="game-btn game-btn--green">
+                  <span class="game-btn__text">Save</span>
+                </button>
+              </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/main.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.frog-detail-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.frog-detail-tab').forEach(t => t.classList.remove('frog-detail-tab--active'));
+        tab.classList.add('frog-detail-tab--active');
+
+        const target = tab.dataset.tab;
+        document.getElementById('panelStats').style.display = target === 'stats' ? 'block' : 'none';
+        document.getElementById('panelInfo').style.display = target === 'info' ? 'block' : 'none';
+
+        // Update hero title
+        document.querySelector('.frog-detail-hero__title').textContent =
+          target === 'stats' ? 'My Frogs' : 'Frog Details';
+      });
+    });
+
+    // Modal open / close
+    function openModal(id) {
+      document.getElementById(id).classList.add('modal-overlay--visible');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('modal-overlay--visible');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Frogverse — Dashboard Page Styles
+   ========================================================================== */
+
+.dash-content {
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+  max-height: calc(100dvh - 60px);
+  padding-bottom: 30px;
+}
+
+.dash-content::-webkit-scrollbar { width: 4px; }
+.dash-content::-webkit-scrollbar-track { background: transparent; }
+.dash-content::-webkit-scrollbar-thumb { background: rgba(221,175,74,0.3); border-radius: 2px; }
+
+/* ================================================================
+   DASHBOARD STATS GRID — 2×2 layout
+   ================================================================ */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.dash-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.dash-stat-card__label {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 6px;
+}
+
+.dash-stat-card__value {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+}
+
+/* ================================================================
+   LEVEL CARD
+   ================================================================ */
+.dash-level-card {
+  padding: 16px 15px;
+}
+
+.dash-level-card__header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.dash-details-link {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity var(--transition-fast);
+}
+
+.dash-details-link:hover {
+  opacity: 0.7;
+  color: var(--color-primary);
+}
+
+/* Level Hero (cup + XP) */
+.dash-level-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dash-level-hero__icon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.dash-level-hero__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dash-level-hero__xp {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-level-hero__xp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.dash-level-hero__xp-label {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dash-level-hero__xp-value {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* XP Bar */
+.dash-xp-bar__track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dash-xp-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FDCC34 0%, #FFB224 100%);
+  border-radius: 3px;
+  transition: width var(--transition-normal);
+}
+
+.dash-xp-bar__labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.dash-xp-bar__level-badge {
+  background: #269F38;
+  color: #fff;
+  font-size: 9px;
+  font-weight: var(--font-weight-medium);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Level + stats row */
+.dash-level-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dash-level-stats__main {
+  text-align: center;
+  min-width: 70px;
+}
+
+.dash-level-stats__level {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+}
+
+.dash-level-stats__role {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Mini stats grid */
+.dash-mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex: 1;
+}
+
+.dash-mini-stat {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.dash-mini-stat__label {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.dash-mini-stat__value {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+}
+
+/* ================================================================
+   PENDING REWARDS LIST
+   ================================================================ */
+.dash-rewards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.dash-reward-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dash-reward-item:last-child {
+  border-bottom: none;
+}
+
+.dash-reward-item__info {
+  min-width: 0;
+}
+
+.dash-reward-item__date {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+}
+
+.dash-reward-item__breakdown {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}
+
+.dash-reward-item__value {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.dash-reward-item__amount {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.dash-reward-item__days {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}

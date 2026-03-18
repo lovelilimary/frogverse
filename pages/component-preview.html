@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="../styles/variables.css">
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
   <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/pages.css">
 
   <style>
     body {
@@ -239,7 +241,159 @@
     </div>
   </div>
 
+  <!-- ============================================================ -->
+  <!-- NFT LIST ITEM -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>NFT List Item — Bordered + Selectable</h2>
+
+    <div class="preview-row" style="flex-direction:column; gap:8px; max-width:380px;">
+      <div class="nft-list-item nft-list-item--bordered">
+        <div class="nft-list-item__avatar"><img src="../assets/thumbs/princess.webp" alt="Princess"></div>
+        <div class="nft-list-item__info">
+          <span class="nft-list-item__name">Princess Consort</span>
+          <span class="nft-list-item__desc">5+1 Frog</span>
+        </div>
+        <div class="nft-list-item__price">
+          <span class="nft-list-item__amount">600.00 <small>USDT</small></span>
+          <span class="nft-list-item__amount-sub">5 × 120.00</span>
+        </div>
+        <div class="nft-list-item__check">
+          <span class="circle-check circle-check--checked"></span>
+        </div>
+      </div>
+      <div class="nft-list-item nft-list-item--bordered">
+        <div class="nft-list-item__avatar"><img src="../assets/thumbs/king.webp" alt="King"></div>
+        <div class="nft-list-item__info">
+          <span class="nft-list-item__name">King Frog</span>
+          <span class="nft-list-item__desc">3 Frog</span>
+        </div>
+        <div class="nft-list-item__price">
+          <span class="nft-list-item__amount">360.00 <small>USDT</small></span>
+          <span class="nft-list-item__amount-sub">3 × 120.00</span>
+        </div>
+        <div class="nft-list-item__check">
+          <span class="circle-check"></span>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.nft-list-item--bordered</code> adds border + radius. Pair with <code>.circle-check</code> for radio selection.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- TOGGLE SWITCH -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Toggle Switch — Native Checkbox</h2>
+    <div class="preview-row" style="align-items:center; gap:24px;">
+      <div>
+        <span class="preview-label">Off</span>
+        <div style="margin-top:8px;">
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="toggle-switch__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <span class="preview-label">On (checked)</span>
+        <div style="margin-top:8px;">
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-switch__slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 Uses native <code>&lt;input type="checkbox"&gt;</code>. Style is in <code>.toggle-switch</code> + <code>.toggle-switch__slider</code>.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- INFO ROW VARIANTS -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Info Row — Standard / No-Padding / Icon+Hint</h2>
+    <div style="max-width:380px;">
+      <div class="info-row">
+        <img src="../assets/icons/Coin.svg" alt="" class="info-row__icon">
+        <span class="info-row__label">Unit Price</span>
+        <span class="info-row__value text-success">120.00 USDT</span>
+      </div>
+      <div class="info-row">
+        <img src="../assets/icons/Star1.svg" alt="" class="info-row__icon">
+        <span class="info-row__label">Total NFT</span>
+        <span class="info-row__value">6 NFT</span>
+      </div>
+      <hr style="border-color:rgba(255,255,255,0.1); margin:8px 0;">
+      <div class="info-row info-row--no-padding">
+        <span class="info-row__label">
+          <img src="../assets/icons/Chart.svg" alt="" class="info-row__icon-inline">
+          Quota Mode
+          <img src="../assets/icons/Info.svg" alt="" class="info-row__hint">
+        </span>
+        <span class="info-row__value">
+          <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-switch__slider"></span></label>
+        </span>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.info-row--no-padding</code> removes left padding. <code>.info-row__icon-inline</code> for 18px icons in label. <code>.info-row__hint</code> for 14px info icons.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION CARD + MONEY CELL -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Section Card + Money Cell</h2>
+    <div style="max-width:380px;">
+      <div class="section-card" style="background:rgba(255,255,255,0.05);">
+        <div class="section-card__header">
+          <h3 class="section-card__title" style="color:#fff; margin:0;">Withdrawal Limits</h3>
+          <span class="section-card__subtitle">Level 5</span>
+        </div>
+        <div class="money-cell">
+          <span class="money-cell__label">Total Earned</span>
+          <span class="money-cell__value text-success">227.66 USDT</span>
+        </div>
+        <div class="money-cell">
+          <span class="money-cell__label">Total Withdrawn</span>
+          <span class="money-cell__value">0.00 USDT</span>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.section-card</code> provides the rounded background. <code>.money-cell</code> for label+value rows.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CONFIRM ACTIONS -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Confirm Actions — Button Pair</h2>
+    <div style="max-width:340px;">
+      <div class="confirm-actions">
+        <button class="game-btn game-btn--gray"><span class="game-btn__text">Cancel</span></button>
+        <button class="game-btn game-btn--green"><span class="game-btn__text">Confirm</span></button>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.confirm-actions</code> = flex row with 12px gap. Each <code>.game-btn</code> gets <code>flex:1</code>.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- QUANTITY STEPPER -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Quantity Stepper</h2>
+    <div style="max-width:200px;">
+      <div class="qty-stepper">
+        <button class="qty-stepper__btn" data-stepper-dec>−</button>
+        <span class="qty-stepper__value" data-stepper-value>5</span>
+        <button class="qty-stepper__btn" data-stepper-inc>+</button>
+      </div>
+    </div>
+    <p class="info-note">💡 Include <code>scripts/stepper.js</code>. Uses <code>data-stepper-dec</code> / <code>data-stepper-inc</code> / <code>data-stepper-value</code>.</p>
+  </div>
+
   <!-- Game UI JS -->
   <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/stepper.js"></script>
 </body>
 </html>

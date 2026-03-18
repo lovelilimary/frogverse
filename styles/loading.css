@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Frogverse — Loading / Splash Screen Styles
+   ========================================================================== */
+
+/* ================================================================
+   STAGES — stacked full-screen layers
+   ================================================================ */
+.loading-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+#stageCurtain { z-index: 30; }
+#stageBlur    { z-index: 20; }
+#stageFrogs   { z-index: 10; }
+
+/* ================================================================
+   CURTAIN
+   ================================================================ */
+.curtain {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.curtain__left,
+.curtain__right {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  will-change: transform;
+}
+
+/* Red curtain fabric — CSS gradient simulating velvet folds */
+.curtain__left {
+  background: linear-gradient(
+    90deg,
+    #5B0E0E 0%,
+    #8B1A1A 15%,
+    #C62828 30%,
+    #E53935 42%,
+    #C62828 50%,
+    #8B1A1A 65%,
+    #C62828 80%,
+    #E53935 90%,
+    #C62828 100%
+  );
+}
+
+.curtain__right {
+  background: linear-gradient(
+    90deg,
+    #C62828 0%,
+    #E53935 10%,
+    #C62828 20%,
+    #8B1A1A 35%,
+    #C62828 50%,
+    #E53935 58%,
+    #C62828 70%,
+    #8B1A1A 85%,
+    #5B0E0E 100%
+  );
+}
+
+/* Vertical fold lines */
+.curtain__left::before,
+.curtain__right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 30px,
+    rgba(0, 0, 0, 0.08) 30px,
+    rgba(0, 0, 0, 0.08) 32px
+  );
+}
+
+/* Valance (top drape) */
+.curtain__valance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 5;
+  will-change: transform;
+}
+
+.curtain__valance-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.curtain__rope {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #DAA520 0px,
+    #FFD700 8px,
+    #DAA520 16px,
+    #B8860B 24px,
+    #DAA520 32px
+  );
+  border-radius: 4px;
+}
+
+/* ================================================================
+   LOADING BACKGROUND
+   ================================================================ */
+.loading-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.loading-bg__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loading-bg--blurred .loading-bg__img {
+  filter: blur(12px);
+  transform: scale(1.05); /* Prevent blur edges from showing */
+}
+
+.loading-bg__img--frogs {
+  object-position: top center;
+}
+
+/* ================================================================
+   LOGO
+   ================================================================ */
+.loading-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.loading-logo--center {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-logo--top {
+  top: 8%;
+}
+
+.loading-logo__img {
+  width: 260px;
+  max-width: 75vw;
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* ================================================================
+   LOADING TEXT
+   ================================================================ */
+.loading-text {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.loading-text__label {
+  font-family: var(--font-family-title);
+  font-size: 22px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

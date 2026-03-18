@@ -1,71 +1,29 @@
 /* ==========================================================================
    Frogverse — Home Screen Styles
-   Matching Figma node 269:9836
+   Matching Figma node 269:9836 — 402px frame
+   
+   Layout reference (from Figma):
+     Frame: 402 × 874px
+     Top Header: 54px height
+     Profile Section: 741px height (top: 54px)
+     Bottom Nav: 79px height
+     
+   All positions are relative to the profile section (741px area).
+   Responsive: uses percentage-based positioning so it scales from 360-430px.
+   
+   NOTE: .app, .top-header, .bottom-nav are in base.css
    ========================================================================== */
-
-/* ---- App Container Override ---- */
-.app {
-  background: #253d2b;
-  color: var(--color-text-white);
-  position: relative;
-  overflow: hidden;
-  max-width: var(--max-width-app);
-  margin: 0 auto;
-  min-height: 100vh;
-}
-
-/* ================================================================
-   TOP HEADER BAR
-   ================================================================ */
-.top-header {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: var(--max-width-app);
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
-  z-index: var(--z-sticky);
-}
-
-.top-header__title {
-  font-family: var(--font-family-display);
-  font-size: 18px;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  background: linear-gradient(180deg, #fffdd1 0%, #9f7d33 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
-}
-
-.top-header__menu-btn,
-.top-header__notif-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 
 /* ================================================================
    MAIN CONTENT AREA
+   Figma: Profile section — 741px height at 402px width
+   Positioned below 54px header, above 79px bottom nav
    ================================================================ */
 .home-main {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding-top: 0;
-  padding-bottom: 0;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -84,8 +42,9 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 170%;
-  height: 102%;
+  /* Figma: 282.52% width, 102.56% height */
+  width: 283%;
+  height: 103%;
   object-fit: cover;
   object-position: center top;
   filter: blur(2px);
@@ -96,8 +55,9 @@
   top: 0;
   left: 0;
   right: 0;
+  /* Figma: 61px */
   height: 61px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   z-index: 1;
 }
 
@@ -106,14 +66,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 280px;
-  background: linear-gradient(0deg, rgba(0,0,0,0.95) 25%, transparent 100%);
+  /* Figma: 218px / rotated gradient from black */
+  height: 218px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 24.7%, transparent 100%);
   z-index: 1;
 }
 
 /* ================================================================
    FROG CHARACTER — Main Frog Image
-   Figma: 688×636, centered and overflowing the frame
+   Figma: 688.25 × 635.77px at -3.13px, 72.23px (within 682px container)
+   The image is MUCH wider than the frame, centered.
+   688.25 / 402 = 171% of frame width
    ================================================================ */
 .frog-character {
   position: relative;
@@ -124,77 +87,101 @@
   z-index: 1;
   flex: 0 0 auto;
   min-height: 0;
-  padding-top: 40px;
-  margin-bottom: -120px;
+  /* Figma top: 72.23px from profile section top */
+  padding-top: calc(72.23 / 402 * 100%);
+  /* Negative margin to overlap content below */
+  margin-bottom: calc(-200 / 402 * 100%);
   overflow: visible;
 }
 
 .frog-character__img {
+  /* Figma: 688.25px wide / 402 frame = 171.2% */
   width: 171%;
   max-width: none;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 40px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
 }
 
 /* ================================================================
    FROG INFO BADGE — using FrogInfoHome component
-   Position top-left, overlaying the character
+   Figma Container: left:150px from 682px container = left:10px from 402px frame
+   FrogInfo: left:0, top:0 within container, 187×67px
+   But our component is 246×87px, scale = 187/246 = 0.76
    ================================================================ */
 .frog-info-wrapper {
   position: absolute;
-  top: 16px;
-  left: 10px;
+  /* Figma: top:16px from profile section, left:~10px from frame edge */
+  top: calc(16 / 741 * 100%);
+  left: calc(10 / 402 * 100%);
   z-index: 5;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15))
-          drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))
+          drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-/* Scale down for mobile (Figma: 246×87 inside 402 frame → ~61%) */
 .frog-info-wrapper .frog-info-home {
+  /* Figma: 187×67 / component natural: 246×87 → scale 0.76 */
   transform: scale(0.76);
   transform-origin: top left;
 }
 
 /* ================================================================
    SIDE MENU BUTTONS — using HomeButton component
+   Figma Container: 379px wide, left:150px from 682 center
+   → so left side at (402/2) - (682/2) + 150 = 10px from frame left
+   → right side at 10 + 315 = 325px from frame left
+   
+   Buttons at top:88px and top:175px within container
    ================================================================ */
 .side-buttons {
   position: absolute;
-  top: 88px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  /* Figma: gap = 175 - 88 - 64 = 23px ≈ 24px */
+  gap: calc(23 / 741 * 100vh);
   z-index: 5;
 }
 
 .side-buttons--left {
-  left: 4px;
+  /* Figma: left edge of container = left:~10px from frame */
+  left: calc(10 / 402 * 100%);
+  /* Figma: top:88px within container that starts at top:16px → 88+16 = 104px from profile top */
+  top: calc(104 / 741 * 100%);
 }
 
 .side-buttons--right {
-  right: 4px;
+  /* Figma: right buttons at left:315px within 379px container, starting at frame left:10px
+     → 10 + 315 = 325px from frame left
+     → right edge = 402 - 325 - 64 = 13px from right */
+  right: calc(13 / 402 * 100%);
+  top: calc(104 / 741 * 100%);
 }
 
 /* ================================================================
    TOKEN BADGES
+   Figma: centered, top:397px from main content top (which is 682px centered)
+   → 397px from profile section top
+   Each: 71.49 × 73.42px, gap: 13px
    ================================================================ */
 .token-badges {
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  gap: 13px;
+  /* Figma: gap 13px */
+  gap: calc(13 / 402 * 100%);
   padding: 0;
   margin-top: 0;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15))
-          drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))
+          drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
 .token-badge {
-  width: 71px;
-  height: 73px;
+  /* Figma: 71.49 × 73.42px → ~17.8% of 402 width */
+  width: calc(71.49 / 402 * 100vw);
+  max-width: 76px;
+  aspect-ratio: 71.49 / 73.42;
   border-radius: 50%;
   overflow: hidden;
   transition: transform var(--transition-fast);
@@ -213,6 +200,10 @@
 
 /* ================================================================
    FEED SECTION
+   Figma: starts at y:483 within main, width:321px, centered
+   bg: rgba(24,24,27,0.75), border-radius: 20px
+   padding: 10px 33px
+   gap: 10px between children
    ================================================================ */
 .feed-section {
   position: relative;
@@ -220,16 +211,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 10px 33px;
+  /* Figma: gap 10px */
+  gap: 10px;
+  /* Figma: padding 10px 33px */
+  padding: 10px calc(33 / 321 * 100%);
+  /* Figma: margin from token badges */
   margin: 8px auto 0;
-  max-width: 321px;
+  /* Figma: width 321px / 402 frame = 79.85% */
+  max-width: calc(321 / 402 * 100%);
   width: 100%;
   background: rgba(24, 24, 27, 0.75);
   border-radius: 20px;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
+/* ---- Progress Bar ---- */
 .feed-section__progress {
   width: 100%;
 }
@@ -259,22 +256,30 @@
   box-shadow: 0 0 8px rgba(81, 255, 81, 0.4);
 }
 
+/* ---- Text ---- */
 .feed-section__reminder {
+  /* Figma: Inter Regular 12px, white, text-shadow */
+  font-family: var(--font-family-primary);
   font-size: 12px;
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-white);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.15);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
   text-align: center;
   margin: 0;
+  line-height: 1;
 }
 
+/* ---- Timer ---- */
 .feed-section__timer {
+  /* Figma: Inter Bold 20px, #ffe18f, text-shadow */
   font-family: var(--font-family-primary);
   font-size: 20px;
   font-weight: var(--font-weight-bold);
   color: #ffe18f;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.15);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
   text-align: center;
   letter-spacing: 1px;
+  line-height: 1;
 }
 
 .timer__segment {
@@ -286,32 +291,37 @@
   opacity: 0.8;
 }
 
-/* Feed Button — using game-btn component, wider */
+/* Feed Button — Figma: 210px wide */
 .feed-btn-game {
   width: 210px;
 }
 
 /* ================================================================
    STATS SECTION
+   Figma: width 321px, gap 42px, each stat 79px wide
    ================================================================ */
 .stats-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
-  padding: 8px 33px;
+  /* Figma: gap 42px — but with space-between on 321px with 3×79px = 237px, 
+     remaining 84px / 2 = 42px gaps */
+  padding: 0;
   position: relative;
   z-index: 2;
-  max-width: 321px;
+  /* Figma: 321px / 402 = 79.85% */
+  max-width: calc(321 / 402 * 100%);
   width: 100%;
   margin: 0 auto;
+  line-height: 1;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 79px;
+  /* Figma: each 79px wide / 321 container = 24.6% */
+  width: calc(79 / 321 * 100%);
 }
 
 .stat-item--center {
@@ -323,10 +333,12 @@
 }
 
 .stat-item__label {
+  /* Figma: Cormorant Bold 18px, gradient #ddaf4a → #ffe18f, letter-spacing -0.36px */
   font-family: var(--font-family-display);
   font-size: 18px;
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.36px;
+  line-height: 1;
   background: linear-gradient(180deg, #ddaf4a 0%, #ffe18f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -334,21 +346,31 @@
 }
 
 .stat-item__value {
+  /* Figma: Inter Regular 12px, white */
   font-family: var(--font-family-primary);
   font-size: 12px;
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-white);
+  line-height: 1;
 }
 
 /* ================================================================
    XP SECTION
+   Figma: within 321px container, 40px height
+   Progress bar: 6px height at y:17, full width
+   Labels above and below
+   Level badge: centered, below bar
    ================================================================ */
 .xp-section {
-  padding: 4px 33px 16px;
+  padding: 0;
   position: relative;
   z-index: 2;
-  max-width: 321px;
+  /* Figma: 321px / 402 = 79.85% */
+  max-width: calc(321 / 402 * 100%);
   width: 100%;
   margin: 0 auto;
+  /* Total height: ~40px in Figma */
+  height: 40px;
 }
 
 .xp-section__header {
@@ -359,13 +381,17 @@
 }
 
 .xp-section__label {
+  /* Figma: Inter Regular 10px, rgba(255,255,255,0.5) */
   font-size: 10px;
   color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
 }
 
 .xp-section__current {
+  /* Figma: Inter Regular 10px, white */
   font-size: 10px;
   color: var(--color-text-white);
+  line-height: 1;
 }
 
 .xp-section__bar {
@@ -375,6 +401,7 @@
 
 .xp-section__bar-track {
   width: 100%;
+  /* Figma: 6px height */
   height: 6px;
   background: #333;
   border-radius: 3px;
@@ -390,16 +417,18 @@
 }
 
 .xp-section__level-badge {
+  /* Figma: centered below bar, bg #ffbb28, text 7px black */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 14px;
-  background: var(--gradient-yellow);
+  background: #ffbb28;
   color: #000;
   font-size: 7px;
   padding: 2px 5px;
   border-radius: 10px;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .xp-section__footer {
@@ -409,57 +438,10 @@
 
 .xp-section__min,
 .xp-section__max {
+  /* Figma: Inter Regular 10px, rgba(255,255,255,0.5) */
   font-size: 10px;
   color: rgba(255, 255, 255, 0.5);
-}
-
-/* ================================================================
-   BOTTOM NAVIGATION BAR
-   ================================================================ */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: var(--max-width-app);
-  height: 79px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 8px 4px;
-  padding-bottom: calc(8px + var(--safe-area-bottom));
-  z-index: var(--z-sticky);
-  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
-  border-top: 1px solid rgba(255, 225, 143, 0.15);
-}
-
-.bottom-nav__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  transition: all var(--transition-fast);
-  padding: 4px 8px;
-}
-
-.bottom-nav__item:hover,
-.bottom-nav__item--active {
-  color: #ffe18f;
-}
-
-.bottom-nav__icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-
-.bottom-nav__label {
-  font-size: 10px;
-  white-space: nowrap;
+  line-height: 1;
 }
 
 /* ================================================================
@@ -546,13 +528,16 @@
 
 .feed-modal__preset {
   flex: 1;
-  padding: 12px;
+  /* Figma: 50px height */
+  padding: 13px 0;
   border: none;
   font-family: 'Alice', serif;
   font-size: 18px;
+  letter-spacing: -0.36px;
   color: #ffe18f;
   cursor: pointer;
   transition: all var(--transition-fast);
+  text-align: center;
 }
 
 .feed-modal__preset--min {
@@ -602,7 +587,7 @@
   border-radius: 5px;
   padding: 20px;
   width: 338px;
-  max-width: calc(100% - 64px);
+  max-width: calc(100% - 32px);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -668,4 +653,3 @@
 .feed-success__btn {
   width: 100%;
 }
-

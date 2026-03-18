@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Frogverse — My Frogs">
+  <meta name="theme-color" content="#FDCC34">
+  <title>Frogverse — My Frogs</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/t0W3XMIZ+HaLayEPQ4/CPZ2eFCrGKH" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&family=Alice&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Frogverse CSS -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/my-frog.css">
+</head>
+<body>
+  <div class="device-simulator">
+  <div class="app" id="app">
+
+    <main class="page-shell" id="myFrogPage">
+
+      <!-- ============ CARD CONTAINER ============ -->
+      <div class="game-frame card-content" id="myFrogCard">
+
+            <!-- Header: Back + "My Frogs" + Close -->
+            <div class="card-header">
+              <button class="hex-btn hex-btn--back" id="btnBack" aria-label="Go back">
+                <img src="../assets/icons/Arrow.svg" alt="" class="hex-btn__icon" aria-hidden="true">
+              </button>
+              <h1 class="card-header__title">My Frogs</h1>
+              <button class="hex-btn" id="btnClose" aria-label="Close">
+                <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Tab Bar -->
+            <div class="tab-bar" id="tabBar">
+              <button class="game-btn game-btn--green tab-btn active" data-tab="active" id="tabActive">
+                <span class="game-btn__text">Active (30)</span>
+              </button>
+              <button class="game-btn game-btn--gray tab-btn" data-tab="abandoned" id="tabAbandoned">
+                <span class="game-btn__text">Abandoned (6)</span>
+              </button>
+            </div>
+
+            <!-- Divider under tabs -->
+            <hr class="section-divider mb-16">
+
+            <!-- ============ FROG CARDS GRID ============ -->
+            <div class="frog-cards-grid" id="frogCardsGrid">
+
+              <!-- Card 1: Frog King — Hungry -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/king.webp" alt="Frog King">
+                  <div class="frog-card__frame frog-card__frame--gold"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--hungry" title="Hungry">
+                  <img src="../assets/icons/Eating.svg" alt="Hungry" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog King</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+              <!-- Card 2: Frog Queen — Angry -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/queen.webp" alt="Frog Queen">
+                  <div class="frog-card__frame frog-card__frame--gold"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--angry" title="Angry">
+                  <img src="../assets/icons/Heart.svg" alt="Angry" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog Queen</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+              <!-- Card 3: Frog Prince — Happy -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/prince.webp" alt="Frog Prince">
+                  <div class="frog-card__frame frog-card__frame--silver"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--happy" title="Happy">
+                  <img src="../assets/icons/Eating.svg" alt="Happy" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog Prince</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+              <!-- Card 4: Frog Princess — Hungry -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/princess.webp" alt="Frog Princess">
+                  <div class="frog-card__frame frog-card__frame--pink"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--hungry" title="Hungry">
+                  <img src="../assets/icons/Eating.svg" alt="Hungry" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog Princess</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+              <!-- Card 5: Frog King — Happy (duplicate demo) -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/king.webp" alt="Frog King">
+                  <div class="frog-card__frame frog-card__frame--gold"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--happy" title="Happy">
+                  <img src="../assets/icons/Eating.svg" alt="Happy" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog King</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+              <!-- Card 6: Frog King — Happy -->
+              <div class="frog-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="frog-card__image">
+                  <img src="../assets/thumbs/king.webp" alt="Frog King">
+                  <div class="frog-card__frame frog-card__frame--gold"></div>
+                </div>
+                <div class="frog-card__mood frog-card__mood--happy" title="Happy">
+                  <img src="../assets/icons/Eating.svg" alt="Happy" class="frog-card__mood-icon">
+                </div>
+                <div class="frog-card__info">
+                  <span class="frog-card__name">Frog King</span>
+                  <span class="frog-card__id">#FROG-00C64A</span>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.frog-cards-grid -->
+
+      </div>
+
+    </main>
+
+  </div>
+  </div> <!-- /.device-simulator -->
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Frogverse JS -->
+  <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/main.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.classList.remove('game-btn--green');
+          b.classList.add('game-btn--gray');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('game-btn--gray');
+        btn.classList.add('game-btn--green');
+      });
+    });
+  </script>
+</body>
+</html>

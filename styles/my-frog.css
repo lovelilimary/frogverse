@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Frogverse — My Frog Page Styles
+   ========================================================================== */
+
+/* ================================================================
+   FROG CARD — Individual frog card (164×265)
+   ================================================================ */
+.frog-card {
+  position: relative;
+  width: 164px;
+  height: 265px;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.frog-card:hover {
+  transform: translateY(-3px);
+}
+
+.frog-card:active {
+  transform: translateY(1px);
+}
+
+/* ---- Image Section (top 164×164) ---- */
+.frog-card__image {
+  position: relative;
+  width: 164px;
+  height: 164px;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+}
+
+.frog-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Frame overlay (gold / silver / pink) */
+.frog-card__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 6px solid;
+  border-radius: 6px 6px 0 0;
+}
+
+.frog-card__frame--gold {
+  border-color: #ddaf4a;
+  box-shadow: inset 0 0 20px rgba(221, 175, 74, 0.3);
+}
+
+.frog-card__frame--silver {
+  border-color: #a0aeb8;
+  box-shadow: inset 0 0 20px rgba(160, 174, 184, 0.3);
+}
+
+.frog-card__frame--pink {
+  border-color: #e88ca8;
+  box-shadow: inset 0 0 20px rgba(232, 140, 168, 0.3);
+}
+
+/* ---- Mood Badge (top-right corner) ---- */
+.frog-card__mood {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-elevation-3);
+  z-index: 2;
+}
+
+.frog-card__mood--happy {
+  border-color: #18c351;
+}
+
+.frog-card__mood--hungry {
+  border-color: #ed9e00;
+}
+
+.frog-card__mood--angry {
+  border-color: #e92e43;
+}
+
+.frog-card__mood--dead {
+  border-color: #666;
+}
+
+.frog-card__mood-icon {
+  width: 28px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ---- Info Section (bottom, name + ID) ---- */
+.frog-card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #191919 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px 15px;
+  text-align: center;
+}
+
+.frog-card__name {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.36px;
+  background: linear-gradient(110deg, #FDCC34 26%, #FFB224 89%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.frog-card__id {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* ================================================================
+   FROG CARDS GRID — 2-column grid
+   ================================================================ */
+.frog-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 200px);
+  max-height: calc(100dvh - 200px);
+  padding-bottom: 20px;
+}
+
+/* ================================================================
+   SCROLLBAR STYLING
+   ================================================================ */
+.frog-cards-grid::-webkit-scrollbar {
+  width: 4px;
+}
+
+.frog-cards-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.frog-cards-grid::-webkit-scrollbar-thumb {
+  background: rgba(221, 175, 74, 0.3);
+  border-radius: 2px;
+}

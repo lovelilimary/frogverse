@@ -109,7 +109,11 @@
   --z-toast: 500;
 
   /* ---- Layout ---- */
-  --max-width-app: 393px;  /* iPhone 16 viewport width */
+  --max-width-app: 430px;  /* support up to iPhone Pro Max */
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* ---- Responsive Scaling (360px → 430px) ---- */
+  --space-page-x: clamp(12px, 4vw, 20px);    /* page horizontal padding */
+  --content-max-w: clamp(296px, 82vw, 340px); /* inner content max width */
 }

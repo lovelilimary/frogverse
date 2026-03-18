@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Frogverse — Confirm Rental Page Styles
+   ========================================================================== */
+
+.confirm-disclaimer {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: var(--color-primary);
+  text-align: center;
+  line-height: 1.4;
+  padding: 12px 16px;
+  margin: 16px 0 0;
+}
+
+.confirm-question {
+  font-family: var(--font-family-primary);
+  font-size: 13px;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 8px 0 16px;
+}

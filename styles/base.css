@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Frogverse — Base / App Shell
+   Shared page fundamentals: .app container, .page wrapper, device simulator,
+   bottom navigation, safe-area helpers.
+   ========================================================================== */
+
+/* ================================================================
+   APP CONTAINER
+   Root wrapper for every page. Centers content, sets dark theme.
+   ================================================================ */
+.app {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #253d2b;
+  color: var(--color-text-white);
+}
+
+/* ================================================================
+   PAGE WRAPPER
+   Every screen's <main> element uses this class.
+   Provides consistent padding and flex layout.
+   ================================================================ */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ================================================================
+   FULL-SCREEN BACKGROUND SYSTEM
+   Reusable blurred background image with gradient overlays.
+   Usage:
+     <div class="page__bg">
+       <img src="…" class="page__bg-img" aria-hidden="true">
+       <div class="page__bg-top"></div>
+       <div class="page__bg-bottom"></div>
+     </div>
+   ================================================================ */
+.page__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page__bg-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170%;
+  height: 102%;
+  object-fit: cover;
+  object-position: center top;
+  filter: blur(2px);
+}
+
+.page__bg-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 61px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.page__bg-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 25%, transparent 100%);
+  z-index: 1;
+}
+
+/* ================================================================
+   DEVICE SIMULATOR
+   On desktop (>500px), frames the app in a phone-sized container.
+   On mobile, fully transparent (display: contents).
+   ================================================================ */
+.device-simulator {
+  display: contents;
+}
+
+@media (min-width: 500px) {
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .device-simulator {
+    display: block;
+    width: 393px;
+    height: 852px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .device-simulator .app {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .device-simulator .app::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ================================================================
+   BOTTOM NAVIGATION BAR
+   Fixed bar at screen bottom. Shared across pages.
+   ================================================================ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-app);
+  height: 79px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 4px;
+  padding-bottom: calc(8px + var(--safe-area-bottom));
+  z-index: var(--z-sticky);
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  border-top: 1px solid rgba(255, 225, 143, 0.15);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  transition: all var(--transition-fast);
+  padding: 4px 8px;
+}
+
+.bottom-nav__item:hover,
+.bottom-nav__item--active {
+  color: #ffe18f;
+}
+
+.bottom-nav__icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.bottom-nav__label {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* ================================================================
+   TOP HEADER BAR
+   Fixed header with gradient fade. Shared across pages.
+   ================================================================ */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-app);
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-page-x);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  z-index: var(--z-sticky);
+}
+
+.top-header__title {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  background: linear-gradient(180deg, #fffdd1 0%, #9f7d33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.top-header__menu-btn,
+.top-header__notif-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================================================================
+   PAGE HEADER — Inner page header (Back + Title + Close)
+   ================================================================ */
+.page-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px var(--space-page-x);
+  min-height: 44px;
+  z-index: 5;
+}
+
+.page-header__back {
+  position: absolute;
+  left: var(--space-page-x);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.page-header__title {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  background: linear-gradient(180deg, #fffdd1 0%, #9f7d33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-header__close {
+  position: absolute;
+  right: var(--space-page-x);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

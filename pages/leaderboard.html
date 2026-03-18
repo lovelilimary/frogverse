@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Frogverse — Leaderboard">
+  <meta name="theme-color" content="#FDCC34">
+  <title>Frogverse — Leaderboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/t0W3XMIZ+HaLayEPQ4/CPZ2eFCrGKH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&family=Alice&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/leaderboard.css">
+</head>
+<body>
+  <div class="device-simulator">
+  <div class="app" id="app">
+
+    <main class="page-shell" id="leaderboardPage">
+      <div class="game-frame card-content">
+
+            <!-- Header -->
+            <div class="card-header card-header--flush">
+              <span class="hex-btn" style="visibility:hidden;"></span>
+              <h1 class="card-header__title">Leaderboard</h1>
+              <button class="hex-btn" id="btnClose" aria-label="Close">
+                <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- ============ PODIUM SECTION ============ -->
+            <div class="podium" data-aos="fade-up" data-aos-delay="100">
+              <!-- 2nd Place -->
+              <div class="podium__slot podium__slot--2nd">
+                <div class="podium__avatar">
+                  <img src="../assets/thumbs/prince.webp" alt="Nathan Ho">
+                </div>
+                <div class="podium__banner podium__banner--silver">
+                  <span class="podium__rank">2nd</span>
+                  <div class="podium__emblem">
+                    <img src="../assets/icons/Cup2 1.svg" alt="" class="podium__emblem-img">
+                  </div>
+                  <span class="podium__name">Nathan Ho</span>
+                  <span class="podium__score">0000</span>
+                </div>
+              </div>
+
+              <!-- 1st Place (center, taller) -->
+              <div class="podium__slot podium__slot--1st">
+                <div class="podium__avatar">
+                  <img src="../assets/thumbs/king.webp" alt="Nicholas Phan">
+                </div>
+                <div class="podium__banner podium__banner--gold">
+                  <span class="podium__rank">1st</span>
+                  <div class="podium__emblem">
+                    <img src="../assets/icons/Cup1 1.svg" alt="" class="podium__emblem-img">
+                  </div>
+                  <span class="podium__name">Nicholas Phan</span>
+                  <span class="podium__score">0000</span>
+                </div>
+              </div>
+
+              <!-- 3rd Place -->
+              <div class="podium__slot podium__slot--3rd">
+                <div class="podium__avatar">
+                  <img src="../assets/thumbs/queen.webp" alt="Trung Kien">
+                </div>
+                <div class="podium__banner podium__banner--bronze">
+                  <span class="podium__rank">3rd</span>
+                  <div class="podium__emblem">
+                    <img src="../assets/icons/Cup3 1.svg" alt="" class="podium__emblem-img">
+                  </div>
+                  <span class="podium__name">Trung Kien...</span>
+                  <span class="podium__score">0000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ LEADERBOARD LIST ============ -->
+            <div class="lb-list" data-aos="fade-up" data-aos-delay="200">
+
+              <!-- Rank 1 (highlighted gold) -->
+              <div class="lb-cell lb-cell--gold">
+                <div class="lb-cell__avatar">
+                  <img src="../assets/thumbs/king.webp" alt="Nicholas Phan">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Nicholas Phan</span>
+                  <span class="lb-cell__meta">Level 00 - Rank 1</span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+              <!-- Rank 2 -->
+              <div class="lb-cell lb-cell--silver">
+                <div class="lb-cell__avatar">
+                  <img src="../assets/thumbs/prince.webp" alt="Nathan Ho">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Nathan Ho</span>
+                  <span class="lb-cell__meta">Level 00 - Rank 2</span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+              <!-- Rank 3 -->
+              <div class="lb-cell lb-cell--bronze">
+                <div class="lb-cell__avatar">
+                  <img src="../assets/thumbs/queen.webp" alt="Trung Kien Nguyen">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Trung Kien Nguyen</span>
+                  <span class="lb-cell__meta">Level 00 - Rank 3</span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+              <!-- Rank 4 -->
+              <div class="lb-cell">
+                <div class="lb-cell__avatar">
+                  <img src="../assets/thumbs/princess.webp" alt="Metti Dental">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Metti Dental</span>
+                  <span class="lb-cell__meta">Level 00 - Rank 4</span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+              <!-- Your Rank (Special highlighted row) -->
+              <div class="lb-cell lb-cell--you">
+                <div class="lb-cell__your-rank">
+                  <span>Your</span>
+                  <span>Rank</span>
+                </div>
+                <div class="lb-cell__avatar">
+                  <img src="../assets/thumbs/king.webp" alt="Mr.Least">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Mr.Least</span>
+                  <span class="lb-cell__meta">Level 00 - Rank 109</span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    </main>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

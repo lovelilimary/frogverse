@@ -1,0 +1,239 @@
+/* ==========================================================================
+   Frogverse — Leaderboard Page Styles
+   ========================================================================== */
+
+/* ================================================================
+   PODIUM — Top 3 display
+   ================================================================ */
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin: 20px 0 24px;
+  padding: 0 10px;
+}
+
+.podium__slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.podium__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #c8aa6e;
+  z-index: 2;
+  position: relative;
+  margin-bottom: -10px;
+}
+
+.podium__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Banners (ribbon-shaped) */
+.podium__banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 8px 12px;
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.podium__banner--gold {
+  background: linear-gradient(180deg, #ddaf4a 0%, #8a6a1e 100%);
+  width: 110px;
+  min-height: 180px;
+}
+
+.podium__banner--silver {
+  background: linear-gradient(180deg, #a0aeb8 0%, #5a6670 100%);
+  width: 96px;
+  min-height: 155px;
+}
+
+.podium__banner--bronze {
+  background: linear-gradient(180deg, #b87333 0%, #6b3f1a 100%);
+  width: 96px;
+  min-height: 155px;
+}
+
+.podium__slot--1st {
+  z-index: 2;
+  margin: 0 -8px;
+}
+
+.podium__slot--1st .podium__avatar {
+  width: 64px;
+  height: 64px;
+  border-color: #ddaf4a;
+}
+
+.podium__rank {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 8px;
+}
+
+.podium__emblem {
+  width: 36px;
+  height: 36px;
+  margin: 8px 0;
+}
+
+.podium__emblem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.podium__name {
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+.podium__score {
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
+
+/* ================================================================
+   LEADERBOARD LIST — Ranked cells
+   ================================================================ */
+.lb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lb-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 65px;
+  transition: background var(--transition-fast);
+}
+
+.lb-cell:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Rank-specific backgrounds */
+.lb-cell--gold {
+  background: linear-gradient(135deg, rgba(221, 175, 74, 0.25) 0%, rgba(138, 106, 30, 0.15) 100%);
+  border-color: rgba(221, 175, 74, 0.3);
+}
+
+.lb-cell--silver {
+  background: linear-gradient(135deg, rgba(160, 174, 184, 0.15) 0%, rgba(90, 102, 112, 0.1) 100%);
+  border-color: rgba(160, 174, 184, 0.2);
+}
+
+.lb-cell--bronze {
+  background: linear-gradient(135deg, rgba(184, 115, 51, 0.15) 0%, rgba(107, 63, 26, 0.1) 100%);
+  border-color: rgba(184, 115, 51, 0.2);
+}
+
+.lb-cell--you {
+  background: linear-gradient(135deg, rgba(253, 204, 52, 0.15) 0%, rgba(255, 115, 60, 0.1) 100%);
+  border: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.lb-cell__your-rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family-display);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.2;
+  min-width: 30px;
+}
+
+.lb-cell__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.lb-cell__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lb-cell__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lb-cell__name {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lb-cell__meta {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+.lb-cell__score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.lb-cell__xp {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+}
+
+.lb-cell__xp-label {
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}

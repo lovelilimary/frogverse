@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Frogverse — Rental Marketplace">
+  <meta name="theme-color" content="#FDCC34">
+  <title>Frogverse — Rental</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/t0W3XMIZ+HaLayEPQ4/CPZ2eFCrGKH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&family=Alice&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/rental.css">
+</head>
+<body>
+  <div class="device-simulator">
+  <div class="app" id="app">
+
+    <main class="page-shell" id="rentalPage">
+      <div class="game-frame card-content rental-content">
+
+            <!-- Header -->
+            <div class="card-header card-header--flush">
+              <button class="hex-btn hex-btn--back" id="btnBack" aria-label="Go back">
+                <img src="../assets/icons/Arrow.svg" alt="" class="hex-btn__icon" aria-hidden="true">
+              </button>
+              <h1 class="card-header__title">Rental</h1>
+              <button class="hex-btn" id="btnClose" aria-label="Close">
+                <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- ============ PROMOTION BANNER ============ -->
+            <a href="rental-promotion.html" class="promo-banner" data-aos="fade-up" data-aos-delay="100">
+              <div class="promo-banner__icon">
+                <img src="../assets/icons/Gift.svg" alt="" class="promo-banner__icon-img">
+              </div>
+              <div class="promo-banner__text">
+                <span class="promo-banner__title">🎁 Buy 5 – Get 1 Frog Free!</span>
+                <span class="promo-banner__desc">Buy 5 Frogs of the same type → get 1 more Frog free</span>
+              </div>
+              <div class="promo-banner__arrow">
+                <img src="../assets/icons/Arrow.svg" alt="" class="promo-banner__arrow-img">
+              </div>
+            </a>
+
+            <!-- ============ RENTAL CARDS GRID ============ -->
+            <div class="rental-grid" id="rentalGrid">
+
+              <!-- Frog King -->
+              <div class="rental-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="rental-card__image">
+                  <img src="../assets/thumbs/king.webp" alt="Frog King">
+                  <div class="rental-card__frame rental-card__frame--gold"></div>
+                  <span class="rental-card__number">#1</span>
+                  <div class="rental-card__mood rental-card__mood--happy">
+                    <img src="../assets/icons/Eating.svg" alt="" class="rental-card__mood-img">
+                  </div>
+                </div>
+                <div class="rental-card__body">
+                  <h3 class="rental-card__title">FROG KING</h3>
+                  <span class="rental-card__price">1,800 USDT</span>
+
+                  <div class="rental-card__stats">
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Date1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Contract Duration:</span>
+                      <span class="rental-card__stat-value">365 Days</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Coin.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Payment:</span>
+                      <span class="rental-card__stat-value">USDT</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Eating2.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Feed</span>
+                      <span class="rental-card__stat-value rental-card__stat-value--small">MTT, OFC, OFT, OHO, OHOP</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Gift.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Monthly Bonus</span>
+                      <span class="rental-card__stat-value text-success">11.0%</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Star1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">30-Day Bonus</span>
+                      <span class="rental-card__stat-value text-success">2.5%</span>
+                    </div>
+                  </div>
+
+                  <button class="game-btn game-btn--gold rental-card__btn">
+                    <span class="game-btn__text">Rent</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Frog Queen -->
+              <div class="rental-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="rental-card__image">
+                  <img src="../assets/thumbs/queen.webp" alt="Frog Queen">
+                  <div class="rental-card__frame rental-card__frame--gold"></div>
+                  <span class="rental-card__number">#2</span>
+                  <div class="rental-card__mood rental-card__mood--angry">
+                    <img src="../assets/icons/Heart.svg" alt="" class="rental-card__mood-img">
+                  </div>
+                </div>
+                <div class="rental-card__body">
+                  <h3 class="rental-card__title">FROG QUEEN</h3>
+                  <span class="rental-card__price">1,800 USDT</span>
+
+                  <div class="rental-card__stats">
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Date1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Contract Duration:</span>
+                      <span class="rental-card__stat-value">365 Days</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Coin.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Payment:</span>
+                      <span class="rental-card__stat-value">USDT</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Eating2.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Feed</span>
+                      <span class="rental-card__stat-value rental-card__stat-value--small">MTT, OFC</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Gift.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Monthly Bonus</span>
+                      <span class="rental-card__stat-value text-success">9.0%</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Star1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">30-Day Bonus</span>
+                      <span class="rental-card__stat-value text-success">2.0%</span>
+                    </div>
+                  </div>
+
+                  <button class="game-btn game-btn--gold rental-card__btn">
+                    <span class="game-btn__text">Rent</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Frog Prince -->
+              <div class="rental-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="rental-card__image">
+                  <img src="../assets/thumbs/prince.webp" alt="Frog Prince">
+                  <div class="rental-card__frame rental-card__frame--silver"></div>
+                  <span class="rental-card__number">#3</span>
+                  <div class="rental-card__mood rental-card__mood--happy">
+                    <img src="../assets/icons/Eating.svg" alt="" class="rental-card__mood-img">
+                  </div>
+                </div>
+                <div class="rental-card__body">
+                  <h3 class="rental-card__title">FROG PRINCE</h3>
+                  <span class="rental-card__price">600 USDT</span>
+
+                  <div class="rental-card__stats">
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Date1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Contract Duration:</span>
+                      <span class="rental-card__stat-value">365 Days</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Coin.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Payment:</span>
+                      <span class="rental-card__stat-value">USDT</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Eating2.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Feed</span>
+                      <span class="rental-card__stat-value rental-card__stat-value--small">MTT, OFC</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Gift.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Monthly Bonus</span>
+                      <span class="rental-card__stat-value text-success">7.0%</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Star1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">30-Day Bonus</span>
+                      <span class="rental-card__stat-value text-success">1.5%</span>
+                    </div>
+                  </div>
+
+                  <button class="game-btn game-btn--gold rental-card__btn">
+                    <span class="game-btn__text">Rent</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Frog Princess -->
+              <div class="rental-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="rental-card__image">
+                  <img src="../assets/thumbs/princess.webp" alt="Frog Princess">
+                  <div class="rental-card__frame rental-card__frame--pink"></div>
+                  <span class="rental-card__number">#4</span>
+                  <div class="rental-card__mood rental-card__mood--hungry">
+                    <img src="../assets/icons/Eating.svg" alt="" class="rental-card__mood-img">
+                  </div>
+                </div>
+                <div class="rental-card__body">
+                  <h3 class="rental-card__title">FROG PRINCESS</h3>
+                  <span class="rental-card__price">600 USDT</span>
+
+                  <div class="rental-card__stats">
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Date1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Contract Duration:</span>
+                      <span class="rental-card__stat-value">365 Days</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Coin.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Payment:</span>
+                      <span class="rental-card__stat-value">USDT</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Eating2.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Feed</span>
+                      <span class="rental-card__stat-value rental-card__stat-value--small">MTT, OFC</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Gift.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">Monthly Bonus</span>
+                      <span class="rental-card__stat-value text-success">6.0%</span>
+                    </div>
+                    <div class="rental-card__stat">
+                      <img src="../assets/icons/Star1.svg" alt="" class="rental-card__stat-icon">
+                      <span class="rental-card__stat-label">30-Day Bonus</span>
+                      <span class="rental-card__stat-value text-success">1.0%</span>
+                    </div>
+                  </div>
+
+                  <button class="game-btn game-btn--gold rental-card__btn">
+                    <span class="game-btn__text">Rent</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+      </div>
+    </main>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

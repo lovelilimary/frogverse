@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Frogverse — Frog Wallet">
+  <meta name="theme-color" content="#FDCC34">
+  <title>Frogverse — Frog Wallet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/t0W3XMIZ+HaLayEPQ4/CPZ2eFCrGKH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&family=Alice&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/frog-wallet.css">
+</head>
+<body>
+  <div class="device-simulator">
+  <div class="app" id="app">
+
+    <main class="page-shell" id="walletPage">
+      <div class="game-frame card-content wallet-content">
+
+            <!-- Header -->
+            <div class="card-header card-header--flush">
+              <span class="hex-btn" style="visibility:hidden;"></span>
+              <h1 class="card-header__title">Frog Wallet</h1>
+              <button class="hex-btn" id="btnClose" aria-label="Close">
+                <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- ============ BALANCE SECTION ============ -->
+            <div class="wallet-balance" data-aos="fade-up" data-aos-delay="100">
+              <span class="wallet-balance__label">Available Balance</span>
+              <div class="wallet-balance__amount">
+                <span class="wallet-balance__value">202.00</span>
+                <span class="wallet-balance__currency">USDT</span>
+              </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Total Earned / Total Withdrawn -->
+            <div class="wallet-totals" data-aos="fade-up" data-aos-delay="150">
+              <div class="money-cell">
+                <span class="money-cell__label">Total Earned</span>
+                <span class="money-cell__value text-success">227.66 USDT</span>
+              </div>
+              <div class="money-cell">
+                <span class="money-cell__label">Total Withdrawn</span>
+                <span class="money-cell__value">0.00 USDT</span>
+              </div>
+            </div>
+
+            <!-- Withdraw Button -->
+            <div class="wallet-withdraw" data-aos="fade-up" data-aos-delay="200">
+              <button class="game-btn game-btn--green wallet-withdraw__btn" id="btnWithdraw">
+                <span class="game-btn__text">Withdraw Now</span>
+              </button>
+            </div>
+
+            <!-- ============ WITHDRAWAL LIMITS ============ -->
+            <div class="section-card" data-aos="fade-up" data-aos-delay="250">
+              <h3 class="wallet-section-title">Withdrawal Limits</h3>
+
+              <div class="money-cell mt-8">
+                <span class="money-cell__label">Withdrawal Limit</span>
+                <span class="money-cell__value text-success">Level 5</span>
+              </div>
+
+              <div class="wallet-limit">
+                <div class="money-cell">
+                  <span class="money-cell__label">Daily Limit</span>
+                  <span class="money-cell__value text-success" style="font-size:12px;">300.00 / 600.00 USDT</span>
+                </div>
+                <div class="wallet-limit__bar">
+                  <div class="wallet-limit__bar-fill" style="width: 50%"></div>
+                </div>
+              </div>
+
+              <div class="wallet-limit">
+                <div class="money-cell">
+                  <span class="money-cell__label">Monthly Limit</span>
+                  <span class="money-cell__value text-success" style="font-size:12px;">4500.00 / 9000.00 USDT</span>
+                </div>
+                <div class="wallet-limit__bar">
+                  <div class="wallet-limit__bar-fill" style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ WITHDRAWAL HISTORY ============ -->
+            <div class="section-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="section-card__header">
+                <h3 class="wallet-section-title m-0">Withdrawal History</h3>
+                <span class="section-card__subtitle">0 Transactions</span>
+              </div>
+              <p class="wallet-empty">No withdrawal history yet</p>
+            </div>
+
+            <!-- ============ WALLET ACTIVITY ============ -->
+            <div class="section-card" data-aos="fade-up" data-aos-delay="350">
+              <div class="section-card__header">
+                <h3 class="wallet-section-title m-0">Wallet Activity</h3>
+                <span class="section-card__subtitle">2 Transactions</span>
+              </div>
+
+              <div class="wallet-activity">
+                <div class="wallet-activity__item">
+                  <div class="wallet-activity__icon">
+                    <img src="../assets/icons/Gift.svg" alt="" class="wallet-activity__icon-img">
+                  </div>
+                  <div class="wallet-activity__info">
+                    <span class="wallet-activity__title">Monthly Bonus</span>
+                    <span class="wallet-activity__date">Mar 01, 2026</span>
+                  </div>
+                  <span class="wallet-activity__amount wallet-activity__amount--positive">+0.75 USDT</span>
+                </div>
+                <div class="wallet-activity__item">
+                  <div class="wallet-activity__icon">
+                    <img src="../assets/icons/Coin.svg" alt="" class="wallet-activity__icon-img">
+                  </div>
+                  <div class="wallet-activity__info">
+                    <span class="wallet-activity__title">Daily Feed Reward</span>
+                    <span class="wallet-activity__date">Mar 01, 2026</span>
+                  </div>
+                  <span class="wallet-activity__amount wallet-activity__amount--positive">+15.00 USDT</span>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    </main>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
