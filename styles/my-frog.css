@@ -3,112 +3,126 @@
    ========================================================================== */
 
 /* ================================================================
-   FROG CARD — Individual frog card (164×265)
+   PAGE-SPECIFIC OVERRIDES — Narrower chrome for 2-column grid
+   Device: 393px. Need ~340px content for 2-column grid.
    ================================================================ */
-.frog-card {
-  position: relative;
-  width: 164px;
-  height: 265px;
+#myFrogPage .game-frame {
+  border-width: 10px;
+  border-image-width: 10px;
+  border-image-slice: 20;
+}
+
+#myFrogPage .card-content {
+  margin: 5px;
+  padding: 16px 10px 10px;
   overflow: visible;
-  cursor: pointer;
-  transition: transform var(--transition-fast);
 }
 
-.frog-card:hover {
-  transform: translateY(-3px);
+/* ================================================================
+   FROG CARDS GRID — 2-column responsive grid
+   ================================================================ */
+.frog-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 180px);
+  max-height: calc(100dvh - 180px);
+  padding-bottom: 20px;
 }
 
-.frog-card:active {
-  transform: translateY(1px);
-}
+/* ================================================================
+   CARD OVERRIDES — Make fixed-size components responsive in grid
+   The base my-frog-card and frog-rental-cell__frog-card use fixed
+   pixel sizes (164px). Inside the grid we override to fill column.
+   ================================================================ */
 
-/* ---- Image Section (top 164×164) ---- */
-.frog-card__image {
+/* Card container — switch from absolute to flow layout */
+.frog-cards-grid .my-frog-card {
   position: relative;
-  width: 164px;
-  height: 164px;
-  overflow: hidden;
-  border-radius: 6px 6px 0 0;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
 
-.frog-card__image img {
-  display: block;
+/* Avatar area — relative flow, square aspect */
+.frog-cards-grid .my-frog-card__avatar-area {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+/* Frog card — fill avatar area */
+.frog-cards-grid .frog-rental-cell__frog-card {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
-/* Frame overlay (gold / silver / pink) */
-.frog-card__frame {
+/* Thumbnail — scale with container, keep 6px inset ratio */
+.frog-cards-grid .frog-rental-cell__thumb {
+  position: absolute;
+  top: 3.66%;     /* 6/164 */
+  left: 3.66%;
+  width: 92.68%;  /* 152/164 */
+  height: 92.68%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Frame outer — fill card */
+.frog-cards-grid .frog-rental-cell__frame-outer {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
-  border: 6px solid;
-  border-radius: 6px 6px 0 0;
 }
 
-.frog-card__frame--gold {
-  border-color: #ddaf4a;
-  box-shadow: inset 0 0 20px rgba(221, 175, 74, 0.3);
-}
-
-.frog-card__frame--silver {
-  border-color: #a0aeb8;
-  box-shadow: inset 0 0 20px rgba(160, 174, 184, 0.3);
-}
-
-.frog-card__frame--pink {
-  border-color: #e88ca8;
-  box-shadow: inset 0 0 20px rgba(232, 140, 168, 0.3);
-}
-
-/* ---- Mood Badge (top-right corner) ---- */
-.frog-card__mood {
+/* Frame inner — inset by ratio */
+.frog-cards-grid .frog-rental-cell__frame-inner {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-elevation-3);
+  top: 3.66%;
+  left: 3.66%;
+  width: 92.68%;
+  height: 92.68%;
   z-index: 2;
+  pointer-events: none;
 }
 
-.frog-card__mood--happy {
-  border-color: #18c351;
-}
-
-.frog-card__mood--hungry {
-  border-color: #ed9e00;
-}
-
-.frog-card__mood--angry {
-  border-color: #e92e43;
-}
-
-.frog-card__mood--dead {
-  border-color: #666;
-}
-
-.frog-card__mood-icon {
-  width: 28px;
-  height: 20px;
-  object-fit: contain;
-}
-
-/* ---- Info Section (bottom, name + ID) ---- */
-.frog-card__info {
+/* Badge — scale proportionally (126/164 = 76.8% of card width) */
+.frog-cards-grid .frog-rental-cell__badge {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 130px;
-  background: linear-gradient(180deg, #1a1a1a 0%, #191919 100%);
+  bottom: -18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76.8%;
+  height: auto;
+  z-index: 3;
+}
+
+/* Emotion — scale proportionally (45/164 = 27.4%) */
+.frog-cards-grid .my-frog-card__emotion {
+  position: absolute;
+  top: 8.5%;     /* 14/164 */
+  right: 8.5%;
+  width: 27.4%;  /* 45/164 */
+  height: 27.4%;
+  z-index: 3;
+}
+
+/* Info section — flow layout below avatar, not absolute */
+.frog-cards-grid .my-frog-card__info {
+  position: relative;
+  width: 100%;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  background: var(--gradient-dark-card);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-top: none;
   border-radius: 0 0 5px 5px;
@@ -116,43 +130,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 10px 15px;
   text-align: center;
+  gap: 6px;
+  box-sizing: border-box;
+  padding: 24px 8px 12px;
 }
 
-.frog-card__name {
-  font-family: var(--font-family-display);
-  font-size: 18px;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.36px;
-  background: linear-gradient(110deg, #FDCC34 26%, #FFB224 89%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
+/* Name — smaller font for grid */
+.frog-cards-grid .my-frog-card__name {
+  font-size: 14px;
 }
 
-.frog-card__id {
-  font-family: var(--font-family-primary);
-  font-size: 12px;
-  color: #fff;
-  margin-top: 4px;
-  opacity: 0.7;
-}
-
-/* ================================================================
-   FROG CARDS GRID — 2-column grid
-   ================================================================ */
-.frog-cards-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-content: flex-start;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: calc(100vh - 200px);
-  max-height: calc(100dvh - 200px);
-  padding-bottom: 20px;
+/* ID — smaller font for grid */
+.frog-cards-grid .my-frog-card__id {
+  font-size: 10px;
 }
 
 /* ================================================================
@@ -169,4 +160,20 @@
 .frog-cards-grid::-webkit-scrollbar-thumb {
   background: rgba(221, 175, 74, 0.3);
   border-radius: 2px;
+}
+
+/* ================================================================
+   MY FROG CARD — Interactive hover states
+   ================================================================ */
+.frog-cards-grid .my-frog-card {
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.frog-cards-grid .my-frog-card:hover {
+  transform: translateY(-3px);
+}
+
+.frog-cards-grid .my-frog-card:active {
+  transform: translateY(1px);
 }

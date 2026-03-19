@@ -29,6 +29,12 @@
 
   /* ---- Colors — Gradients (applied via CSS) ---- */
   --gradient-gold: linear-gradient(135deg, #FDCC34, #FFD700);
+  --gradient-gold-text: linear-gradient(130deg, #FDCC34 26%, #FFB224 89%);
+  --gradient-gold-bar: linear-gradient(180deg, #FFE18F 0%, #DDAF4A 100%);
+  --gradient-silver: linear-gradient(135deg, #C0C0C0, #E8E8E8);
+  --gradient-silver-text: linear-gradient(130deg, #D0D0D0 26%, #A0A0A0 89%);
+  --gradient-silver-bar: linear-gradient(180deg, #E8E8E8 0%, #B0B0B0 100%);
+  --gradient-dark-card: linear-gradient(180deg, #1a1a1a 0%, #191919 100%);
   --gradient-yellow: #FFBB28;
   --gradient-dark: linear-gradient(180deg, #1E2328, #0D0F11);
 

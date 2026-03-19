@@ -27,6 +27,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: #000;
 }
 
 /* ---- Background Image (bg-main.webp) ---- */
@@ -111,19 +112,14 @@
    ================================================================ */
 .frog-info-wrapper {
   position: absolute;
-  /* Figma: top:16px from profile section, left:~10px from frame edge */
+  /* Align avatar circle center (43.5px in) with home-btn center (32px in from left:10px)
+     → left = 10 - (43.5 - 32) = -1.5px ≈ 0  */
   top: calc(16 / 741 * 100%);
-  left: calc(10 / 402 * 100%);
+  left: 0;
   z-index: 5;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))
-          drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-.frog-info-wrapper .frog-info-home {
-  /* Figma: 187×67 / component natural: 246×87 → scale 0.76 */
-  transform: scale(0.76);
-  transform-origin: top left;
-}
 
 /* ================================================================
    SIDE MENU BUTTONS — using HomeButton component
@@ -173,8 +169,7 @@
   margin-top: 0;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))
-          drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
 .token-badge {
@@ -215,8 +210,8 @@
   gap: 10px;
   /* Figma: padding 10px 33px */
   padding: 10px calc(33 / 321 * 100%);
-  /* Figma: margin from token badges */
-  margin: 8px auto 0;
+  /* Standard spacing between sections */
+  margin: 12px auto 0;
   /* Figma: width 321px / 402 frame = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
@@ -312,7 +307,8 @@
   /* Figma: 321px / 402 = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
-  margin: 0 auto;
+  /* Standard spacing between sections */
+  margin: 12px auto 0;
   line-height: 1;
 }
 
@@ -368,7 +364,8 @@
   /* Figma: 321px / 402 = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
-  margin: 0 auto;
+  /* Standard spacing between sections */
+  margin: 12px auto 0;
   /* Total height: ~40px in Figma */
   height: 40px;
 }
@@ -410,7 +407,7 @@
 
 .xp-section__bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #ffe18f 0%, #ddaf4a 100%);
+  background: linear-gradient(90deg, #00FF26 0%, #FFAE00 100%);
   border-radius: 3px;
   transition: width 0.5s ease;
   box-shadow: 0 0 6px rgba(255, 225, 143, 0.4);
@@ -445,33 +442,36 @@
 }
 
 /* ================================================================
-   FEED MODAL (Bootstrap modal override)
+   FEED MODAL — Inline panel (replaces Token/Feed/Stats/XP sections)
+   Border-radius 15px matches the outer curve of the game-frame SVG
    ================================================================ */
-.feed-modal {
-  background: transparent;
-  border: none;
+.feed-modal-inline {
+  position: relative;
+  z-index: 2;
+  max-width: calc(340 / 402 * 100%);
+  width: 100%;
+  margin: 12px auto 0;
 }
 
 .feed-modal__body {
-  background: #1a1a1a;
-  border: 2px solid #ddaf4a;
-  border-radius: 20px;
-  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .feed-modal__inputs {
   display: flex;
-  gap: 14px;
+  gap: 12px;
 }
 
 .feed-modal__input-group {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .feed-modal__input-header {
@@ -480,9 +480,22 @@
   align-items: center;
 }
 
+.feed-modal__currency-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feed-modal__coin-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 .feed-modal__currency {
   font-family: 'Alice', serif;
   font-size: 14px;
+  font-weight: 700;
   color: var(--color-text-white);
 }
 
@@ -493,12 +506,14 @@
 }
 
 .feed-modal__input {
+  width: 100%;
+  box-sizing: border-box;
   background: #000;
   border: 1px solid rgba(255, 234, 191, 0.6);
   border-radius: 5px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   color: var(--color-text-white);
-  font-size: 10px;
+  font-size: 12px;
   outline: none;
 }
 
@@ -513,7 +528,7 @@
 .feed-modal__net {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-white);
   padding: 6px 0;
   border-bottom: 1px solid rgba(255, 234, 191, 0.2);
@@ -528,11 +543,10 @@
 
 .feed-modal__preset {
   flex: 1;
-  /* Figma: 50px height */
-  padding: 13px 0;
+  padding: 12px 0;
   border: none;
   font-family: 'Alice', serif;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: -0.36px;
   color: #ffe18f;
   cursor: pointer;
@@ -559,7 +573,7 @@
 .feed-modal__actions {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .feed-modal__actions .game-btn {

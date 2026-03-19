@@ -4,6 +4,7 @@
 1. **KHÔNG chuyển đổi** bottom navigation bar và profile section — giữ nguyên placeholder.
 2. **Luôn sử dụng assets đã export** trong `assets/` thay vì tự tạo SVG mới.
 3. **Component-first**: Xây dựng component riêng trước, sau đó ghép vào page.
+4. **KHÔNG tự khởi chạy browser sub-agent**. Khi cần verify giao diện, hãy hỏi user cung cấp screenshot thay vì tự mở browser.
 
 ## Kiến trúc Component
 - **Buttons** (`.game-btn`): Ticket-notch SVG auto-inject via `scripts/game-btn.js`. 3 variants: `--gold`, `--green`, `--gray`.

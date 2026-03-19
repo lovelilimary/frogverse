@@ -24,7 +24,8 @@
      --frame-padding: 28px  (content padding inside the border)
    ================================================================ */
 .game-frame {
-  --frame-padding: 28px;
+  --frame-padding: 0px;
+  --frame-bg: transparent;
 
   position: relative;
   border: 20px solid transparent;
@@ -34,6 +35,10 @@
   border-image-repeat: stretch;
   padding: var(--frame-padding);
 }
+
+/* Filled variant — notch-shaped background via JS-generated SVG (game-btn.js)
+   Usage: <div class="game-frame game-frame--filled" style="--frame-bg: rgba(0,0,0,0.85)">
+   JS injects a .game-frame__fill child with the exact notch shape at 15px radius */
 
 /* ----------------------------------------------------------------
    CARD CONTENT — Dark card interior (replaces card-container)
@@ -146,7 +151,7 @@
 .game-btn--green {
   --btn-fill-top: #269F38;
   --btn-fill-bottom: #253D2B;
-  --btn-stroke: rgba(255,255,255,0.4);
+  --btn-stroke: rgba(255, 255, 255, 0.4);
 }
 
 .game-btn--green .game-btn__text {
@@ -159,13 +164,13 @@
 .game-btn--green:hover {
   --btn-fill-top: #67F47C;
   --btn-fill-bottom: #347646;
-  --btn-stroke: rgba(255,255,255,0.5);
+  --btn-stroke: rgba(255, 255, 255, 0.5);
 }
 
 .game-btn--green:active {
   --btn-fill-top: #203827;
   --btn-fill-bottom: #186123;
-  --btn-stroke: rgba(255,255,255,0.25);
+  --btn-stroke: rgba(255, 255, 255, 0.25);
 }
 
 /* ================================================================
@@ -177,7 +182,7 @@
 .game-btn--gray {
   --btn-fill-top: #536168;
   --btn-fill-bottom: #202628;
-  --btn-stroke: rgba(255,255,255,0.4);
+  --btn-stroke: rgba(255, 255, 255, 0.4);
 }
 
 .game-btn--gray .game-btn__text {
@@ -190,13 +195,13 @@
 .game-btn--gray:hover {
   --btn-fill-top: #859BA6;
   --btn-fill-bottom: #3D474D;
-  --btn-stroke: rgba(255,255,255,0.5);
+  --btn-stroke: rgba(255, 255, 255, 0.5);
 }
 
 .game-btn--gray:active {
   --btn-fill-top: #202628;
   --btn-fill-bottom: #3C474D;
-  --btn-stroke: rgba(255,255,255,0.3);
+  --btn-stroke: rgba(255, 255, 255, 0.3);
 }
 
 .game-btn--gray:active .game-btn__text {
@@ -394,7 +399,8 @@
   top: 49px;
   width: 135px;
   height: 6px;
-  z-index: 1;  /* Above back tracks, below front gold frame */
+  z-index: 1;
+  /* Above back tracks, below front gold frame */
   pointer-events: none;
   overflow: hidden;
   border-radius: 3px;
@@ -436,6 +442,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.15s ease;
+  overflow: visible;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
 }
 
 .home-button:hover {
@@ -471,20 +479,20 @@
   z-index: 2;
   pointer-events: none;
   object-fit: contain;
-  filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15))
-          drop-shadow(0px 1px 3px rgba(0,0,0,0.3));
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
 }
 
 /* Label pill — centered below the circle.
-   Figma: top:46, centered, width:72, py:6 px:8 */
+   Figma: top:46, centered, width:72, py:6 px:8
+   Note: Figma measures padding from text center/baseline,
+   CSS measures from text bounding box. Adjusted values to match visually. */
 .home-button__label {
   position: absolute;
-  top: 46px;
+  top: 42px;
   left: 50%;
   transform: translateX(-50%);
   min-width: 72px;
   width: max-content;
-  padding: 6px 8px;
   border-radius: 20px;
   background: rgba(24, 24, 27, 0.75);
   text-align: center;
@@ -543,7 +551,7 @@
   font-family: var(--font-family-primary);
   font-size: 14px;
   font-weight: var(--font-weight-medium);
-  color: #fff;
+  color: var(--color-primary-orange);
   display: block;
 }
 
@@ -632,11 +640,11 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.toggle-switch input:checked + .toggle-switch__slider {
+.toggle-switch input:checked+.toggle-switch__slider {
   background: var(--color-primary);
 }
 
-.toggle-switch input:checked + .toggle-switch__slider::after {
+.toggle-switch input:checked+.toggle-switch__slider::after {
   transform: translateX(16px);
 }
 
@@ -747,4 +755,747 @@
   color: #ddaf4a;
   min-width: 40px;
   text-align: center;
+}
+
+/* ================================================================
+   PROFILE CARD — Frog Identity Card
+   
+   Shows avatar with emotion badge overlay, frog name,
+   rank badge, and optional stat counters.
+   
+   Layout:
+     ┌──────────────────────────────────────┐
+     │ ┌────────┐  Name                     │
+     │ │ Avatar │  [Badge Icon] Rank        │
+     │ │ (mood) │  Lv | XP | NFTs           │
+     │ └────────┘                            │
+     └──────────────────────────────────────┘
+   
+   Usage:
+     <div class="profile-card">…</div>
+   Pair with .game-frame for gold border:
+     <div class="game-frame profile-card">…</div>
+   ================================================================ */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Avatar Container + Emotion overlay ---- */
+.profile-card__avatar-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.profile-card__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #DDAF4A;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Emotion icon — bottom-right floating badge */
+.profile-card__emotion {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---- Info Block ---- */
+.profile-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Frog Name — gold gradient text */
+.profile-card__name {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.36px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  background: var(--gradient-gold-bar);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Badge Row — badge icon + rank text */
+.profile-card__badge-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-card__badge {
+  width: auto;
+  height: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+.profile-card__rank {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Stats Row — 3 counters with dividers */
+.profile-card__stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.profile-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 0 12px;
+  position: relative;
+}
+
+/* Vertical divider between stats */
+.profile-card__stat+.profile-card__stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* First stat needs no left padding */
+.profile-card__stat:first-child {
+  padding-left: 0;
+}
+
+.profile-card__stat-value {
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: #FDCC34;
+}
+
+.profile-card__stat-label {
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* ---- Modifier: compact (no stats row) ---- */
+.profile-card--compact .profile-card__stats {
+  display: none;
+}
+
+/* ---- Modifier: framed (used with .game-frame) ---- */
+.profile-card--framed {
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 0;
+}
+
+/* ---- Modifier: large avatar ---- */
+.profile-card--lg .profile-card__avatar-wrap {
+  width: 88px;
+  height: 88px;
+}
+
+.profile-card--lg .profile-card__avatar {
+  width: 88px;
+  height: 88px;
+}
+
+.profile-card--lg .profile-card__emotion {
+  width: 32px;
+  height: 32px;
+}
+
+.profile-card--lg .profile-card__name {
+  font-size: 22px;
+}
+
+/* ================================================================
+   HEX BUTTON — Asset variants (Back / Close)
+
+   When .hex-btn contains an <img class="hex-btn__asset">,
+   the SVG asset includes its own bg + border + icon,
+   so we strip the .hex-btn's own styling.
+
+   Usage:
+     <button class="hex-btn hex-btn--back">
+       <img src="../assets/buttons/HexTech_Back.svg" alt="" class="hex-btn__asset">
+     </button>
+     <button class="hex-btn hex-btn--close">
+       <img src="../assets/buttons/HexTech_Close.svg" alt="" class="hex-btn__asset">
+     </button>
+   ================================================================ */
+.hex-btn__asset {
+  display: block;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  inset: 0;
+}
+
+/* Strip default hex-btn chrome when using full SVG asset */
+.hex-btn:has(.hex-btn__asset) {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* ================================================================
+   SHARED: FROG CARD — Gold-framed avatar with rank badge
+   
+   Reusable sub-component used inside FrogRentalCell,
+   FrogRentalCell2, and MyFrogCard.
+   
+   Layout:
+     ┌────────────────────┐
+     │ ╔════════════════╗ │
+     │ ║  Frog Image    ║ │
+     │ ║                ║ │
+     │ ╚════════════════╝ │
+     │    [Rank Badge]    │
+     └────────────────────┘
+   ================================================================ */
+.frog-rental-cell__frog-card {
+  position: relative;
+  width: 164px;
+  height: 164px;
+  flex-shrink: 0;
+}
+
+/* Frog thumbnail — clipped inside the frame */
+.frog-rental-cell__thumb {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 152px;
+  height: 152px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gold ornamental frame — 2 SVG layers from Figma (Subtract shapes)
+   Layer 1: Outer frame (164×164) — gold gradient (#DDAF4A → #FFE18F)
+   Layer 2: Inner frame (152×152 at +6,+6) — dark gold (#281F08 → #684F27)
+   Both have concave "ticket-notch" corners matching the game-frame style */
+.frog-rental-cell__frame-outer {
+  position: absolute;
+  inset: 0;
+  width: 164px;
+  height: 164px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.frog-rental-cell__frame-inner {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 152px;
+  height: 152px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frog-rental-cell__frame-outer img,
+.frog-rental-cell__frame-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Rank badge — centered at bottom, overlapping frame
+   Figma: bottom: -24px from frog-card (164px), width: 126px, height: 60px */
+.frog-rental-cell__badge {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* ----------------------------------------------------------------
+   FROG CARD — Silver Frame Modifier
+   
+   Add class .frog-rental-cell__frog-card--silver to the frog-card
+   container to switch from gold to silver frame.
+   Used for: Prince, Princess, Consort ranks.
+   
+   Usage:
+     <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
+       ...use frog-frame-outer-silver.svg + frog-frame-inner-silver.svg...
+     </div>
+   ---------------------------------------------------------------- */
+/* No additional CSS needed — silver SVGs have the silver gradient baked in.
+   Just swap the SVG src in HTML. The modifier class is for semantic clarity
+   and future JS-based rank detection. */
+
+/* Silver gold-bar override (for frog-rental-cell2) */
+.frog-rental-cell2--silver .frog-rental-cell2__gold-bar {
+  background: var(--gradient-silver-bar);
+}
+
+/* Silver rank number override (for frog-rental-cell2) */
+.frog-rental-cell2--silver .frog-rental-cell2__rank-number {
+  background: var(--gradient-silver-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Silver title override (for frog-rental-cell2) */
+.frog-rental-cell2--silver .frog-rental-cell2__title {
+  background: var(--gradient-silver-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Silver title override (for frog-rental-cell variant 1) */
+.frog-rental-cell--silver .frog-rental-cell__title {
+  background: var(--gradient-silver-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================
+   FROG RENTAL CELL — Rental marketplace card (variant 1)
+   Figma node: 33:1827
+   
+   Vertical card: avatar → title → detail rows → Rent button
+   Width: 192px, dark gradient bg, rounded corners
+   ================================================================ */
+.frog-rental-cell {
+  width: 192px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 11px;
+  background: var(--gradient-dark-card);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  overflow: clip;
+  box-sizing: border-box;
+}
+
+/* Image container — holds the frog card + extra space for badge overflow
+   Figma: container 191px. FrogsCard 164px centered, top offset -10.5px.
+   This pushes card up so badge (which hangs 24px below) stays within 191px. */
+.frog-rental-cell__image-container {
+  position: relative;
+  width: 100%;
+  height: 191px;
+  overflow: visible;
+}
+
+.frog-rental-cell__image-container .frog-rental-cell__frog-card {
+  position: absolute;
+  top: calc(50% - 10.5px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Title — gold gradient text */
+.frog-rental-cell__title {
+  font-family: 'Alice', serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.28px;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  background: var(--gradient-gold-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Details container — list of info rows */
+.frog-rental-cell__details {
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Single detail row */
+.frog-rental-cell__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Row label — icon + text */
+.frog-rental-cell__row-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-family-primary);
+  font-size: 8px;
+  font-weight: var(--font-weight-regular);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Row icon — 10×10 inline */
+.frog-rental-cell__row-icon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* Row value — right-aligned */
+.frog-rental-cell__row-value {
+  font-family: var(--font-family-primary);
+  font-size: 8px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Highlighted value — red for bonus percentages */
+.frog-rental-cell__row-value--highlight {
+  color: #FF5E5E;
+}
+
+/* Full-width Rent button */
+.frog-rental-cell__btn {
+  width: 100%;
+}
+
+/* ================================================================
+   FROG RENTAL CELL 2 — Rental marketplace card (variant 2)
+   Figma node: 89:1043
+   
+   Wider card with rectangular image area, gradient overlays,
+   large ranking number, title + price, detail rows, Rent button.
+   Width: 165px, rounded 10px corners
+   ================================================================ */
+.frog-rental-cell2 {
+  width: 165px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 11px 12px;
+  background: var(--gradient-dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Image container — wider, with gradient overlays */
+.frog-rental-cell2__image-container {
+  position: relative;
+  width: calc(100% + 22px);
+  /* bleeds outside padding */
+  margin: 0 -11px;
+  height: 184px;
+  overflow: visible;
+}
+
+.frog-rental-cell2__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top gradient overlay — subtle fade from dark */
+.frog-rental-cell2__gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(180deg, #191919 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Bottom gradient overlay — fade to dark */
+.frog-rental-cell2__gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: linear-gradient(180deg, transparent 0%, #191919 100%);
+  pointer-events: none;
+}
+
+/* Gold bar at bottom of image */
+.frog-rental-cell2__gold-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: var(--gradient-gold-bar);
+  pointer-events: none;
+}
+
+/* Rank badge — centered at bottom of image area */
+.frog-rental-cell2__badge {
+  position: absolute;
+  bottom: -16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Header — ranking number + title/price */
+.frog-rental-cell2__header {
+  width: 100%;
+  height: 31px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Large ranking number (#1, #2, etc.) */
+.frog-rental-cell2__rank-number {
+  font-family: var(--font-family-primary);
+  font-size: 24px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+  background: var(--gradient-gold-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Title + price group — right aligned */
+.frog-rental-cell2__header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.frog-rental-cell2__title {
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.28px;
+  background: var(--gradient-gold-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.frog-rental-cell2__price {
+  font-family: var(--font-family-primary);
+  font-size: 8px;
+  font-weight: var(--font-weight-regular);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+/* Details — reuses same row pattern as cell variant 1 */
+.frog-rental-cell2__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Reuse row classes from .frog-rental-cell */
+.frog-rental-cell2__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.frog-rental-cell2__row-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-family-primary);
+  font-size: 8px;
+  font-weight: var(--font-weight-regular);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.frog-rental-cell2__row-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.frog-rental-cell2__row-value {
+  font-family: var(--font-family-primary);
+  font-size: 8px;
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.frog-rental-cell2__row-value--highlight {
+  color: #FF5E5E;
+}
+
+/* Full-width Rent button */
+.frog-rental-cell2__btn {
+  width: 100%;
+}
+
+/* ================================================================
+   MY FROG CARD — Personal frog identity card
+   Figma node: 225:9155
+   
+   Shows frog avatar (reusing frog-card sub-component),
+   emotion badge overlay, name, and frog ID.
+   Width: 164px, Height: 265px
+   ================================================================ */
+.my-frog-card {
+  width: 164px;
+  height: 265px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Avatar area — contains the frog card + emotion badge */
+.my-frog-card__avatar-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 164px;
+  height: 164px;
+}
+
+/* Emotion badge — green circle, top-right */
+.my-frog-card__emotion {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.my-frog-card__emotion img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Info section — dark bottom area */
+.my-frog-card__info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  top: 50.8%;
+  width: 164px;
+  background: var(--gradient-dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+/* Frog name — gold gradient text */
+.my-frog-card__name {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.36px;
+  background: var(--gradient-gold-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Frog ID code — muted white text */
+.my-frog-card__id {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  color: #fff;
+  line-height: 1;
 }

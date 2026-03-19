@@ -1,44 +1,119 @@
 /**
- * Frogverse — Game Button Helper
+ * Frogverse — Game Button & Frame Helper
  * 
- * Auto-injects the ticket-notch SVG shape into .game-btn elements.
- * Buttons use a scaled SVG (preserveAspectRatio="none").
+ * Auto-injects the ticket-notch SVG shape into .game-btn elements
+ * and filled notch-shape backgrounds into .game-frame--filled elements.
  * 
- * NOTE: .game-frame does NOT need JS — it uses pure CSS border-image.
+ * SVGs are generated dynamically based on actual element dimensions
+ * so that the concave corner notches always keep their shape
+ * regardless of element width or height.
  * 
- * Usage:
- *   <button class="game-btn game-btn--gold">
- *     <span class="game-btn__text">Rent</span>
- *   </button>
+ * NOTE: .game-frame border uses pure CSS border-image.
+ *       .game-frame--filled adds a JS-generated SVG background fill.
  */
 
 let _uid = 0;
 const uid = (p) => `${p}${++_uid}`;
 
-function buttonSVG() {
+/* ================================================================
+   SHARED — Notch path builder (works for any radius)
+   ================================================================ */
+function buildNotchPath(w, h, r, k) {
+  return [
+    `M ${w - r} 0`,
+    `C ${w - r} ${k}, ${w - k} ${r}, ${w} ${r}`,
+    `V ${h - r}`,
+    `C ${w - k} ${h - r}, ${w - r} ${h - k}, ${w - r} ${h}`,
+    `H ${r}`,
+    `C ${r} ${h - k}, ${k} ${h - r}, 0 ${h - r}`,
+    `V ${r}`,
+    `C ${k} ${r}, ${r} ${k}, ${r} 0`,
+    `H ${w - r}`,
+    `Z`
+  ].join(' ');
+}
+
+/* ================================================================
+   BUTTON NOTCH — Small radius (6px) for buttons
+   ================================================================ */
+const BTN_R = 6;
+const BTN_K = BTN_R * 0.5523;
+
+function buttonSVG(w, h) {
   const gid = uid('bg');
-  return `<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 100 40" fill="none">
-  <defs><linearGradient id="${gid}" x1="50" y1="0" x2="50" y2="40" gradientUnits="userSpaceOnUse">
+  const path = buildNotchPath(w, h, BTN_R, BTN_K);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none">
+  <defs><linearGradient id="${gid}" x1="${w / 2}" y1="0" x2="${w / 2}" y2="${h}" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="var(--btn-fill-top)"/><stop offset="1" stop-color="var(--btn-fill-bottom)"/>
   </linearGradient></defs>
-  <path d="M94 0C94 3.314 96.686 6 100 6V34C96.686 34 94 36.686 94 40H6C6 36.686 3.314 34 0 34V6C3.314 6 6 3.314 6 0H94Z" fill="url(#${gid})" stroke="var(--btn-stroke)" stroke-width="2"/>
+  <path d="${path}" fill="url(#${gid})" stroke="var(--btn-stroke)" stroke-width="2"/>
 </svg>`;
 }
 
-function initGameButtons() {
-  document.querySelectorAll('.game-btn').forEach(btn => {
-    if (btn.querySelector('.game-btn__bg')) return;
+function applyBg(btn) {
+  const w = btn.offsetWidth;
+  const h = btn.offsetHeight;
+  if (w === 0 || h === 0) return;
 
-    const bg = document.createElement('div');
+  let bg = btn.querySelector('.game-btn__bg');
+  if (!bg) {
+    bg = document.createElement('div');
     bg.className = 'game-btn__bg';
-    bg.innerHTML = buttonSVG();
     btn.insertBefore(bg, btn.firstChild);
+  }
+  bg.innerHTML = buttonSVG(w, h);
 
-    btn.querySelectorAll(':scope > span').forEach(s => {
-      if (!s.classList.contains('game-btn__text')) s.classList.add('game-btn__text');
-    });
+  btn.querySelectorAll(':scope > span').forEach(s => {
+    if (!s.classList.contains('game-btn__text')) s.classList.add('game-btn__text');
   });
 }
+
+/* ================================================================
+   FRAME FILL — Large radius (15px) matching Frame.svg border
+   Generates a filled notch-shape SVG behind the frame content
+   ================================================================ */
+const FRAME_R = 15;
+const FRAME_K = FRAME_R * 0.5523;
+
+function frameFillSVG(w, h) {
+  const path = buildNotchPath(w, h, FRAME_R, FRAME_K);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;z-index:-1;pointer-events:none;">
+  <path d="${path}" fill="var(--frame-bg, rgba(0,0,0,0.85))"/>
+</svg>`;
+}
+
+function applyFrameFill(frame) {
+  // offsetWidth/Height already includes border (20px each side)
+  const w = frame.offsetWidth;
+  const h = frame.offsetHeight;
+  if (w === 0 || h === 0) return;
+
+  let fill = frame.querySelector('.game-frame__fill');
+  if (!fill) {
+    fill = document.createElement('div');
+    fill.className = 'game-frame__fill';
+    fill.style.cssText = 'position:absolute;inset:-20px;z-index:-1;pointer-events:none;';
+    frame.insertBefore(fill, frame.firstChild);
+  }
+  fill.innerHTML = frameFillSVG(w, h);
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+function initGameButtons() {
+  document.querySelectorAll('.game-btn').forEach(applyBg);
+  document.querySelectorAll('.game-frame--filled').forEach(applyFrameFill);
+}
+
+let _resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    document.querySelectorAll('.game-btn').forEach(applyBg);
+    document.querySelectorAll('.game-frame--filled').forEach(applyFrameFill);
+  }, 100);
+});
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initGameButtons);

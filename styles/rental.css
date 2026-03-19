@@ -4,14 +4,27 @@
 
 .rental-content {
   overflow-y: auto;
-  max-height: calc(100vh - 60px);
-  max-height: calc(100dvh - 60px);
-  padding-bottom: 30px;
+  -webkit-overflow-scrolling: touch;
+  /* game-frame border-top(20) + header(28) + header-mb(16) + game-frame border-bottom(20) + page-shell margin(11*2=22) = ~106 */
+  max-height: calc(100vh - 106px);
+  max-height: calc(100dvh - 106px);
+  padding-bottom: 40px;
 }
 
-.rental-content::-webkit-scrollbar { width: 4px; }
-.rental-content::-webkit-scrollbar-track { background: transparent; }
-.rental-content::-webkit-scrollbar-thumb { background: rgba(221,175,74,0.3); border-radius: 2px; }
+.rental-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rental-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rental-content::-webkit-scrollbar-thumb {
+  background: rgba(221, 175, 74, 0.3);
+  border-radius: 2px;
+}
+
+/* hex-btn__asset styles → see components.css */
 
 /* ================================================================
    PROMOTION BANNER
@@ -19,36 +32,49 @@
 .promo-banner {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   padding: 15px;
-  border: 1px solid rgba(221, 175, 74, 0.4);
-  border-radius: var(--radius-md);
-  background: rgba(221, 175, 74, 0.08);
+  border: 2px solid #FF9F3E;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
   margin-bottom: 20px;
   text-decoration: none;
   transition: background var(--transition-fast);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .promo-banner:hover {
-  background: rgba(221, 175, 74, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .promo-banner__icon {
   width: 50px;
   height: 49px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-md);
+  position: relative;
 }
 
 .promo-banner__icon-img {
   width: 40px;
   height: 40px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #FF9F3E;
+  box-shadow: var(--shadow-elevation-3);
+  position: absolute;
+}
+
+.promo-banner__icon-img:first-child {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.promo-banner__icon-img:last-child {
+  top: 9px;
+  left: 10px;
+  z-index: 2;
 }
 
 .promo-banner__text {
@@ -57,27 +83,39 @@
 }
 
 .promo-banner__title {
-  display: block;
-  font-family: var(--font-family-primary);
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-family-display);
+  font-size: 14px;
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: 2px;
+  color: #FF733C;
+  letter-spacing: -0.28px;
+  line-height: 1;
+}
+
+.promo-banner__title-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .promo-banner__desc {
   display: block;
   font-family: var(--font-family-primary);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.3;
+  font-size: 8px;
+  font-weight: var(--font-weight-regular);
+  color: #fff;
+  line-height: 1;
+  margin-top: 2px;
 }
 
 .promo-banner__arrow {
   width: 46px;
   height: 46px;
-  border-radius: var(--radius-md);
-  background: rgba(221, 175, 74, 0.2);
+  border-radius: 10px;
+  border: 2px solid #FF9F3E;
+  background: var(--color-primary-grad);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,166 +129,117 @@
 }
 
 /* ================================================================
-   RENTAL CARDS GRID — 2 column
+   RENTAL CARDS GRID — 2 column using frog-rental-cell2
    ================================================================ */
 .rental-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-content: flex-start;
+  margin-bottom: 16px;
+}
+
+/* Make frog-rental-cell2 cards responsive within the rental grid */
+.rental-grid .frog-rental-cell2 {
+  width: calc(50% - 5px);
+  box-sizing: border-box;
 }
 
 /* ================================================================
-   RENTAL CARD — Full pricing card
+   RENTAL INFO SECTIONS — How It Works + Important Notes
+   Figma: 338×214 and 338×156 dark rounded containers
    ================================================================ */
-.rental-card {
-  width: calc(50% - 5px);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+.rental-info-section {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
 }
 
-.rental-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Image section */
-.rental-card__image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-}
-
-.rental-card__image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.rental-card__frame {
-  position: absolute;
-  inset: 0;
-  border: 5px solid;
-  pointer-events: none;
-}
-
-.rental-card__frame--gold { border-color: #ddaf4a; }
-.rental-card__frame--silver { border-color: #a0aeb8; }
-.rental-card__frame--pink { border-color: #e88ca8; }
-
-.rental-card__number {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  font-family: var(--font-family-display);
-  font-size: 24px;
-  font-weight: var(--font-weight-bold);
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rental-card__mood {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid;
+/* Header — Icon + title */
+.rental-info-section__header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-elevation-1);
-}
-
-.rental-card__mood--happy { border-color: #18c351; }
-.rental-card__mood--hungry { border-color: #ed9e00; }
-.rental-card__mood--angry { border-color: #e92e43; }
-
-.rental-card__mood-img {
-  width: 20px;
-  height: 16px;
-  object-fit: contain;
-}
-
-/* Body / pricing section */
-.rental-card__body {
-  padding: 10px 8px 12px;
-}
-
-.rental-card__title {
-  font-family: var(--font-family-display);
-  font-size: 16px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  text-align: center;
-  margin: 0 0 2px;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-}
-
-.rental-card__price {
-  display: block;
-  font-family: var(--font-family-primary);
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  text-align: center;
+  gap: 6px;
   margin-bottom: 10px;
 }
 
-/* Stats */
-.rental-card__stats {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 10px;
-}
-
-.rental-card__stat {
-  display: flex;
-  align-items: flex-start;
-  gap: 4px;
-  font-family: var(--font-family-primary);
-  font-size: 10px;
-  line-height: 1.3;
-}
-
-.rental-card__stat-icon {
-  width: 14px;
-  height: 14px;
+.rental-info-section__header-icon {
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
   object-fit: contain;
-  opacity: 0.7;
 }
 
-.rental-card__stat-label {
-  color: rgba(255, 255, 255, 0.5);
-  flex: 1;
-}
-
-.rental-card__stat-value {
+.rental-info-section__header-title {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
   color: #fff;
-  font-weight: var(--font-weight-medium);
-  text-align: right;
+  line-height: 1;
 }
 
-.rental-card__stat-value--small {
-  font-size: 9px;
-  max-width: 50px;
+/* ================================================================
+   HOW IT WORKS — 2×2 Step Grid
+   ================================================================ */
+.rental-steps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 6px;
 }
 
-/* Rent button */
-.rental-card__btn {
-  width: 100%;
-  margin-top: 4px;
-  font-size: 16px;
-  padding: 5px 16px 7px;
+.rental-step {
+  width: calc(50% - 3px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.rental-step__number {
+  font-family: var(--font-family-primary);
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.rental-step__label {
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.rental-step__detail {
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ================================================================
+   IMPORTANT NOTES — Bullet list
+   ================================================================ */
+.rental-notes {
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-secondary, #2F82FF);
+  line-height: 20px;
+}
+
+.rental-notes p {
+  margin: 0;
 }
 
 /* ================================================================
@@ -375,7 +364,7 @@
   font-family: var(--font-family-primary);
   font-size: 14px;
   font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
+  color: var(--color-primary-orange);
 }
 
 .nft-list-item__desc {
@@ -411,49 +400,7 @@
   margin-left: 8px;
 }
 
-/* ================================================================
-   QUANTITY STEPPER
-   ================================================================ */
-.qty-stepper {
-  display: flex;
-  align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin: 16px 0;
-}
-
-.qty-stepper__btn {
-  width: 66px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.qty-stepper__btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.qty-stepper__value {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-family-primary);
-  font-size: 18px;
-  font-weight: var(--font-weight-bold);
-  color: #fff;
-  background: transparent;
-  border: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  height: 50px;
-}
+/* qty-stepper styles → see components.css */
 
 /* ================================================================
    CONFIRM ACTIONS — Two buttons side by side

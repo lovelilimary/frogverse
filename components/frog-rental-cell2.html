@@ -1,0 +1,41 @@
+<!-- ================================================================
+   FROG RENTAL CELL 2 — Rental marketplace card (variant 2)
+   
+   Wider card with large ranking number (#1), frog image with
+   gradient overlays, rank badge, title + price, detail rows,
+   and Rent button.
+   
+   Figma node: 89:1043 (FrogRentalCell2)
+   
+   Slots:
+     - Frog thumbnail image (thumbs/*.webp)
+     - Rank badge (badges/*.png)
+     - Ranking number (e.g. "#1")
+     - Title + price
+     - Detail rows
+     - Rent button
+   
+   Usage:
+     <div class="frog-rental-cell2">
+       <div class="frog-rental-cell2__image-container">
+         <img class="frog-rental-cell2__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
+         <div class="frog-rental-cell2__gradient-top"></div>
+         <div class="frog-rental-cell2__gradient-bottom"></div>
+         <div class="frog-rental-cell2__gold-bar"></div>
+         <img class="frog-rental-cell2__badge" src="../assets/badges/KING.png" alt="King badge">
+       </div>
+       <div class="frog-rental-cell2__header">
+         <span class="frog-rental-cell2__rank-number">#1</span>
+         <div class="frog-rental-cell2__header-info">
+           <span class="frog-rental-cell2__title">FROG KING</span>
+           <span class="frog-rental-cell2__price">1,800 USDT</span>
+         </div>
+       </div>
+       <div class="frog-rental-cell2__details">
+         ...rows (same structure as frog-rental-cell)...
+       </div>
+       <button class="game-btn game-btn--gold frog-rental-cell2__btn">
+         <span class="game-btn__text">Rent</span>
+       </button>
+     </div>
+   ================================================================ -->

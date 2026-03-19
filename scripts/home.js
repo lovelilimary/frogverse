@@ -41,34 +41,55 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTimer();
   setInterval(updateTimer, 1000);
 
-  // ---- Feed Button → Open Modal ----
+  // ---- Feed Button → Toggle inline modal (replaces 4 sections) ----
   const feedBtn = document.getElementById('feedBtn');
-  const feedModal = document.getElementById('feedModal');
+  const feedModalInline = document.getElementById('feedModalInline');
+  const cancelFeedBtn = document.getElementById('cancelFeedBtn');
+  const confirmFeedBtn = document.getElementById('confirmFeedBtn');
+  const feedSuccessOverlay = document.getElementById('feedSuccessOverlay');
+  const feedSuccessBtn = document.getElementById('feedSuccessBtn');
 
-  if (feedBtn && feedModal) {
-    const bsModal = new bootstrap.Modal(feedModal);
+  // Sections to hide when feed modal is open
+  const homeSections = ['tokenBadges', 'feedSection', 'statsSection', 'xpSection']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
 
-    feedBtn.addEventListener('click', () => {
-      bsModal.show();
+  function showFeedModal() {
+    homeSections.forEach(el => el.style.display = 'none');
+    feedModalInline.style.display = 'block';
+    // Re-init game-btn SVGs inside the modal
+    if (typeof initGameButtons === 'function') initGameButtons();
+  }
+
+  function hideFeedModal() {
+    feedModalInline.style.display = 'none';
+    homeSections.forEach(el => el.style.display = '');
+  }
+
+  if (feedBtn) {
+    feedBtn.addEventListener('click', showFeedModal);
+  }
+
+  if (cancelFeedBtn) {
+    cancelFeedBtn.addEventListener('click', hideFeedModal);
+  }
+
+  // ---- Feed Confirm → Show Success Overlay ----
+  if (confirmFeedBtn && feedSuccessOverlay) {
+    confirmFeedBtn.addEventListener('click', () => {
+      hideFeedModal();
+      feedSuccessOverlay.style.display = 'flex';
+      // Wait one frame for layout, then init SVGs (Great! button needs dimensions)
+      requestAnimationFrame(() => {
+        if (typeof initGameButtons === 'function') initGameButtons();
+      });
     });
+  }
 
-    // ---- Feed Confirm → Show Success Overlay ----
-    const confirmFeedBtn = document.getElementById('confirmFeedBtn');
-    const feedSuccessOverlay = document.getElementById('feedSuccessOverlay');
-    const feedSuccessBtn = document.getElementById('feedSuccessBtn');
-
-    if (confirmFeedBtn && feedSuccessOverlay) {
-      confirmFeedBtn.addEventListener('click', () => {
-        bsModal.hide();
-        feedSuccessOverlay.style.display = 'flex';
-      });
-    }
-
-    if (feedSuccessBtn && feedSuccessOverlay) {
-      feedSuccessBtn.addEventListener('click', () => {
-        feedSuccessOverlay.style.display = 'none';
-      });
-    }
+  if (feedSuccessBtn && feedSuccessOverlay) {
+    feedSuccessBtn.addEventListener('click', () => {
+      feedSuccessOverlay.style.display = 'none';
+    });
   }
 
   // ---- Feed Modal: Preset Buttons ----
@@ -116,9 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
       stagger: 0.2,
     });
 
-    // Feed button glow pulse
+    // Feed button glow pulse — use drop-shadow (follows SVG notch shape, no black corners)
     gsap.to('#feedBtn', {
-      boxShadow: '0 0 20px rgba(255, 225, 143, 0.6), 0 2px 4px rgba(0,0,0,0.3)',
+      filter: 'drop-shadow(0 0 12px rgba(255, 225, 143, 0.6))',
       duration: 1.5,
       ease: 'power1.inOut',
       repeat: -1,

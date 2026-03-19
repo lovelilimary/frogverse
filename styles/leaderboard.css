@@ -3,15 +3,15 @@
    ========================================================================== */
 
 /* ================================================================
-   PODIUM — Top 3 display
+   PODIUM — Top 3 display with SVG badge banners
    ================================================================ */
 .podium {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 4px;
-  margin: 20px 0 24px;
-  padding: 0 10px;
+  margin: 16px 0 20px;
+  padding: 0 6px;
 }
 
 .podium__slot {
@@ -21,15 +21,29 @@
   position: relative;
 }
 
+/* Banner wrap — positions content over the SVG badge */
+.podium__banner-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SVG badge image — fills the banner area */
+.podium__badge-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* ---- Avatar — circular, positioned over the SVG badge ---- */
 .podium__avatar {
-  width: 56px;
-  height: 56px;
+  position: absolute;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #c8aa6e;
   z-index: 2;
-  position: relative;
-  margin-bottom: -10px;
+  box-shadow: var(--shadow-elevation-1);
 }
 
 .podium__avatar img {
@@ -39,83 +53,127 @@
   object-fit: cover;
 }
 
-/* Banners (ribbon-shaped) */
-.podium__banner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px 8px 12px;
-  border-radius: 6px;
-  position: relative;
+
+
+/* ---- Name + Score — positioned inside the banner ---- */
+.podium__name {
+  position: absolute;
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.28px;
+  color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 3;
 }
 
-.podium__banner--gold {
-  background: linear-gradient(180deg, #ddaf4a 0%, #8a6a1e 100%);
-  width: 110px;
-  min-height: 180px;
+.podium__score {
+  position: absolute;
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 3;
 }
 
-.podium__banner--silver {
-  background: linear-gradient(180deg, #a0aeb8 0%, #5a6670 100%);
-  width: 96px;
-  min-height: 155px;
-}
-
-.podium__banner--bronze {
-  background: linear-gradient(180deg, #b87333 0%, #6b3f1a 100%);
-  width: 96px;
-  min-height: 155px;
-}
-
+/* ================================================================
+   PODIUM — 1ST PLACE (center, taller)
+   SVG viewBox: 132×258, display: 110×235
+   ================================================================ */
 .podium__slot--1st {
   z-index: 2;
   margin: 0 -8px;
 }
 
+.podium__slot--1st .podium__banner-wrap {
+  width: 110px;
+}
+
 .podium__slot--1st .podium__avatar {
-  width: 64px;
-  height: 64px;
-  border-color: #ddaf4a;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #ddaf4a;
+  /* Positioned inside the SVG crown circle area */
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.podium__rank {
-  font-family: var(--font-family-display);
-  font-size: 18px;
-  font-weight: var(--font-weight-bold);
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 8px;
+.podium__slot--1st .podium__name {
+  top: 47%;
+  width: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(124, 44, 1, 0.5);
 }
 
-.podium__emblem {
-  width: 36px;
-  height: 36px;
-  margin: 8px 0;
+.podium__slot--1st .podium__score {
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(124, 44, 1, 0.5);
 }
 
-.podium__emblem-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* ================================================================
+   PODIUM — 2ND PLACE (left, shorter)
+   SVG dimensions narrower, shorter banner
+   ================================================================ */
+.podium__slot--2nd .podium__banner-wrap {
+  width: 96px;
 }
 
-.podium__name {
-  font-family: var(--font-family-primary);
-  font-size: 11px;
-  font-weight: var(--font-weight-medium);
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80px;
+.podium__slot--2nd .podium__avatar {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #c2d6e0;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.podium__score {
-  font-family: var(--font-family-primary);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 2px;
+.podium__slot--2nd .podium__name {
+  top: 46%;
+  width: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.podium__slot--2nd .podium__score {
+  top: 54%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ================================================================
+   PODIUM — 3RD PLACE (right, shorter)
+   ================================================================ */
+.podium__slot--3rd .podium__banner-wrap {
+  width: 96px;
+}
+
+.podium__slot--3rd .podium__avatar {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #693713;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.podium__slot--3rd .podium__name {
+  top: 46%;
+  width: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.podium__slot--3rd .podium__score {
+  top: 54%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* ================================================================
@@ -124,66 +182,105 @@
 .lb-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 460px);
+  max-height: calc(100dvh - 460px);
+  padding-bottom: 4px;
 }
 
 .lb-cell {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 10px;
+  padding: 10px 14px;
+  position: relative;
   min-height: 65px;
   transition: background var(--transition-fast);
+  /* Ticket-notch mask: 6px radius circular cutouts at all 4 corners */
+  --notch-r: 6px;
+  -webkit-mask-image:
+    radial-gradient(circle var(--notch-r) at 0 0, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 100% 0, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 0 100%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 100% 100%, transparent 99%, #000 100%);
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    radial-gradient(circle var(--notch-r) at 0 0, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 100% 0, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 0 100%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--notch-r) at 100% 100%, transparent 99%, #000 100%);
+  mask-composite: intersect;
+}
+
+/* Rank-specific backgrounds via gradients */
+.lb-cell--gold {
+  background: linear-gradient(135deg, rgba(221, 175, 74, 0.3) 0%, rgba(138, 106, 30, 0.2) 100%);
+}
+
+.lb-cell--silver {
+  background: linear-gradient(135deg, rgba(160, 174, 184, 0.2) 0%, rgba(90, 102, 112, 0.12) 100%);
+}
+
+.lb-cell--bronze {
+  background: linear-gradient(135deg, rgba(184, 115, 51, 0.2) 0%, rgba(107, 63, 26, 0.12) 100%);
+}
+
+/* Default cells (rank 4+) */
+.lb-cell:not(.lb-cell--gold):not(.lb-cell--silver):not(.lb-cell--bronze):not(.lb-cell--you) {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .lb-cell:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Rank-specific backgrounds */
-.lb-cell--gold {
-  background: linear-gradient(135deg, rgba(221, 175, 74, 0.25) 0%, rgba(138, 106, 30, 0.15) 100%);
-  border-color: rgba(221, 175, 74, 0.3);
-}
-
-.lb-cell--silver {
-  background: linear-gradient(135deg, rgba(160, 174, 184, 0.15) 0%, rgba(90, 102, 112, 0.1) 100%);
-  border-color: rgba(160, 174, 184, 0.2);
-}
-
-.lb-cell--bronze {
-  background: linear-gradient(135deg, rgba(184, 115, 51, 0.15) 0%, rgba(107, 63, 26, 0.1) 100%);
-  border-color: rgba(184, 115, 51, 0.2);
-}
-
+/* "Your Rank" special row */
 .lb-cell--you {
   background: linear-gradient(135deg, rgba(253, 204, 52, 0.15) 0%, rgba(255, 115, 60, 0.1) 100%);
-  border: 2px solid var(--color-primary);
-  position: relative;
+  border: 1px solid rgba(221, 175, 74, 0.3);
+  margin-top: 4px;
 }
 
 .lb-cell__your-rank {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-primary);
   font-size: 12px;
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  line-height: 1.2;
-  min-width: 30px;
+  line-height: 1.4;
+  min-width: 37px;
+  text-align: center;
+  /* Gold gradient text */
+  background: linear-gradient(180deg, #ddaf4a 0%, #ffe18f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* ---- Avatar ---- */
 .lb-cell__avatar {
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
   border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.lb-cell__avatar--gold {
+  border-color: #ddaf4a;
+}
+
+.lb-cell__avatar--silver {
+  border-color: #c2d6e0;
+}
+
+.lb-cell__avatar--bronze {
+  border-color: #693713;
 }
 
 .lb-cell__avatar img {
@@ -193,6 +290,7 @@
   object-fit: cover;
 }
 
+/* ---- Info ---- */
 .lb-cell__info {
   flex: 1;
   min-width: 0;
@@ -201,12 +299,13 @@
 .lb-cell__name {
   display: block;
   font-family: var(--font-family-primary);
-  font-size: 14px;
-  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.4;
 }
 
 .lb-cell__meta {
@@ -215,8 +314,14 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
   margin-top: 2px;
+  line-height: 1.4;
 }
 
+.lb-cell__meta strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---- Score ---- */
 .lb-cell__score {
   display: flex;
   flex-direction: column;
@@ -226,14 +331,51 @@
 
 .lb-cell__xp {
   font-family: var(--font-family-primary);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: var(--font-weight-bold);
   color: #fff;
+  line-height: 1.4;
 }
 
 .lb-cell__xp-label {
   font-family: var(--font-family-primary);
-  font-size: 11px;
-  color: var(--color-primary);
-  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  color: #51ff51;
+  line-height: 1.4;
+}
+
+/* ================================================================
+   FOOTER — Last updated
+   ================================================================ */
+.lb-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.lb-footer__text {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ================================================================
+   SCROLLBAR
+   ================================================================ */
+.lb-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lb-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lb-list::-webkit-scrollbar-thumb {
+  background: rgba(221, 175, 74, 0.3);
+  border-radius: 2px;
 }

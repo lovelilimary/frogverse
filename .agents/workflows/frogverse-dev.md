@@ -23,6 +23,12 @@ description: Quy trình phát triển frontend Frogverse — dùng khi convert F
 | Frame Border | `.game-frame` | Pure CSS border-image, dùng `Frame.svg` |
 | FrogInfoHome | `.frog-info-home` | 2-layer SVG + XP bar HTML |
 | HomeButton | `.home-button` | Circular icon button |
+| ProfileCard | `.profile-card` | Avatar + badge + emotion + stats (horizontal) |
+| FrogRentalCell | `.frog-rental-cell` | Vertical card: frog avatar + badge + details + Rent btn (192px) |
+| FrogRentalCell2 | `.frog-rental-cell2` | Ranked card: image + gradient + #N + title + details + Rent btn (165px) |
+| MyFrogCard | `.my-frog-card` | Personal card: frog avatar + emotion + name + ID (164×265px) |
+| FrogCard (shared) | `.frog-rental-cell__frog-card` | Sub-component: gold-framed frog avatar + rank badge |
+| LeaderboardCell | `.lb-cell` | Ticket-notch row: avatar + name/level + XP score. Variants: `--gold`, `--silver`, `--bronze`, `--you` |
 
 ## Bước 4: Khi tạo component mới
 1. Lấy design context từ Figma (MCP tool)

@@ -16,8 +16,20 @@
   min-height: 100dvh;
   margin: 0 auto;
   overflow: hidden;
-  background: #253d2b;
+  background: rgba(0, 0, 0, 0.70);
   color: var(--color-text-white);
+}
+
+/* Hide all scrollbars globally — content still scrollable */
+.app *,
+.app {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.app *::-webkit-scrollbar,
+.app::-webkit-scrollbar {
+  display: none;
 }
 
 /* ================================================================
@@ -108,7 +120,7 @@
     width: 393px;
     height: 852px;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 0;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
   }
 

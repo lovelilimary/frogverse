@@ -24,16 +24,12 @@
             <div class="frog-detail-hero" id="frogHero">
               <!-- Navigation -->
               <div class="frog-detail-hero__nav">
-                <button class="hex-btn" id="btnBack" aria-label="Back">
-                  <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 1L3 6L8 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <button class="hex-btn" id="btnBack" aria-label="Back" onclick="history.back()">
+                  <img src="../assets/buttons/HexTech_Back.svg" alt="" class="hex-btn__asset" aria-hidden="true">
                 </button>
                 <span class="frog-detail-hero__title">My Frogs</span>
                 <button class="hex-btn" id="btnClose" aria-label="Close">
-                  <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
+                  <img src="../assets/buttons/HexTech_Close.svg" alt="" class="hex-btn__asset" aria-hidden="true">
                 </button>
               </div>
 
@@ -42,9 +38,12 @@
                 <img src="../assets/Main image.webp" alt="Frog King" class="frog-detail-hero__img">
               </div>
 
+              <!-- Gold Bar -->
+              <div class="frog-detail-hero__gold-bar"></div>
+
               <!-- Rank Badge -->
               <div class="frog-detail-hero__badge">
-                <img src="../assets/Frame.svg" alt="Rank badge" class="frog-detail-hero__badge-img">
+                <img src="../assets/badges/KING.png" alt="King rank" class="frog-detail-hero__badge-img">
               </div>
             </div>
 
@@ -54,15 +53,10 @@
               <span class="frog-detail-name__id">#FROG-1AC40E</span>
             </div>
 
-            <!-- ============ TABS: My Frogs / Frog Details ============ -->
-            <div class="frog-detail-tabs" data-aos="fade-up" data-aos-delay="100">
-              <button class="frog-detail-tab frog-detail-tab--active" data-tab="stats" id="tabStats">My Frogs</button>
-              <button class="frog-detail-tab" data-tab="info" id="tabInfo">Frog Details</button>
-            </div>
-
-            <!-- ============ TAB CONTENT: STATS VIEW ============ -->
-            <div class="frog-detail-panel" id="panelStats" data-aos="fade-up" data-aos-delay="150">
+            <!-- ============ STATS GRID (2×4) ============ -->
+            <div class="frog-detail-panel" data-aos="fade-up" data-aos-delay="100">
               <div class="frog-stats-grid">
+                <!-- Activation Date -->
                 <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Date1.svg" alt="" class="frog-stat-card__icon">
@@ -70,6 +64,7 @@
                   </div>
                   <span class="frog-stat-card__value">03/05/26</span>
                 </div>
+                <!-- Value -->
                 <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Coin.svg" alt="" class="frog-stat-card__icon">
@@ -77,6 +72,7 @@
                   </div>
                   <span class="frog-stat-card__value">50 USDT</span>
                 </div>
+                <!-- Total Days -->
                 <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Date2.svg" alt="" class="frog-stat-card__icon">
@@ -84,6 +80,7 @@
                   </div>
                   <span class="frog-stat-card__value">360 days</span>
                 </div>
+                <!-- Cycle Days Left -->
                 <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Hourglass.svg" alt="" class="frog-stat-card__icon">
@@ -91,60 +88,98 @@
                   </div>
                   <span class="frog-stat-card__value">31 days</span>
                 </div>
-                <div class="frog-stat-card frog-stat-card--xp">
+                <!-- XP -->
+                <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Star1.svg" alt="" class="frog-stat-card__icon">
                     <span class="frog-stat-card__label">XP</span>
                   </div>
                   <span class="frog-stat-card__value text-primary">100%</span>
                 </div>
-                <div class="frog-stat-card frog-stat-card--health">
+                <!-- Health -->
+                <div class="frog-stat-card">
                   <div class="frog-stat-card__header">
                     <img src="../assets/icons/Heart.svg" alt="" class="frog-stat-card__icon">
                     <span class="frog-stat-card__label">Health</span>
                   </div>
                   <span class="frog-stat-card__value text-success">HEALTHY</span>
                 </div>
+                <!-- Level -->
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/Cup.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Level</span>
+                  </div>
+                  <span class="frog-stat-card__value">9</span>
+                </div>
+                <!-- Retention -->
+                <div class="frog-stat-card">
+                  <div class="frog-stat-card__header">
+                    <img src="../assets/icons/MoneyBag.svg" alt="" class="frog-stat-card__icon">
+                    <span class="frog-stat-card__label">Retention</span>
+                  </div>
+                  <span class="frog-stat-card__value">2.0%</span>
+                </div>
               </div>
             </div>
 
-            <!-- ============ TAB CONTENT: INFO VIEW ============ -->
-            <div class="frog-detail-panel" id="panelInfo" hidden>
-              <div class="frog-info-section">
-                <div class="frog-info-section__header">
-                  <img src="../assets/icons/Doc.svg" alt="" class="info-row__icon-inline">
-                  <span class="frog-info-section__title">Information</span>
-                </div>
+            <!-- ============ REQUIRED TOKENS ============ -->
+            <div class="frog-detail-section" data-aos="fade-up" data-aos-delay="150">
+              <div class="frog-detail-section__row">
+                <img src="../assets/icons/Leaf.svg" alt="" class="frog-detail-section__icon">
+                <span class="frog-detail-section__label">Required Tokens:</span>
+              </div>
+            </div>
 
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Tier</span>
-                  <span class="frog-info-row__value text-primary">Prince Consort</span>
+            <!-- ============ PENDING + STATUS ============ -->
+            <div class="frog-detail-pending" data-aos="fade-up" data-aos-delay="200">
+              <span class="frog-detail-pending__label">$ Pending: <strong>0.00 USDT</strong></span>
+              <span class="frog-status-badge frog-status-badge--hungry">HUNGRY</span>
+            </div>
+
+            <!-- ============ AUTO FEED ACTIVE ============ -->
+            <div class="frog-detail-autofeed" data-aos="fade-up" data-aos-delay="250">
+              <span class="frog-detail-autofeed__label">Auto Feed Active</span>
+              <button class="frog-detail-autofeed__btn" id="btnAutoFeedSettings" aria-label="Auto Feed Settings" onclick="openModal('autoFeedSettingsModal')">
+                <img src="../assets/icons/gear.svg" alt="" class="frog-detail-autofeed__btn-icon">
+              </button>
+            </div>
+
+            <!-- ============ CYCLE INFO ============ -->
+            <div class="frog-detail-cycle" data-aos="fade-up" data-aos-delay="300">
+              <div class="frog-detail-cycle__header">
+                <div class="frog-detail-cycle__title">
+                  <img src="../assets/icons/Gift.svg" alt="" class="frog-detail-cycle__icon">
+                  <span>Cycle 1/12</span>
                 </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Rental Price</span>
-                  <span class="frog-info-row__value text-success">0.00 USDT</span>
+                <span class="frog-detail-cycle__value">0.00 USDT</span>
+              </div>
+              <div class="frog-detail-cycle__info">
+                <div class="frog-detail-cycle__info-row">
+                  <span class="frog-detail-cycle__bullet">●</span>
+                  <span>Next Claim Time: Apr 05, 2026 17:33</span>
                 </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Rented Date</span>
-                  <span class="frog-info-row__value">Mar 05, 2026</span>
-                </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Contract Duration</span>
-                  <span class="frog-info-row__value">365 Days</span>
-                </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Payment Type</span>
-                  <span class="frog-info-row__value">USDT</span>
-                </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Feed Compat.</span>
-                  <span class="frog-info-row__value">MTT, OFC</span>
-                </div>
-                <div class="frog-info-row">
-                  <span class="frog-info-row__label">Bonus</span>
-                  <span class="frog-info-row__value text-success">+5%</span>
+                <div class="frog-detail-cycle__info-row">
+                  <span class="frog-detail-cycle__star">★</span>
+                  <span>Start feeding to accumulate rewards</span>
                 </div>
               </div>
+            </div>
+
+            <!-- ============ BOTTOM ACTIONS ============ -->
+            <div class="frog-detail-actions" data-aos="fade-up" data-aos-delay="350">
+              <button class="game-btn game-btn--gold frog-detail-actions__btn" id="btnNftDetail">
+                <span class="game-btn__text">
+                  <img src="../assets/icons/Doc.svg" alt="" class="frog-detail-actions__btn-icon">
+                  NFT Detail
+                </span>
+              </button>
+              <button class="game-btn game-btn--gold frog-detail-actions__btn" id="btnFeed" onclick="openModal('autoFeedModal')">
+                <span class="game-btn__text">
+                  <img src="../assets/icons/Eating2.svg" alt="" class="frog-detail-actions__btn-icon">
+                  Feed
+                </span>
+              </button>
             </div>
 
       </div>
@@ -158,7 +193,7 @@
               <div class="modal-info-list">
                 <div class="info-row info-row--no-padding">
                   <span class="info-row__label">Price per Month</span>
-                  <span class="info-row__value text-success">2.00 USDT</span>
+                  <span class="info-row__value text-primary-orange">2.00 USDT</span>
                 </div>
                 <div class="info-row info-row--no-padding">
                   <span class="info-row__label">Duration</span>
@@ -174,7 +209,7 @@
                   </span>
                 </div>
                 <div class="info-row info-row--no-padding">
-                  <span class="info-row__label">Auto Renew</span>
+                  <span class="info-row__label">Balance</span>
                   <span class="info-row__value">10,099.22 USDT</span>
                 </div>
               </div>
@@ -279,22 +314,6 @@
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
   <script>
-    // Tab switching
-    document.querySelectorAll('.frog-detail-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.frog-detail-tab').forEach(t => t.classList.remove('frog-detail-tab--active'));
-        tab.classList.add('frog-detail-tab--active');
-
-        const target = tab.dataset.tab;
-        document.getElementById('panelStats').style.display = target === 'stats' ? 'block' : 'none';
-        document.getElementById('panelInfo').style.display = target === 'info' ? 'block' : 'none';
-
-        // Update hero title
-        document.querySelector('.frog-detail-hero__title').textContent =
-          target === 'stats' ? 'My Frogs' : 'Frog Details';
-      });
-    });
-
     // Modal open / close
     function openModal(id) {
       document.getElementById(id).classList.add('modal-overlay--visible');

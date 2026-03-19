@@ -25,23 +25,18 @@
               <span class="hex-btn" style="visibility:hidden;"></span>
               <h1 class="card-header__title">Leaderboard</h1>
               <button class="hex-btn" id="btnClose" aria-label="Close">
-                <svg class="hex-btn__icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L11 11M11 1L1 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
+                <img src="../assets/buttons/HexTech_Close.svg" alt="" class="hex-btn__asset" aria-hidden="true">
               </button>
             </div>
 
             <!-- ============ PODIUM SECTION ============ -->
             <div class="podium" data-aos="fade-up" data-aos-delay="100">
-              <!-- 2nd Place -->
+              <!-- 2nd Place (left) -->
               <div class="podium__slot podium__slot--2nd">
-                <div class="podium__avatar">
-                  <img src="../assets/thumbs/prince.webp" alt="Nathan Ho">
-                </div>
-                <div class="podium__banner podium__banner--silver">
-                  <span class="podium__rank">2nd</span>
-                  <div class="podium__emblem">
-                    <img src="../assets/icons/Cup2 1.svg" alt="" class="podium__emblem-img">
+                <div class="podium__banner-wrap">
+                  <img src="../assets/badges/2ND PLACE.svg" alt="" class="podium__badge-svg" aria-hidden="true">
+                  <div class="podium__avatar podium__avatar--silver">
+                    <img src="../assets/thumbs/avt-queen.png" alt="Nathan Ho">
                   </div>
                   <span class="podium__name">Nathan Ho</span>
                   <span class="podium__score">0000</span>
@@ -50,28 +45,22 @@
 
               <!-- 1st Place (center, taller) -->
               <div class="podium__slot podium__slot--1st">
-                <div class="podium__avatar">
-                  <img src="../assets/thumbs/king.webp" alt="Nicholas Phan">
-                </div>
-                <div class="podium__banner podium__banner--gold">
-                  <span class="podium__rank">1st</span>
-                  <div class="podium__emblem">
-                    <img src="../assets/icons/Cup1 1.svg" alt="" class="podium__emblem-img">
+                <div class="podium__banner-wrap podium__banner-wrap--1st">
+                  <img src="../assets/badges/1ST PLACE.svg" alt="" class="podium__badge-svg" aria-hidden="true">
+                  <div class="podium__avatar podium__avatar--gold">
+                    <img src="../assets/thumbs/avt-king.png" alt="Nicholas Phan">
                   </div>
                   <span class="podium__name">Nicholas Phan</span>
                   <span class="podium__score">0000</span>
                 </div>
               </div>
 
-              <!-- 3rd Place -->
+              <!-- 3rd Place (right) -->
               <div class="podium__slot podium__slot--3rd">
-                <div class="podium__avatar">
-                  <img src="../assets/thumbs/queen.webp" alt="Trung Kien">
-                </div>
-                <div class="podium__banner podium__banner--bronze">
-                  <span class="podium__rank">3rd</span>
-                  <div class="podium__emblem">
-                    <img src="../assets/icons/Cup3 1.svg" alt="" class="podium__emblem-img">
+                <div class="podium__banner-wrap">
+                  <img src="../assets/badges/3RD PLACE.svg" alt="" class="podium__badge-svg" aria-hidden="true">
+                  <div class="podium__avatar podium__avatar--bronze">
+                    <img src="../assets/thumbs/avt-prince.png" alt="Trung Kien Nguyen">
                   </div>
                   <span class="podium__name">Trung Kien...</span>
                   <span class="podium__score">0000</span>
@@ -84,12 +73,12 @@
 
               <!-- Rank 1 (highlighted gold) -->
               <div class="lb-cell lb-cell--gold">
-                <div class="lb-cell__avatar">
-                  <img src="../assets/thumbs/king.webp" alt="Nicholas Phan">
+                <div class="lb-cell__avatar lb-cell__avatar--gold">
+                  <img src="../assets/thumbs/avt-king.png" alt="Nicholas Phan">
                 </div>
                 <div class="lb-cell__info">
                   <span class="lb-cell__name">Nicholas Phan</span>
-                  <span class="lb-cell__meta">Level 00 - Rank 1</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 1</strong></span>
                 </div>
                 <div class="lb-cell__score">
                   <span class="lb-cell__xp">667,424</span>
@@ -99,12 +88,12 @@
 
               <!-- Rank 2 -->
               <div class="lb-cell lb-cell--silver">
-                <div class="lb-cell__avatar">
-                  <img src="../assets/thumbs/prince.webp" alt="Nathan Ho">
+                <div class="lb-cell__avatar lb-cell__avatar--silver">
+                  <img src="../assets/thumbs/avt-queen.png" alt="Nathan Ho">
                 </div>
                 <div class="lb-cell__info">
                   <span class="lb-cell__name">Nathan Ho</span>
-                  <span class="lb-cell__meta">Level 00 - Rank 2</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 2</strong></span>
                 </div>
                 <div class="lb-cell__score">
                   <span class="lb-cell__xp">667,424</span>
@@ -114,27 +103,32 @@
 
               <!-- Rank 3 -->
               <div class="lb-cell lb-cell--bronze">
-                <div class="lb-cell__avatar">
-                  <img src="../assets/thumbs/queen.webp" alt="Trung Kien Nguyen">
+                <div class="lb-cell__avatar lb-cell__avatar--bronze">
+                  <img src="../assets/thumbs/avt-prince.png" alt="Trung Kien Nguyen">
                 </div>
                 <div class="lb-cell__info">
                   <span class="lb-cell__name">Trung Kien Nguyen</span>
-                  <span class="lb-cell__meta">Level 00 - Rank 3</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 3</strong></span>
                 </div>
                 <div class="lb-cell__score">
                   <span class="lb-cell__xp">667,424</span>
                   <span class="lb-cell__xp-label">XP</span>
                 </div>
               </div>
+
+
+
+
+
 
               <!-- Rank 4 -->
               <div class="lb-cell">
-                <div class="lb-cell__avatar">
-                  <img src="../assets/thumbs/princess.webp" alt="Metti Dental">
+                <div class="lb-cell__avatar lb-cell__avatar--silver">
+                  <img src="../assets/thumbs/avt-consort.png" alt="Metti Dental">
                 </div>
                 <div class="lb-cell__info">
                   <span class="lb-cell__name">Metti Dental</span>
-                  <span class="lb-cell__meta">Level 00 - Rank 4</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 4</strong></span>
                 </div>
                 <div class="lb-cell__score">
                   <span class="lb-cell__xp">667,424</span>
@@ -142,23 +136,79 @@
                 </div>
               </div>
 
-              <!-- Your Rank (Special highlighted row) -->
-              <div class="lb-cell lb-cell--you">
-                <div class="lb-cell__your-rank">
-                  <span>Your</span>
-                  <span>Rank</span>
-                </div>
-                <div class="lb-cell__avatar">
-                  <img src="../assets/thumbs/king.webp" alt="Mr.Least">
+              <!-- Rank 5 -->
+              <div class="lb-cell">
+                <div class="lb-cell__avatar lb-cell__avatar--silver">
+                  <img src="../assets/thumbs/avt-princess.png" alt="Name">
                 </div>
                 <div class="lb-cell__info">
-                  <span class="lb-cell__name">Mr.Least</span>
-                  <span class="lb-cell__meta">Level 00 - Rank 109</span>
+                  <span class="lb-cell__name">Name</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 5</strong></span>
                 </div>
                 <div class="lb-cell__score">
                   <span class="lb-cell__xp">667,424</span>
                   <span class="lb-cell__xp-label">XP</span>
                 </div>
+              </div>
+
+              <!-- Rank 6 -->
+              <div class="lb-cell">
+                <div class="lb-cell__avatar lb-cell__avatar--silver">
+                  <img src="../assets/thumbs/avt-consort.png" alt="Name">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Name</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 6</strong></span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+              <!-- Rank 7 -->
+              <div class="lb-cell">
+                <div class="lb-cell__avatar lb-cell__avatar--silver">
+                  <img src="../assets/thumbs/avt-princess.png" alt="Name">
+                </div>
+                <div class="lb-cell__info">
+                  <span class="lb-cell__name">Name</span>
+                  <span class="lb-cell__meta">Level 00 - <strong>Rank 7</strong></span>
+                </div>
+                <div class="lb-cell__score">
+                  <span class="lb-cell__xp">667,424</span>
+                  <span class="lb-cell__xp-label">XP</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Last Updated footer -->
+            <div class="lb-footer">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="6.5" cy="6.5" r="5.5" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                <line x1="6.5" y1="3" x2="6.5" y2="7" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round"/>
+                <line x1="6.5" y1="6.5" x2="9" y2="6.5" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+              <span class="lb-footer__text">Last updated: 14:19 · Online: 1,439</span>
+            </div>
+
+            <!-- Your Rank (Special highlighted row — fixed at bottom) -->
+            <div class="lb-cell lb-cell--you" data-aos="fade-up" data-aos-delay="300">
+              <div class="lb-cell__your-rank">
+                <span>Your</span>
+                <span>Rank</span>
+              </div>
+              <div class="lb-cell__avatar lb-cell__avatar--silver">
+                <img src="../assets/thumbs/avt-consort.png" alt="Mr.Least">
+              </div>
+              <div class="lb-cell__info">
+                <span class="lb-cell__name">Mr.Least</span>
+                <span class="lb-cell__meta">Level 00 - <strong>Rank 109</strong></span>
+              </div>
+              <div class="lb-cell__score">
+                <span class="lb-cell__xp">667,424</span>
+                <span class="lb-cell__xp-label">XP</span>
               </div>
             </div>
 

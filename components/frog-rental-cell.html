@@ -1,0 +1,67 @@
+<!-- ================================================================
+   FROG RENTAL CELL — Rental marketplace card (variant 1)
+   
+   Vertical card showing frog avatar with gold frame/border,
+   rank badge overlay, frog title, 5 detail rows, and Rent button.
+   
+   Figma node: 33:1827 (FrogRentalCell)
+   
+   Slots:
+     - Frog thumbnail image (thumbs/*.webp)
+     - Rank badge (badges/*.png) — KING, QUEEN, PRINCE, PRINCESS, CONSORT
+     - Title text (e.g. "FROG KING")
+     - Detail rows (Contract Duration, Payment, Feed, Monthly Bonus, 30-Day Bonus)
+     - Rent button (game-btn--gold)
+   
+   Usage:
+     <div class="frog-rental-cell">
+       <div class="frog-rental-cell__image-container">
+         <div class="frog-rental-cell__frog-card">
+           <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
+           <div class="frog-rental-cell__frame"></div>
+           <img class="frog-rental-cell__badge" src="../assets/badges/KING.png" alt="King badge">
+         </div>
+       </div>
+       <span class="frog-rental-cell__title">FROG KING</span>
+       <div class="frog-rental-cell__details">
+         <div class="frog-rental-cell__row">
+           <span class="frog-rental-cell__row-label">
+             <img class="frog-rental-cell__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+             Contract Duration:
+           </span>
+           <span class="frog-rental-cell__row-value">365 Days</span>
+         </div>
+         <div class="frog-rental-cell__row">
+           <span class="frog-rental-cell__row-label">
+             <img class="frog-rental-cell__row-icon" src="../assets/icons/Coin.svg" alt="">
+             Payment:
+           </span>
+           <span class="frog-rental-cell__row-value">USDT</span>
+         </div>
+         <div class="frog-rental-cell__row">
+           <span class="frog-rental-cell__row-label">
+             <img class="frog-rental-cell__row-icon" src="../assets/icons/Eating.svg" alt="">
+             Feed
+           </span>
+           <span class="frog-rental-cell__row-value">OFC, OHO</span>
+         </div>
+         <div class="frog-rental-cell__row">
+           <span class="frog-rental-cell__row-label">
+             <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+             Monthly Bonus
+           </span>
+           <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">4.0%</span>
+         </div>
+         <div class="frog-rental-cell__row">
+           <span class="frog-rental-cell__row-label">
+             <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+             30-Day Bonus
+           </span>
+           <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">0.8%</span>
+         </div>
+       </div>
+       <button class="game-btn game-btn--gold frog-rental-cell__btn">
+         <span class="game-btn__text">Rent</span>
+       </button>
+     </div>
+   ================================================================ -->

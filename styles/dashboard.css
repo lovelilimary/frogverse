@@ -9,9 +9,18 @@
   padding-bottom: 30px;
 }
 
-.dash-content::-webkit-scrollbar { width: 4px; }
-.dash-content::-webkit-scrollbar-track { background: transparent; }
-.dash-content::-webkit-scrollbar-thumb { background: rgba(221,175,74,0.3); border-radius: 2px; }
+.dash-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dash-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dash-content::-webkit-scrollbar-thumb {
+  background: rgba(221, 175, 74, 0.3);
+  border-radius: 2px;
+}
 
 /* ================================================================
    DASHBOARD STATS GRID — 2×2 layout
@@ -130,7 +139,7 @@
 
 .dash-xp-bar__fill {
   height: 100%;
-  background: linear-gradient(90deg, #FDCC34 0%, #FFB224 100%);
+  background: linear-gradient(90deg, #00FF26 0%, #FFAE00 100%);
   border-radius: 3px;
   transition: width var(--transition-normal);
 }

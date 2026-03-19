@@ -53,7 +53,7 @@
             <img src="../assets/FrogInfoHome-front.svg" alt="" aria-hidden="true">
           </div>
           <div class="frog-info-home__avatar">
-            <img src="../assets/thumbs/king.webp" alt="Frog avatar">
+            <img src="../assets/thumbs/avatar.webp" alt="Frog avatar">
           </div>
           <span class="frog-info-home__name">Frog name ID - Lvl 10</span>
         </div>
@@ -162,53 +162,57 @@
         </div>
       </div>
 
-    </main>
-
-    <!-- ============ FEED MODAL (hidden by default) ============ -->
-    <div class="modal fade" id="feedModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-        <div class="modal-content feed-modal">
-          <div class="feed-modal__body">
-            <div class="feed-modal__inputs">
-              <div class="feed-modal__input-group">
-                <div class="feed-modal__input-header">
+      <!-- Feed Modal (inline, hidden by default — replaces 4 sections above when shown) -->
+      <div class="feed-modal-inline" id="feedModalInline" style="display: none;">
+        <div class="game-frame game-frame--filled" style="--frame-bg: rgba(0,0,0,0.85); --frame-padding: 12px;">
+        <div class="feed-modal__body">
+          <div class="feed-modal__inputs">
+            <div class="feed-modal__input-group">
+              <div class="feed-modal__input-header">
+                <div class="feed-modal__currency-wrap">
+                  <img src="../assets/icons/onfa-coin.svg" alt="" class="feed-modal__coin-icon">
                   <span class="feed-modal__currency">OFC</span>
-                  <span class="feed-modal__amount">~ $0.00</span>
                 </div>
-                <input type="text" class="feed-modal__input" placeholder="Enter amount" id="ofcInput">
+                <span class="feed-modal__amount">~ $0.00</span>
               </div>
-              <div class="feed-modal__input-group">
-                <div class="feed-modal__input-header">
+              <input type="text" class="feed-modal__input" placeholder="Enter amount" id="ofcInput">
+            </div>
+            <div class="feed-modal__input-group">
+              <div class="feed-modal__input-header">
+                <div class="feed-modal__currency-wrap">
+                  <img src="../assets/icons/oho-coin.svg" alt="" class="feed-modal__coin-icon">
                   <span class="feed-modal__currency">OHO</span>
-                  <span class="feed-modal__amount">~ $0.00</span>
                 </div>
-                <input type="text" class="feed-modal__input" placeholder="Enter amount" id="ohoInput">
+                <span class="feed-modal__amount">~ $0.00</span>
               </div>
-            </div>
-
-            <div class="feed-modal__net">
-              <span>Estimated Net USDT:</span>
-              <span>$0.00</span>
-            </div>
-
-            <div class="feed-modal__presets">
-              <button class="feed-modal__preset feed-modal__preset--min">Min</button>
-              <button class="feed-modal__preset feed-modal__preset--target">Target</button>
-              <button class="feed-modal__preset feed-modal__preset--max">Max</button>
-            </div>
-
-            <div class="feed-modal__actions">
-              <button class="game-btn game-btn--green" id="confirmFeedBtn">
-                <span class="game-btn__text">Confirm</span>
-              </button>
-              <button class="game-btn game-btn--gold" id="cancelFeedBtn" data-bs-dismiss="modal">
-                <span class="game-btn__text">Cancel</span>
-              </button>
+              <input type="text" class="feed-modal__input" placeholder="Enter amount" id="ohoInput">
             </div>
           </div>
+
+          <div class="feed-modal__net">
+            <span>Estimated Net USDT:</span>
+            <span>$0.00</span>
+          </div>
+
+          <div class="feed-modal__presets">
+            <button class="feed-modal__preset feed-modal__preset--min">Min</button>
+            <button class="feed-modal__preset feed-modal__preset--target">Target</button>
+            <button class="feed-modal__preset feed-modal__preset--max">Max</button>
+          </div>
+
+          <div class="feed-modal__actions">
+            <button class="game-btn game-btn--green" id="confirmFeedBtn">
+              <span class="game-btn__text">Confirm</span>
+            </button>
+            <button class="game-btn game-btn--gold" id="cancelFeedBtn">
+              <span class="game-btn__text">Cancel</span>
+            </button>
+          </div>
         </div>
+        </div> <!-- /.game-frame -->
       </div>
-    </div>
+
+    </main>
 
     <!-- ============ FEED SUCCESS MODAL (hidden by default) ============ -->
     <div class="feed-success-overlay" id="feedSuccessOverlay" style="display: none;">

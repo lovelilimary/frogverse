@@ -35,7 +35,7 @@
             <!-- Selected Frog -->
             <div class="nft-list-item nft-list-item--bordered" data-aos="fade-up">
               <div class="nft-list-item__avatar">
-                <img src="../assets/thumbs/princess.webp" alt="Prince Consort">
+                <img src="../assets/thumbs/avatar.webp" alt="Prince Consort">
               </div>
               <div class="nft-list-item__info">
                 <span class="nft-list-item__name">Prince Consort</span>
@@ -47,7 +47,7 @@
               <div class="info-row">
                 <img src="../assets/icons/Coin.svg" alt="" class="info-row__icon">
                 <span class="info-row__label">Unit Price</span>
-                <span class="info-row__value text-success">120.00 USDT</span>
+                <span class="info-row__value text-primary-orange">120.00 USDT</span>
               </div>
               <div class="info-row">
                 <img src="../assets/icons/time1.svg" alt="" class="info-row__icon">
@@ -62,7 +62,7 @@
               <div class="info-row">
                 <img src="../assets/icons/card.svg" alt="" class="info-row__icon">
                 <span class="info-row__label">Total Price</span>
-                <span class="info-row__value text-success">50.00 USDT</span>
+                <span class="info-row__value text-primary">50.00 USDT</span>
               </div>
             </div>
 
@@ -72,10 +72,10 @@
             </p>
 
             <!-- Quantity Stepper -->
-            <div class="qty-stepper" data-aos="fade-up" data-aos-delay="200">
-              <button class="qty-stepper__btn" id="btnMinus" aria-label="Decrease">−</button>
-              <span class="qty-stepper__value" id="qtyValue">1</span>
-              <button class="qty-stepper__btn" id="btnPlus" aria-label="Increase">+</button>
+            <div class="qty-stepper" data-stepper-min="1" data-stepper-max="99" data-aos="fade-up" data-aos-delay="200">
+              <button class="qty-stepper__btn" data-stepper-dec aria-label="Decrease">−</button>
+              <span class="qty-stepper__value" data-stepper-value>1</span>
+              <button class="qty-stepper__btn" data-stepper-inc aria-label="Increase">+</button>
             </div>
 
             <!-- Confirmation question -->
@@ -103,17 +103,18 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
+  <script src="../scripts/stepper.js"></script>
   <script src="../scripts/main.js"></script>
   <script>
-    // Quantity stepper
-    let qty = 1;
-    const qtyEl = document.getElementById('qtyValue');
-    document.getElementById('btnMinus').addEventListener('click', () => {
-      if (qty > 1) { qty--; qtyEl.textContent = qty; }
+    // Navigation
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'rental.html';
     });
-    document.getElementById('btnPlus').addEventListener('click', () => {
-      qty++;
-      qtyEl.textContent = qty;
+    document.getElementById('btnCancel').addEventListener('click', () => {
+      window.location.href = 'rental.html';
+    });
+    document.getElementById('btnConfirm').addEventListener('click', () => {
+      window.location.href = 'confirm-rental-success.html';
     });
   </script>
 </body>

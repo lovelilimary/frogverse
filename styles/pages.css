@@ -12,7 +12,7 @@
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  background: #253d2b;
+  background: rgba(0, 0, 0, 0.70);
 }
 
 /* ================================================================
@@ -139,7 +139,6 @@
 .info-row__value {
   font-family: var(--font-family-primary);
   font-size: 12px;
-  color: #fff;
   text-align: right;
 }
 

@@ -35,7 +35,7 @@
             <!-- Selected Frog -->
             <div class="nft-list-item nft-list-item--bordered" data-aos="fade-up">
               <div class="nft-list-item__avatar">
-                <img src="../assets/thumbs/princess.webp" alt="Prince Consort">
+                <img src="../assets/thumbs/avatar.webp" alt="Prince Consort">
               </div>
               <div class="nft-list-item__info">
                 <span class="nft-list-item__name">Prince Consort</span>
@@ -47,7 +47,7 @@
               <div class="info-row">
                 <img src="../assets/icons/Coin.svg" alt="" class="info-row__icon">
                 <span class="info-row__label">Unit Price</span>
-                <span class="info-row__value text-success">120.00 USDT</span>
+                <span class="info-row__value text-primary-orange">120.00 USDT</span>
               </div>
               <div class="info-row">
                 <img src="../assets/icons/time1.svg" alt="" class="info-row__icon">
@@ -62,7 +62,7 @@
               <div class="info-row">
                 <img src="../assets/icons/card.svg" alt="" class="info-row__icon">
                 <span class="info-row__label">Total Price</span>
-                <span class="info-row__value text-success">50.00 USDT</span>
+                <span class="info-row__value text-primary">50.00 USDT</span>
               </div>
             </div>
 
@@ -85,5 +85,11 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
+  <script>
+    // Navigation — Close → Rental page
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'rental.html';
+    });
+  </script>
 </body>
 </html>

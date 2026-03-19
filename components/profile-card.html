@@ -1,0 +1,42 @@
+<!-- ================================================================
+   PROFILE CARD — Frog identity card
+   
+   Displays avatar, frog name, rank badge, emotion indicator,
+   and optional stats. Uses existing game-frame for the border.
+   
+   Slots:
+     - Avatar image (thumbs/*.webp)
+     - Badge image (badges/*.png) — rank/tier icon
+     - Emotion image (emotions/*.svg) — current mood
+     - Frog name + ID
+     - Optional: level, stat values
+   
+   Usage:
+     <div class="profile-card">
+       <div class="profile-card__avatar-wrap">
+         <img class="profile-card__avatar" src="../assets/thumbs/avatar.webp" alt="Frog avatar">
+         <img class="profile-card__emotion" src="../assets/emotions/Happy.png" alt="Happy">
+       </div>
+       <div class="profile-card__info">
+         <span class="profile-card__name">FrogKing #2024</span>
+         <div class="profile-card__badge-row">
+           <img class="profile-card__badge" src="../assets/badges/KING.png" alt="King badge">
+           <span class="profile-card__rank">King</span>
+         </div>
+         <div class="profile-card__stats">
+           <div class="profile-card__stat">
+             <span class="profile-card__stat-label">Level</span>
+             <span class="profile-card__stat-value">12</span>
+           </div>
+           <div class="profile-card__stat">
+             <span class="profile-card__stat-label">XP</span>
+             <span class="profile-card__stat-value">1,250</span>
+           </div>
+           <div class="profile-card__stat">
+             <span class="profile-card__stat-label">NFTs</span>
+             <span class="profile-card__stat-value">6</span>
+           </div>
+         </div>
+       </div>
+     </div>
+   ================================================================ -->

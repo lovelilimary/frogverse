@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
   <link rel="stylesheet" href="../styles/utilities.css">
   <link rel="stylesheet" href="../styles/components.css">
   <link rel="stylesheet" href="../styles/pages.css">
+  <link rel="stylesheet" href="../styles/leaderboard.css">
 
   <style>
     body {
@@ -24,13 +26,15 @@
       padding: 24px;
       min-height: 100vh;
     }
+
     .preview-section {
       margin-bottom: 40px;
       padding: 24px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
     }
+
     .preview-section h2 {
       color: #FDCC34;
       font-size: 14px;
@@ -38,8 +42,9 @@
       letter-spacing: 2px;
       margin-bottom: 20px;
       padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .preview-row {
       display: flex;
       align-items: flex-start;
@@ -47,17 +52,20 @@
       margin-bottom: 16px;
       flex-wrap: wrap;
     }
+
     .preview-label {
       font-size: 12px;
       color: #888;
       margin-bottom: 8px;
     }
+
     h1 {
       font-family: 'Cormorant', serif;
       font-size: 28px;
       color: #FDCC34;
       margin-bottom: 32px;
     }
+
     .info-note {
       font-size: 12px;
       color: #6a6;
@@ -65,6 +73,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>🐸 Frogverse — Component Library</h1>
@@ -83,12 +92,14 @@
           <div class="frog-info-home__shell-back">
             <img src="../assets/FrogInfoHome-back.svg" alt="" aria-hidden="true">
           </div>
-          <div class="frog-info-home__xp-fill"><div class="frog-info-home__xp-fill-bar"></div></div>
+          <div class="frog-info-home__xp-fill">
+            <div class="frog-info-home__xp-fill-bar"></div>
+          </div>
           <div class="frog-info-home__shell-front">
             <img src="../assets/FrogInfoHome-front.svg" alt="" aria-hidden="true">
           </div>
           <div class="frog-info-home__avatar">
-            <img src="../assets/thumbs/king.webp" alt="King frog">
+            <img src="../assets/thumbs/avatar.webp" alt="King frog">
           </div>
           <span class="frog-info-home__name">FrogKing #2024</span>
         </div>
@@ -101,18 +112,21 @@
           <div class="frog-info-home__shell-back">
             <img src="../assets/FrogInfoHome-back.svg" alt="" aria-hidden="true">
           </div>
-          <div class="frog-info-home__xp-fill"><div class="frog-info-home__xp-fill-bar"></div></div>
+          <div class="frog-info-home__xp-fill">
+            <div class="frog-info-home__xp-fill-bar"></div>
+          </div>
           <div class="frog-info-home__shell-front">
             <img src="../assets/FrogInfoHome-front.svg" alt="" aria-hidden="true">
           </div>
           <div class="frog-info-home__avatar">
-            <img src="../assets/thumbs/queen.webp" alt="Queen frog">
+            <img src="../assets/thumbs/avatar.webp" alt="Queen frog">
           </div>
           <span class="frog-info-home__name">QueenFrog #1337</span>
         </div>
       </div>
     </div>
-    <p class="info-note">💡 XP bar: set <code>--xp-percent</code> (0–100). Uses 2 SVG layers (back/front) to sandwich the green XP fill.</p>
+    <p class="info-note">💡 XP bar: set <code>--xp-percent</code> (0–100). Uses 2 SVG layers (back/front) to sandwich
+      the green XP fill.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -142,13 +156,15 @@
   <!-- ============================================================ -->
   <div class="preview-section">
     <h2>Game Frame — CSS border-image (pure CSS, no JS)</h2>
-    <p class="preview-label">Corners are FIXED (15px notch). Edges STRETCH to fit. Background is transparent. Just add class <code>.game-frame</code>!</p>
+    <p class="preview-label">Corners are FIXED (15px notch). Edges STRETCH to fit. Background is transparent. Just add
+      class <code>.game-frame</code>!</p>
 
     <div class="preview-row">
       <!-- Small frame -->
       <div>
         <p class="preview-label">Small (180×90)</p>
-        <div class="game-frame" style="width: 180px; height: 90px; display:flex; align-items:center; justify-content:center;">
+        <div class="game-frame"
+          style="width: 180px; height: 90px; display:flex; align-items:center; justify-content:center;">
           <span style="color:#aaa; font-size:12px;">Small card</span>
         </div>
       </div>
@@ -156,7 +172,8 @@
       <!-- Medium frame -->
       <div>
         <p class="preview-label">Medium (280×160)</p>
-        <div class="game-frame" style="width: 280px; height: 160px; display:flex; align-items:center; justify-content:center;">
+        <div class="game-frame"
+          style="width: 280px; height: 160px; display:flex; align-items:center; justify-content:center;">
           <span style="color:#aaa; font-size:13px;">Popup / Modal</span>
         </div>
       </div>
@@ -168,10 +185,12 @@
         <p class="preview-label">Full Width — auto height</p>
         <div class="game-frame">
           <h3 style="color:#FDCC34; margin-bottom:12px; font-size:16px;">Leaderboard</h3>
-          <div style="display:flex; justify-content:space-between; color:#aaa; font-size:14px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div
+            style="display:flex; justify-content:space-between; color:#aaa; font-size:14px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
             <span>🥇 FrogKing2024</span><span style="color:#FDCC34;">1,250 XP</span>
           </div>
-          <div style="display:flex; justify-content:space-between; color:#aaa; font-size:14px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div
+            style="display:flex; justify-content:space-between; color:#aaa; font-size:14px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
             <span>🥈 RibbetMaster</span><span style="color:#FDCC34;">1,180 XP</span>
           </div>
           <div style="display:flex; justify-content:space-between; color:#aaa; font-size:14px; padding:6px 0;">
@@ -181,7 +200,8 @@
       </div>
     </div>
 
-    <p class="info-note">💡 Pure CSS! Chỉ cần <code>&lt;div class="game-frame"&gt;...&lt;/div&gt;</code>. Custom padding: <code>--frame-padding</code>.</p>
+    <p class="info-note">💡 Pure CSS! Chỉ cần <code>&lt;div class="game-frame"&gt;...&lt;/div&gt;</code>. Custom
+      padding: <code>--frame-padding</code>.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -249,7 +269,7 @@
 
     <div class="preview-row" style="flex-direction:column; gap:8px; max-width:380px;">
       <div class="nft-list-item nft-list-item--bordered">
-        <div class="nft-list-item__avatar"><img src="../assets/thumbs/princess.webp" alt="Princess"></div>
+        <div class="nft-list-item__avatar"><img src="../assets/thumbs/avatar.webp" alt="Princess"></div>
         <div class="nft-list-item__info">
           <span class="nft-list-item__name">Princess Consort</span>
           <span class="nft-list-item__desc">5+1 Frog</span>
@@ -263,7 +283,7 @@
         </div>
       </div>
       <div class="nft-list-item nft-list-item--bordered">
-        <div class="nft-list-item__avatar"><img src="../assets/thumbs/king.webp" alt="King"></div>
+        <div class="nft-list-item__avatar"><img src="../assets/thumbs/avatar.webp" alt="King"></div>
         <div class="nft-list-item__info">
           <span class="nft-list-item__name">King Frog</span>
           <span class="nft-list-item__desc">3 Frog</span>
@@ -277,7 +297,9 @@
         </div>
       </div>
     </div>
-    <p class="info-note">💡 <code>.nft-list-item--bordered</code> adds border + radius. Pair with <code>.circle-check</code> for radio selection.</p>
+    <p class="info-note">💡 <code>.nft-list-item--bordered</code> adds border + radius. Pair with
+      <code>.circle-check</code> for radio selection.
+    </p>
   </div>
 
   <!-- ============================================================ -->
@@ -305,7 +327,9 @@
         </div>
       </div>
     </div>
-    <p class="info-note">💡 Uses native <code>&lt;input type="checkbox"&gt;</code>. Style is in <code>.toggle-switch</code> + <code>.toggle-switch__slider</code>.</p>
+    <p class="info-note">💡 Uses native <code>&lt;input type="checkbox"&gt;</code>. Style is in
+      <code>.toggle-switch</code> + <code>.toggle-switch__slider</code>.
+    </p>
   </div>
 
   <!-- ============================================================ -->
@@ -317,7 +341,7 @@
       <div class="info-row">
         <img src="../assets/icons/Coin.svg" alt="" class="info-row__icon">
         <span class="info-row__label">Unit Price</span>
-        <span class="info-row__value text-success">120.00 USDT</span>
+        <span class="info-row__value text-primary-orange">120.00 USDT</span>
       </div>
       <div class="info-row">
         <img src="../assets/icons/Star1.svg" alt="" class="info-row__icon">
@@ -332,11 +356,13 @@
           <img src="../assets/icons/Info.svg" alt="" class="info-row__hint">
         </span>
         <span class="info-row__value">
-          <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-switch__slider"></span></label>
+          <label class="toggle-switch"><input type="checkbox" checked><span
+              class="toggle-switch__slider"></span></label>
         </span>
       </div>
     </div>
-    <p class="info-note">💡 <code>.info-row--no-padding</code> removes left padding. <code>.info-row__icon-inline</code> for 18px icons in label. <code>.info-row__hint</code> for 14px info icons.</p>
+    <p class="info-note">💡 <code>.info-row--no-padding</code> removes left padding. <code>.info-row__icon-inline</code>
+      for 18px icons in label. <code>.info-row__hint</code> for 14px info icons.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -360,7 +386,8 @@
         </div>
       </div>
     </div>
-    <p class="info-note">💡 <code>.section-card</code> provides the rounded background. <code>.money-cell</code> for label+value rows.</p>
+    <p class="info-note">💡 <code>.section-card</code> provides the rounded background. <code>.money-cell</code> for
+      label+value rows.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -374,7 +401,9 @@
         <button class="game-btn game-btn--green"><span class="game-btn__text">Confirm</span></button>
       </div>
     </div>
-    <p class="info-note">💡 <code>.confirm-actions</code> = flex row with 12px gap. Each <code>.game-btn</code> gets <code>flex:1</code>.</p>
+    <p class="info-note">💡 <code>.confirm-actions</code> = flex row with 12px gap. Each <code>.game-btn</code> gets
+      <code>flex:1</code>.
+    </p>
   </div>
 
   <!-- ============================================================ -->
@@ -389,11 +418,694 @@
         <button class="qty-stepper__btn" data-stepper-inc>+</button>
       </div>
     </div>
-    <p class="info-note">💡 Include <code>scripts/stepper.js</code>. Uses <code>data-stepper-dec</code> / <code>data-stepper-inc</code> / <code>data-stepper-value</code>.</p>
+    <p class="info-note">💡 Include <code>scripts/stepper.js</code>. Uses <code>data-stepper-dec</code> /
+      <code>data-stepper-inc</code> / <code>data-stepper-value</code>.
+    </p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- FROG RENTAL CELL — Variant 1 -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Frog Rental Cell — Marketplace Card (Variant 1)</h2>
+
+    <div class="preview-row" style="gap:24px; align-items:flex-start;">
+      <!-- King -->
+      <div>
+        <span class="preview-label">King</span>
+        <div class="frog-rental-cell" style="margin-top:12px;">
+          <div class="frog-rental-cell__image-container">
+            <div class="frog-rental-cell__frog-card">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/KING.png" alt="King badge">
+            </div>
+          </div>
+          <span class="frog-rental-cell__title">FROG KING</span>
+          <div class="frog-rental-cell__details">
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">4.0%</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">0.8%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+
+      <!-- Queen -->
+      <div>
+        <span class="preview-label">Queen</span>
+        <div class="frog-rental-cell" style="margin-top:12px;">
+          <div class="frog-rental-cell__image-container">
+            <div class="frog-rental-cell__frog-card">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-queen.png" alt="Frog Queen">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/QUEEN.png" alt="Queen badge">
+            </div>
+          </div>
+          <span class="frog-rental-cell__title">FROG QUEEN</span>
+          <div class="frog-rental-cell__details">
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">3.5%</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">0.7%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+
+      <!-- Prince (Silver frame) -->
+      <div>
+        <span class="preview-label">Prince (Silver frame)</span>
+        <div class="frog-rental-cell frog-rental-cell--silver" style="margin-top:12px;">
+          <div class="frog-rental-cell__image-container">
+            <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-prince.png" alt="Frog Prince">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer-silver.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner-silver.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/PRINCE.png" alt="Prince badge">
+            </div>
+          </div>
+          <span class="frog-rental-cell__title">FROG PRINCE</span>
+          <div class="frog-rental-cell__details">
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">3.0%</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">0.6%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+
+      <!-- Princess (Silver frame) -->
+      <div>
+        <span class="preview-label">Princess (Silver frame)</span>
+        <div class="frog-rental-cell frog-rental-cell--silver" style="margin-top:12px;">
+          <div class="frog-rental-cell__image-container">
+            <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-princess.png" alt="Frog Princess">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer-silver.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner-silver.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/PRINCESS.png" alt="Princess badge">
+            </div>
+          </div>
+          <span class="frog-rental-cell__title">FROG PRINCESS</span>
+          <div class="frog-rental-cell__details">
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">2.5%</span>
+            </div>
+            <div class="frog-rental-cell__row">
+              <span class="frog-rental-cell__row-label">
+                <img class="frog-rental-cell__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell__row-value frog-rental-cell__row-value--highlight">0.5%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.frog-rental-cell</code> — 192px card. Gold frame (King/Queen) vs Silver frame
+      (Prince/Princess/Consort). Add <code>.frog-rental-cell--silver</code> + swap SVG src.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- FROG RENTAL CELL 2 — Variant 2 (ranked) -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Frog Rental Cell 2 — Ranked Marketplace Card</h2>
+
+    <div class="preview-row" style="gap:24px; align-items:flex-start;">
+      <!-- #1 King -->
+      <div>
+        <span class="preview-label">#1 King</span>
+        <div class="frog-rental-cell2" style="margin-top:12px;">
+          <div class="frog-rental-cell2__image-container">
+            <img class="frog-rental-cell2__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
+            <div class="frog-rental-cell2__gradient-top"></div>
+            <div class="frog-rental-cell2__gradient-bottom"></div>
+            <div class="frog-rental-cell2__gold-bar"></div>
+            <img class="frog-rental-cell2__badge" src="../assets/badges/KING.png" alt="King badge">
+          </div>
+          <div class="frog-rental-cell2__header">
+            <span class="frog-rental-cell2__rank-number">#1</span>
+            <div class="frog-rental-cell2__header-info">
+              <span class="frog-rental-cell2__title">FROG KING</span>
+              <span class="frog-rental-cell2__price">1,800 USDT</span>
+            </div>
+          </div>
+          <div class="frog-rental-cell2__details">
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell2__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell2__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell2__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">4.0%</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">0.8%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell2__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+
+      <!-- #2 Queen -->
+      <div>
+        <span class="preview-label">#2 Queen</span>
+        <div class="frog-rental-cell2" style="margin-top:12px;">
+          <div class="frog-rental-cell2__image-container">
+            <img class="frog-rental-cell2__thumb" src="../assets/thumbs/avt-queen.png" alt="Frog Queen">
+            <div class="frog-rental-cell2__gradient-top"></div>
+            <div class="frog-rental-cell2__gradient-bottom"></div>
+            <div class="frog-rental-cell2__gold-bar"></div>
+            <img class="frog-rental-cell2__badge" src="../assets/badges/QUEEN.png" alt="Queen badge">
+          </div>
+          <div class="frog-rental-cell2__header">
+            <span class="frog-rental-cell2__rank-number">#2</span>
+            <div class="frog-rental-cell2__header-info">
+              <span class="frog-rental-cell2__title">FROG QUEEN</span>
+              <span class="frog-rental-cell2__price">1,500 USDT</span>
+            </div>
+          </div>
+          <div class="frog-rental-cell2__details">
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell2__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell2__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell2__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">3.5%</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">0.7%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell2__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+
+      <!-- #3 Prince (Silver) -->
+      <div>
+        <span class="preview-label">#3 Prince (Silver)</span>
+        <div class="frog-rental-cell2 frog-rental-cell2--silver" style="margin-top:12px;">
+          <div class="frog-rental-cell2__image-container">
+            <img class="frog-rental-cell2__thumb" src="../assets/thumbs/avt-prince.png" alt="Frog Prince">
+            <div class="frog-rental-cell2__gradient-top"></div>
+            <div class="frog-rental-cell2__gradient-bottom"></div>
+            <div class="frog-rental-cell2__gold-bar"></div>
+            <img class="frog-rental-cell2__badge" src="../assets/badges/PRINCE.png" alt="Prince badge">
+          </div>
+          <div class="frog-rental-cell2__header">
+            <span class="frog-rental-cell2__rank-number">#3</span>
+            <div class="frog-rental-cell2__header-info">
+              <span class="frog-rental-cell2__title">FROG PRINCE</span>
+              <span class="frog-rental-cell2__price">1,200 USDT</span>
+            </div>
+          </div>
+          <div class="frog-rental-cell2__details">
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Hourglass.svg" alt="">
+                Contract Duration:
+              </span>
+              <span class="frog-rental-cell2__row-value">365 Days</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Coin.svg" alt="">
+                Payment:
+              </span>
+              <span class="frog-rental-cell2__row-value">USDT</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Eating.svg" alt="">
+                Feed
+              </span>
+              <span class="frog-rental-cell2__row-value">OFC, OHO</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift.svg" alt="">
+                Monthly Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">3.0%</span>
+            </div>
+            <div class="frog-rental-cell2__row">
+              <span class="frog-rental-cell2__row-label">
+                <img class="frog-rental-cell2__row-icon" src="../assets/icons/Gift2.svg" alt="">
+                30-Day Bonus
+              </span>
+              <span class="frog-rental-cell2__row-value frog-rental-cell2__row-value--highlight">0.6%</span>
+            </div>
+          </div>
+          <button class="game-btn game-btn--gold frog-rental-cell2__btn"><span
+              class="game-btn__text">Rent</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.frog-rental-cell2</code> — 165px card. Add <code>.frog-rental-cell2--silver</code>
+      for silver bar + silver text (Prince/Princess/Consort).</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MY FROG CARD — Personal identity card -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>My Frog Card — Personal Identity Card</h2>
+
+    <div class="preview-row" style="gap:24px; align-items:flex-start;">
+      <!-- King + Happy -->
+      <div>
+        <span class="preview-label">King + Happy</span>
+        <div class="my-frog-card" style="margin-top:12px;">
+          <div class="my-frog-card__avatar-area">
+            <div class="frog-rental-cell__frog-card">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/KING.png" alt="King badge">
+            </div>
+            <div class="my-frog-card__emotion">
+              <img src="../assets/emotions/Happy.png" alt="Happy">
+            </div>
+          </div>
+          <div class="my-frog-card__info">
+            <span class="my-frog-card__name">Frog King</span>
+            <span class="my-frog-card__id">#FROG-00C64A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Queen + Angry -->
+      <div>
+        <span class="preview-label">Queen + Angry</span>
+        <div class="my-frog-card" style="margin-top:12px;">
+          <div class="my-frog-card__avatar-area">
+            <div class="frog-rental-cell__frog-card">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-queen.png" alt="Frog Queen">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/QUEEN.png" alt="Queen badge">
+            </div>
+            <div class="my-frog-card__emotion">
+              <img src="../assets/emotions/Angry.png" alt="Angry">
+            </div>
+          </div>
+          <div class="my-frog-card__info">
+            <span class="my-frog-card__name">Frog Queen</span>
+            <span class="my-frog-card__id">#FROG-A3F21B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Princess + Hungry -->
+      <div>
+        <span class="preview-label">Princess + Hungry</span>
+        <div class="my-frog-card" style="margin-top:12px;">
+          <div class="my-frog-card__avatar-area">
+            <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
+              <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-princess.png" alt="Frog Princess">
+              <div class="frog-rental-cell__frame-outer"><img src="../assets/frog-frame-outer-silver.svg" alt=""></div>
+              <div class="frog-rental-cell__frame-inner"><img src="../assets/frog-frame-inner-silver.svg" alt=""></div>
+              <img class="frog-rental-cell__badge" src="../assets/badges/PRINCESS.png" alt="Princess badge">
+            </div>
+            <div class="my-frog-card__emotion">
+              <img src="../assets/emotions/Hungry.png" alt="Hungry">
+            </div>
+          </div>
+          <div class="my-frog-card__info">
+            <span class="my-frog-card__name">Frog Princess</span>
+            <span class="my-frog-card__id">#FROG-7E8D42</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.my-frog-card</code> — 164×265px card reuse <code>.frog-rental-cell__frog-card</code>
+      sub-component. Emotion badge (<code>.my-frog-card__emotion</code>) ở góc phải trên.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PROFILE CARD (legacy) -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Profile Card — Frog Identity Card (Horizontal)</h2>
+
+    <div class="preview-row" style="flex-direction:column; gap:24px; max-width:380px;">
+      <!-- Standard — King + Happy -->
+      <div>
+        <span class="preview-label">Standard (King + Happy)</span>
+        <div class="profile-card" style="margin-top:12px;">
+          <div class="profile-card__avatar-wrap">
+            <img class="profile-card__avatar" src="../assets/thumbs/avatar.webp" alt="Frog avatar">
+            <img class="profile-card__emotion" src="../assets/emotions/Happy.png" alt="Happy">
+          </div>
+          <div class="profile-card__info">
+            <span class="profile-card__name">FrogKing #2024</span>
+            <div class="profile-card__badge-row">
+              <img class="profile-card__badge" src="../assets/badges/KING.png" alt="King badge">
+              <span class="profile-card__rank">King</span>
+            </div>
+            <div class="profile-card__stats">
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">12</span>
+                <span class="profile-card__stat-label">Level</span>
+              </div>
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">1,250</span>
+                <span class="profile-card__stat-label">XP</span>
+              </div>
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">6</span>
+                <span class="profile-card__stat-label">NFTs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact — Queen + Angry (no stats row) -->
+      <div>
+        <span class="preview-label">Compact (Queen + Angry — no stats)</span>
+        <div class="profile-card profile-card--compact" style="margin-top:12px;">
+          <div class="profile-card__avatar-wrap">
+            <img class="profile-card__avatar" src="../assets/thumbs/avatar.webp" alt="Frog avatar">
+            <img class="profile-card__emotion" src="../assets/emotions/Angry.png" alt="Angry">
+          </div>
+          <div class="profile-card__info">
+            <span class="profile-card__name">QueenFrog #1337</span>
+            <div class="profile-card__badge-row">
+              <img class="profile-card__badge" src="../assets/badges/QUEEN.png" alt="Queen badge">
+              <span class="profile-card__rank">Queen</span>
+            </div>
+            <div class="profile-card__stats">
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">8</span>
+                <span class="profile-card__stat-label">Level</span>
+              </div>
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">890</span>
+                <span class="profile-card__stat-label">XP</span>
+              </div>
+              <div class="profile-card__stat">
+                <span class="profile-card__stat-value">3</span>
+                <span class="profile-card__stat-label">NFTs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 Horizontal layout. Modifiers: <code>.profile-card--compact</code> hides stats.
+      <code>.profile-card--framed</code> for use inside <code>.game-frame</code>. <code>.profile-card--lg</code> for
+      88px avatar.
+    </p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LEADERBOARD CELL — Ticket-notch ranked rows -->
+  <!-- ============================================================ -->
+  <div class="preview-section">
+    <h2>Leaderboard Cell — Ticket-Notch Ranked Row</h2>
+
+    <div style="max-width:380px; display:flex; flex-direction:column; gap:12px;">
+      <!-- Gold (Rank 1) -->
+      <div>
+        <span class="preview-label">Gold — Rank 1</span>
+        <div class="lb-cell lb-cell--gold" style="margin-top:8px;">
+          <div class="lb-cell__avatar lb-cell__avatar--gold">
+            <img src="../assets/thumbs/avt-king.png" alt="Nicholas Phan">
+          </div>
+          <div class="lb-cell__info">
+            <span class="lb-cell__name">Nicholas Phan</span>
+            <span class="lb-cell__meta">Level 00 - <strong>Rank 1</strong></span>
+          </div>
+          <div class="lb-cell__score">
+            <span class="lb-cell__xp">667,424</span>
+            <span class="lb-cell__xp-label">XP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Silver (Rank 2) -->
+      <div>
+        <span class="preview-label">Silver — Rank 2</span>
+        <div class="lb-cell lb-cell--silver" style="margin-top:8px;">
+          <div class="lb-cell__avatar lb-cell__avatar--silver">
+            <img src="../assets/thumbs/avt-queen.png" alt="Nathan Ho">
+          </div>
+          <div class="lb-cell__info">
+            <span class="lb-cell__name">Nathan Ho</span>
+            <span class="lb-cell__meta">Level 00 - <strong>Rank 2</strong></span>
+          </div>
+          <div class="lb-cell__score">
+            <span class="lb-cell__xp">667,424</span>
+            <span class="lb-cell__xp-label">XP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bronze (Rank 3) -->
+      <div>
+        <span class="preview-label">Bronze — Rank 3</span>
+        <div class="lb-cell lb-cell--bronze" style="margin-top:8px;">
+          <div class="lb-cell__avatar lb-cell__avatar--bronze">
+            <img src="../assets/thumbs/avt-prince.png" alt="Trung Kien Nguyen">
+          </div>
+          <div class="lb-cell__info">
+            <span class="lb-cell__name">Trung Kien Nguyen</span>
+            <span class="lb-cell__meta">Level 00 - <strong>Rank 3</strong></span>
+          </div>
+          <div class="lb-cell__score">
+            <span class="lb-cell__xp">667,424</span>
+            <span class="lb-cell__xp-label">XP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Default (Rank 4+) -->
+      <div>
+        <span class="preview-label">Default — Rank 4+</span>
+        <div class="lb-cell" style="margin-top:8px;">
+          <div class="lb-cell__avatar lb-cell__avatar--silver">
+            <img src="../assets/thumbs/avt-consort.png" alt="Metti Dental">
+          </div>
+          <div class="lb-cell__info">
+            <span class="lb-cell__name">Metti Dental</span>
+            <span class="lb-cell__meta">Level 00 - <strong>Rank 4</strong></span>
+          </div>
+          <div class="lb-cell__score">
+            <span class="lb-cell__xp">667,424</span>
+            <span class="lb-cell__xp-label">XP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your Rank (highlighted) -->
+      <div>
+        <span class="preview-label">Your Rank — Highlighted</span>
+        <div class="lb-cell lb-cell--you" style="margin-top:8px;">
+          <div class="lb-cell__your-rank">
+            <span>Your</span>
+            <span>Rank</span>
+          </div>
+          <div class="lb-cell__avatar lb-cell__avatar--silver">
+            <img src="../assets/thumbs/avt-consort.png" alt="Mr.Least">
+          </div>
+          <div class="lb-cell__info">
+            <span class="lb-cell__name">Mr.Least</span>
+            <span class="lb-cell__meta">Level 00 - <strong>Rank 109</strong></span>
+          </div>
+          <div class="lb-cell__score">
+            <span class="lb-cell__xp">667,424</span>
+            <span class="lb-cell__xp-label">XP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="info-note">💡 <code>.lb-cell</code> — ticket-notch background (CSS mask). Variants: <code>.lb-cell--gold</code>, <code>.lb-cell--silver</code>, <code>.lb-cell--bronze</code>, <code>.lb-cell--you</code>. Default (rank 4+) has no modifier.</p>
   </div>
 
   <!-- Game UI JS -->
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/stepper.js"></script>
 </body>
+
 </html>
