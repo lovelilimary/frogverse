@@ -9,8 +9,10 @@
 .page-shell {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: var(--app-height);
+  height: 100dvh;
+  height: var(--app-height);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.70);
 }
@@ -23,6 +25,10 @@
    ================================================================ */
 .card-content {
   padding: 26px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 /* ================================================================

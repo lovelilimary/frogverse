@@ -5,8 +5,8 @@
 .rental-content {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  /* game-frame border-top(20) + header(28) + header-mb(16) + game-frame border-bottom(20) + page-shell margin(11*2=22) = ~106 */
-  max-height: calc(var(--app-height) - 106px);
+  flex: 1;
+  min-height: 0;
   padding-bottom: 40px;
 }
 

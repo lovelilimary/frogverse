@@ -34,6 +34,12 @@
   border-image-width: 20px;
   border-image-repeat: stretch;
   padding: var(--frame-padding);
+
+  /* Flex layout — fills page-shell, children scroll inside */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Filled variant — notch-shaped background via JS-generated SVG (game-btn.js)

@@ -27,7 +27,8 @@
   gap: 12px;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: calc(var(--app-height) - 180px);
+  flex: 1;
+  min-height: 0;
   padding-bottom: 20px;
 }
 
