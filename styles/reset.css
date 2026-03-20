@@ -1,6 +1,5 @@
 /* ==========================================================================
    Frogverse — CSS Reset
-   Modern reset based on Josh Comeau's approach + mobile-first defaults
    ========================================================================== */
 
 *, *::before, *::after {
@@ -55,7 +54,6 @@ button {
   background: none;
 }
 
-/* Remove default focus styles, will add custom ones */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;

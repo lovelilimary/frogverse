@@ -1,27 +1,14 @@
 /* ==========================================================================
    Frogverse — Component Styles
-   Shared reusable components from Figma Design System
    ========================================================================== */
 
 /* ================================================================
-   GOOGLE FONT — Alice (for buttons)
+   GOOGLE FONT — Alice
    ================================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
 
 /* ================================================================
    GAME FRAME — Gold Border Container (CSS border-image)
-   
-   Uses frame-border.svg (9-slice SVG) via CSS border-image.
-   Corners (15px ticket-notch) stay fixed. Edges stretch.
-   Background is transparent. NO JS required.
-   
-   Usage:
-     <div class="game-frame">
-       <p>Content here — adapts to any size</p>
-     </div>
-   
-   CSS Custom Properties:
-     --frame-padding: 28px  (content padding inside the border)
    ================================================================ */
 .game-frame {
   --frame-padding: 0px;
@@ -35,22 +22,15 @@
   border-image-repeat: stretch;
   padding: var(--frame-padding);
 
-  /* Flex layout — fills page-shell, children scroll inside */
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
 
-/* Filled variant — notch-shaped background via JS-generated SVG (game-btn.js)
-   Usage: <div class="game-frame game-frame--filled" style="--frame-bg: rgba(0,0,0,0.85)">
-   JS injects a .game-frame__fill child with the exact notch shape at 15px radius */
-
-/* ----------------------------------------------------------------
-   CARD CONTENT — Dark card interior (replaces card-container)
-   Combine with .game-frame for the full card look:
-     <div class="game-frame card-content">...</div>
-   ---------------------------------------------------------------- */
+/* ================================================================
+   CARD CONTENT — Dark card interior
+   ================================================================ */
 .card-content {
   margin: 11px;
   background: rgba(0, 0, 0, 0.85);
@@ -61,8 +41,6 @@
 
 /* ================================================================
    BUTTONS — Shared Base
-   All buttons use an inline SVG for the ticket-notch shape.
-   Colors are controlled via CSS custom properties on the button.
    ================================================================ */
 .game-btn {
   --btn-fill-top: #FFB73C;
@@ -89,7 +67,6 @@
   text-decoration: none;
 }
 
-/* SVG background layer — fills entire button */
 .game-btn__bg {
   position: absolute;
   inset: 0;
@@ -103,7 +80,6 @@
   height: 100%;
 }
 
-/* Text sits above the SVG */
 .game-btn__text {
   position: relative;
   z-index: 2;
@@ -118,10 +94,7 @@
 }
 
 /* ================================================================
-   GOLD BUTTON — Gold1
-   Default:  #FFB73C → #D88006, stroke #FFE18F
-   Hover:    #FFE7BE → #FFAA33, stroke #FFF6DF, text #de8148
-   Pressed:  #8F5300 → #C28825, stroke #6D5206
+   GOLD BUTTON
    ================================================================ */
 .game-btn--gold {
   --btn-fill-top: #FFB73C;
@@ -150,9 +123,7 @@
 }
 
 /* ================================================================
-   DISABLED STATE — All button variants
-   Usage: Add .game-btn--disabled class or native disabled attribute.
-   Grays out the button and blocks interaction.
+   DISABLED STATE
    ================================================================ */
 .game-btn--disabled,
 .game-btn:disabled,
@@ -174,10 +145,7 @@
 }
 
 /* ================================================================
-   GREEN BUTTON — Green1
-   Default:  #269F38 → #253D2B, stroke white overlay
-   Hover:    #67F47C → #347646, stroke white overlay
-   Pressed:  #203827 → #186123, stroke white 50% overlay
+   GREEN BUTTON
    ================================================================ */
 .game-btn--green {
   --btn-fill-top: #269F38;
@@ -205,10 +173,7 @@
 }
 
 /* ================================================================
-   GRAY BUTTON — Gray
-   Default:  #536168 → #202628, stroke white overlay
-   Hover:    #859BA6 → #3D474D, stroke white overlay
-   Pressed:  #202628 → #3C474D, stroke white overlay
+   GRAY BUTTON
    ================================================================ */
 .game-btn--gray {
   --btn-fill-top: #536168;
@@ -242,7 +207,7 @@
 }
 
 /* ================================================================
-   CIRCLE CHECK (radio-like)
+   CIRCLE CHECK
    ================================================================ */
 .circle-check {
   width: 15px;
@@ -332,17 +297,6 @@
 
 /* ================================================================
    FROG INFO HOME — Profile + Name + XP Bar
-   Figma: FrogInfoHome (node 192:6573)
-   
-   Uses TWO SVG layers to sandwich the XP bar:
-     z-0: back.svg  (dark XP tracks)
-     z-1: XP fill   (green bar, HTML)
-     z-2: front.svg (gold frame + nameplate + profile ring)
-     z-3: avatar    (frog image, HTML)
-     z-3: name      (text, HTML)
-   
-   CSS Custom Properties:
-     --xp-percent: 0-100  (XP fill width)
    ================================================================ */
 .frog-info-home {
   --xp-percent: 70;
@@ -353,7 +307,6 @@
   flex-shrink: 0;
 }
 
-/* Shared SVG shell base */
 .frog-info-home__shell-back,
 .frog-info-home__shell-front {
   position: absolute;
@@ -368,17 +321,14 @@
   height: 100%;
 }
 
-/* Back layer: dark XP tracks */
 .frog-info-home__shell-back {
   z-index: 0;
 }
 
-/* Front layer: gold frame + nameplate + profile ring */
 .frog-info-home__shell-front {
   z-index: 2;
 }
 
-/* ---- Profile Avatar ---- */
 .frog-info-home__avatar {
   position: absolute;
   left: 17.5px;
@@ -398,7 +348,6 @@
   object-fit: cover;
 }
 
-/* ---- Nameplate Text ---- */
 .frog-info-home__name {
   position: absolute;
   left: 80px;
@@ -416,14 +365,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  /* Gold gradient text */
   background: linear-gradient(180deg, #281f08 0%, #684f27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ---- XP Bar Fill ---- */
 .frog-info-home__xp-fill {
   position: absolute;
   left: 64px;
@@ -431,7 +378,6 @@
   width: 135px;
   height: 6px;
   z-index: 1;
-  /* Above back tracks, below front gold frame */
   pointer-events: none;
   overflow: hidden;
   border-radius: 3px;
@@ -447,23 +393,7 @@
 }
 
 /* ================================================================
-   HOME BUTTON — Circular icon button (Map, Shop, etc.)
-   Figma: HomeButtons (node 192:6783)
-   
-   Uses bg-HomeButtons.svg as the decorative circular background
-   (gradient fill + gold ring + drop-shadow).
-   Icon image and label text are overlaid via HTML.
-
-   Container: 64×64, label extends below.
-
-   Usage:
-     <a href="#" class="home-button">
-       <img class="home-button__bg"  src="…/bg-HomeButtons.svg">
-       <img class="home-button__icon" src="…/3dmap.svg">
-       <span class="home-button__label">
-         <span class="home-button__label-text">Danh mục</span>
-       </span>
-     </a>
+   HOME BUTTON — Circular icon button
    ================================================================ */
 .home-button {
   position: relative;
@@ -485,8 +415,6 @@
   transform: translateY(1px);
 }
 
-/* SVG background — 64×64, centered on the container.
-   SVG viewBox is cropped to 64×64 centered on the circle. */
 .home-button__bg {
   position: absolute;
   left: 50%;
@@ -498,8 +426,6 @@
   z-index: 1;
 }
 
-/* Icon — 61×61, centered horizontally, slightly raised.
-   Figma: centered, top:-6. Equivalent: top = 50% - 38px (half of 64 + 6). */
 .home-button__icon {
   position: absolute;
   left: 50%;
@@ -513,10 +439,6 @@
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-/* Label pill — centered below the circle.
-   Figma: top:46, centered, width:72, py:6 px:8
-   Note: Figma measures padding from text center/baseline,
-   CSS measures from text bounding box. Adjusted values to match visually. */
 .home-button__label {
   position: absolute;
   top: 42px;
@@ -531,7 +453,6 @@
   box-sizing: border-box;
 }
 
-/* Label text — gold gradient, Cormorant Bold 14px */
 .home-button__label-text {
   font-family: var(--font-family-display);
   font-size: 14px;
@@ -548,8 +469,6 @@
 
 /* ================================================================
    NFT LIST ITEM — Bordered variant
-   Replaces inline style="border-radius:...; border:...; margin:..."
-   Used in rental-promotion (step 2/3), confirm-rental, confirm-rental-success
    ================================================================ */
 .nft-list-item {
   display: flex;
@@ -632,7 +551,6 @@
 
 /* ================================================================
    TOGGLE SWITCH — Native checkbox styled as toggle
-   Used in my-frog-detail modals for Auto Renew, Auto Feed, etc.
    ================================================================ */
 .toggle-switch {
   position: relative;
@@ -682,12 +600,10 @@
 /* ================================================================
    INFO ROW — Modifiers
    ================================================================ */
-/* No left padding — used in modal info rows */
 .info-row--no-padding {
   padding-left: 0;
 }
 
-/* Inline icon inside label (18×18, margin-right) */
 .info-row__icon-inline {
   width: 18px;
   height: 18px;
@@ -696,7 +612,6 @@
   flex-shrink: 0;
 }
 
-/* Hint/info icon (14×14, subtle, margin-left) */
 .info-row__hint {
   width: 14px;
   height: 14px;
@@ -706,8 +621,7 @@
 }
 
 /* ================================================================
-   SETTINGS DROPDOWN — Select with custom arrow
-   Used in my-frog-detail Auto Feed Settings
+   SETTINGS DROPDOWN
    ================================================================ */
 .settings-dropdown {
   position: relative;
@@ -738,8 +652,7 @@
 }
 
 /* ================================================================
-   ORDER DETAILS — Info row list with background
-   Used in confirm-rental, rental-promotion
+   ORDER DETAILS
    ================================================================ */
 .order-details {
   background: rgba(255, 255, 255, 0.05);
@@ -749,8 +662,7 @@
 }
 
 /* ================================================================
-   QUANTITY STEPPER — +/- button pair
-   Used in confirm-rental
+   QUANTITY STEPPER
    ================================================================ */
 .qty-stepper {
   display: flex;
@@ -789,23 +701,7 @@
 }
 
 /* ================================================================
-   PROFILE CARD — Frog Identity Card
-   
-   Shows avatar with emotion badge overlay, frog name,
-   rank badge, and optional stat counters.
-   
-   Layout:
-     ┌──────────────────────────────────────┐
-     │ ┌────────┐  Name                     │
-     │ │ Avatar │  [Badge Icon] Rank        │
-     │ │ (mood) │  Lv | XP | NFTs           │
-     │ └────────┘                            │
-     └──────────────────────────────────────┘
-   
-   Usage:
-     <div class="profile-card">…</div>
-   Pair with .game-frame for gold border:
-     <div class="game-frame profile-card">…</div>
+   PROFILE CARD
    ================================================================ */
 .profile-card {
   display: flex;
@@ -825,7 +721,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* ---- Avatar Container + Emotion overlay ---- */
 .profile-card__avatar-wrap {
   position: relative;
   width: 72px;
@@ -843,7 +738,6 @@
     0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Emotion icon — bottom-right floating badge */
 .profile-card__emotion {
   position: absolute;
   right: -4px;
@@ -857,7 +751,6 @@
   pointer-events: none;
 }
 
-/* ---- Info Block ---- */
 .profile-card__info {
   flex: 1;
   min-width: 0;
@@ -866,7 +759,6 @@
   gap: 4px;
 }
 
-/* Frog Name — gold gradient text */
 .profile-card__name {
   font-family: var(--font-family-display);
   font-size: 18px;
@@ -883,7 +775,6 @@
   background-clip: text;
 }
 
-/* Badge Row — badge icon + rank text */
 .profile-card__badge-row {
   display: flex;
   align-items: center;
@@ -906,7 +797,6 @@
   text-transform: uppercase;
 }
 
-/* Stats Row — 3 counters with dividers */
 .profile-card__stats {
   display: flex;
   align-items: center;
@@ -923,7 +813,6 @@
   position: relative;
 }
 
-/* Vertical divider between stats */
 .profile-card__stat+.profile-card__stat::before {
   content: '';
   position: absolute;
@@ -935,7 +824,6 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* First stat needs no left padding */
 .profile-card__stat:first-child {
   padding-left: 0;
 }
@@ -958,19 +846,16 @@
   line-height: 1;
 }
 
-/* ---- Modifier: compact (no stats row) ---- */
 .profile-card--compact .profile-card__stats {
   display: none;
 }
 
-/* ---- Modifier: framed (used with .game-frame) ---- */
 .profile-card--framed {
   padding: 12px;
   background: rgba(0, 0, 0, 0.85);
   border-radius: 0;
 }
 
-/* ---- Modifier: large avatar ---- */
 .profile-card--lg .profile-card__avatar-wrap {
   width: 88px;
   height: 88px;
@@ -992,18 +877,6 @@
 
 /* ================================================================
    HEX BUTTON — Asset variants (Back / Close)
-
-   When .hex-btn contains an <img class="hex-btn__asset">,
-   the SVG asset includes its own bg + border + icon,
-   so we strip the .hex-btn's own styling.
-
-   Usage:
-     <button class="hex-btn hex-btn--back">
-       <img src="../assets/buttons/HexTech_Back.svg" alt="" class="hex-btn__asset">
-     </button>
-     <button class="hex-btn hex-btn--close">
-       <img src="../assets/buttons/HexTech_Close.svg" alt="" class="hex-btn__asset">
-     </button>
    ================================================================ */
 .hex-btn__asset {
   display: block;
@@ -1013,7 +886,6 @@
   inset: 0;
 }
 
-/* Strip default hex-btn chrome when using full SVG asset */
 .hex-btn:has(.hex-btn__asset) {
   border: none;
   background: transparent;
@@ -1022,19 +894,7 @@
 }
 
 /* ================================================================
-   SHARED: FROG CARD — Gold-framed avatar with rank badge
-   
-   Reusable sub-component used inside FrogRentalCell,
-   FrogRentalCell2, and MyFrogCard.
-   
-   Layout:
-     ┌────────────────────┐
-     │ ╔════════════════╗ │
-     │ ║  Frog Image    ║ │
-     │ ║                ║ │
-     │ ╚════════════════╝ │
-     │    [Rank Badge]    │
-     └────────────────────┘
+   FROG CARD — Gold-framed avatar with rank badge
    ================================================================ */
 .frog-rental-cell__frog-card {
   position: relative;
@@ -1043,7 +903,6 @@
   flex-shrink: 0;
 }
 
-/* Frog thumbnail — clipped inside the frame */
 .frog-rental-cell__thumb {
   position: absolute;
   top: 6px;
@@ -1054,10 +913,6 @@
   z-index: 0;
 }
 
-/* Gold ornamental frame — 2 SVG layers from Figma (Subtract shapes)
-   Layer 1: Outer frame (164×164) — gold gradient (#DDAF4A → #FFE18F)
-   Layer 2: Inner frame (152×152 at +6,+6) — dark gold (#281F08 → #684F27)
-   Both have concave "ticket-notch" corners matching the game-frame style */
 .frog-rental-cell__frame-outer {
   position: absolute;
   inset: 0;
@@ -1084,8 +939,6 @@
   height: 100%;
 }
 
-/* Rank badge — centered at bottom, overlapping frame
-   Figma: bottom: -24px from frog-card (164px), width: 126px, height: 60px */
 .frog-rental-cell__badge {
   position: absolute;
   bottom: -30px;
@@ -1097,28 +950,13 @@
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-/* ----------------------------------------------------------------
+/* ================================================================
    FROG CARD — Silver Frame Modifier
-   
-   Add class .frog-rental-cell__frog-card--silver to the frog-card
-   container to switch from gold to silver frame.
-   Used for: Prince, Princess, Consort ranks.
-   
-   Usage:
-     <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
-       ...use frog-frame-outer-silver.svg + frog-frame-inner-silver.svg...
-     </div>
-   ---------------------------------------------------------------- */
-/* No additional CSS needed — silver SVGs have the silver gradient baked in.
-   Just swap the SVG src in HTML. The modifier class is for semantic clarity
-   and future JS-based rank detection. */
-
-/* Silver gold-bar override (for frog-rental-cell2) */
+   ================================================================ */
 .frog-rental-cell2--silver .frog-rental-cell2__gold-bar {
   background: var(--gradient-silver-bar);
 }
 
-/* Silver rank number override (for frog-rental-cell2) */
 .frog-rental-cell2--silver .frog-rental-cell2__rank-number {
   background: var(--gradient-silver-text);
   -webkit-background-clip: text;
@@ -1126,7 +964,6 @@
   background-clip: text;
 }
 
-/* Silver title override (for frog-rental-cell2) */
 .frog-rental-cell2--silver .frog-rental-cell2__title {
   background: var(--gradient-silver-text);
   -webkit-background-clip: text;
@@ -1134,7 +971,6 @@
   background-clip: text;
 }
 
-/* Silver title override (for frog-rental-cell variant 1) */
 .frog-rental-cell--silver .frog-rental-cell__title {
   background: var(--gradient-silver-text);
   -webkit-background-clip: text;
@@ -1143,11 +979,7 @@
 }
 
 /* ================================================================
-   FROG RENTAL CELL — Rental marketplace card (variant 1)
-   Figma node: 33:1827
-   
-   Vertical card: avatar → title → detail rows → Rent button
-   Width: 192px, dark gradient bg, rounded corners
+   FROG RENTAL CELL — Variant 1
    ================================================================ */
 .frog-rental-cell {
   width: 192px;
@@ -1163,9 +995,6 @@
   box-sizing: border-box;
 }
 
-/* Image container — holds the frog card + extra space for badge overflow
-   Figma: container 191px. FrogsCard 164px centered, top offset -10.5px.
-   This pushes card up so badge (which hangs 24px below) stays within 191px. */
 .frog-rental-cell__image-container {
   position: relative;
   width: 100%;
@@ -1180,7 +1009,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* Title — gold gradient text */
 .frog-rental-cell__title {
   font-family: 'Alice', serif;
   font-size: 14px;
@@ -1196,7 +1024,6 @@
   background-clip: text;
 }
 
-/* Details container — list of info rows */
 .frog-rental-cell__details {
   width: 156px;
   display: flex;
@@ -1204,7 +1031,6 @@
   gap: 6px;
 }
 
-/* Single detail row */
 .frog-rental-cell__row {
   display: flex;
   align-items: center;
@@ -1212,7 +1038,6 @@
   width: 100%;
 }
 
-/* Row label — icon + text */
 .frog-rental-cell__row-label {
   display: flex;
   align-items: center;
@@ -1225,7 +1050,6 @@
   white-space: nowrap;
 }
 
-/* Row icon — 10×10 inline */
 .frog-rental-cell__row-icon {
   width: 10px;
   height: 10px;
@@ -1233,7 +1057,6 @@
   object-fit: contain;
 }
 
-/* Row value — right-aligned */
 .frog-rental-cell__row-value {
   font-family: var(--font-family-primary);
   font-size: 8px;
@@ -1244,23 +1067,16 @@
   white-space: nowrap;
 }
 
-/* Highlighted value — red for bonus percentages */
 .frog-rental-cell__row-value--highlight {
   color: #FF5E5E;
 }
 
-/* Full-width Rent button */
 .frog-rental-cell__btn {
   width: 100%;
 }
 
 /* ================================================================
-   FROG RENTAL CELL 2 — Rental marketplace card (variant 2)
-   Figma node: 89:1043
-   
-   Wider card with rectangular image area, gradient overlays,
-   large ranking number, title + price, detail rows, Rent button.
-   Width: 165px, rounded 10px corners
+   FROG RENTAL CELL 2 — Variant 2
    ================================================================ */
 .frog-rental-cell2 {
   width: 165px;
@@ -1276,11 +1092,9 @@
   box-sizing: border-box;
 }
 
-/* Image container — wider, with gradient overlays */
 .frog-rental-cell2__image-container {
   position: relative;
   width: calc(100% + 22px);
-  /* bleeds outside padding */
   margin: 0 -11px;
   height: 184px;
   overflow: visible;
@@ -1292,7 +1106,6 @@
   object-fit: cover;
 }
 
-/* Top gradient overlay — subtle fade from dark */
 .frog-rental-cell2__gradient-top {
   position: absolute;
   top: 0;
@@ -1303,7 +1116,6 @@
   pointer-events: none;
 }
 
-/* Bottom gradient overlay — fade to dark */
 .frog-rental-cell2__gradient-bottom {
   position: absolute;
   bottom: 0;
@@ -1314,7 +1126,6 @@
   pointer-events: none;
 }
 
-/* Gold bar at bottom of image */
 .frog-rental-cell2__gold-bar {
   position: absolute;
   bottom: 0;
@@ -1325,7 +1136,6 @@
   pointer-events: none;
 }
 
-/* Rank badge — centered at bottom of image area */
 .frog-rental-cell2__badge {
   position: absolute;
   bottom: -16%;
@@ -1337,7 +1147,6 @@
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
 }
 
-/* Header — ranking number + title/price */
 .frog-rental-cell2__header {
   width: 100%;
   height: 31px;
@@ -1346,7 +1155,6 @@
   align-items: flex-end;
 }
 
-/* Large ranking number (#1, #2, etc.) */
 .frog-rental-cell2__rank-number {
   font-family: var(--font-family-primary);
   font-size: 24px;
@@ -1358,7 +1166,6 @@
   background-clip: text;
 }
 
-/* Title + price group — right aligned */
 .frog-rental-cell2__header-info {
   display: flex;
   flex-direction: column;
@@ -1387,7 +1194,6 @@
   line-height: 1;
 }
 
-/* Details — reuses same row pattern as cell variant 1 */
 .frog-rental-cell2__details {
   width: 100%;
   display: flex;
@@ -1395,7 +1201,6 @@
   gap: 6px;
 }
 
-/* Reuse row classes from .frog-rental-cell */
 .frog-rental-cell2__row {
   display: flex;
   align-items: center;
@@ -1438,18 +1243,12 @@
   color: #FF5E5E;
 }
 
-/* Full-width Rent button */
 .frog-rental-cell2__btn {
   width: 100%;
 }
 
 /* ================================================================
-   MY FROG CARD — Personal frog identity card
-   Figma node: 225:9155
-   
-   Shows frog avatar (reusing frog-card sub-component),
-   emotion badge overlay, name, and frog ID.
-   Width: 164px, Height: 265px
+   MY FROG CARD
    ================================================================ */
 .my-frog-card {
   width: 164px;
@@ -1458,7 +1257,6 @@
   overflow: hidden;
 }
 
-/* Avatar area — contains the frog card + emotion badge */
 .my-frog-card__avatar-area {
   position: absolute;
   top: 0;
@@ -1467,7 +1265,6 @@
   height: 164px;
 }
 
-/* Emotion badge — green circle, top-right */
 .my-frog-card__emotion {
   position: absolute;
   top: 14px;
@@ -1488,7 +1285,6 @@
   object-fit: contain;
 }
 
-/* Info section — dark bottom area */
 .my-frog-card__info {
   position: absolute;
   left: 50%;
@@ -1509,7 +1305,6 @@
   box-sizing: border-box;
 }
 
-/* Frog name — gold gradient text */
 .my-frog-card__name {
   font-family: var(--font-family-display);
   font-size: 18px;
@@ -1522,7 +1317,6 @@
   background-clip: text;
 }
 
-/* Frog ID code — muted white text */
 .my-frog-card__id {
   font-family: var(--font-family-primary);
   font-size: 12px;

@@ -3,8 +3,7 @@
    ========================================================================== */
 
 /* ================================================================
-   PAGE-SPECIFIC OVERRIDES — Narrower chrome for 2-column grid
-   Device: 393px. Need ~340px content for 2-column grid.
+   PAGE-SPECIFIC OVERRIDES
    ================================================================ */
 #myFrogPage .game-frame {
   border-width: 10px;
@@ -33,12 +32,10 @@
 }
 
 /* ================================================================
-   CARD OVERRIDES — Make fixed-size components responsive in grid
-   The base my-frog-card and frog-rental-cell__frog-card use fixed
-   pixel sizes (164px). Inside the grid we override to fill column.
+   CARD OVERRIDES
    ================================================================ */
 
-/* Card container — switch from absolute to flow layout */
+
 .frog-cards-grid .my-frog-card {
   position: relative;
   width: 100%;
@@ -46,7 +43,7 @@
   overflow: visible;
 }
 
-/* Avatar area — relative flow, square aspect */
+
 .frog-cards-grid .my-frog-card__avatar-area {
   position: relative;
   width: 100%;
@@ -54,14 +51,14 @@
   aspect-ratio: 1;
 }
 
-/* Frog card — fill avatar area */
+
 .frog-cards-grid .frog-rental-cell__frog-card {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* Thumbnail — scale with container, keep 6px inset ratio */
+
 .frog-cards-grid .frog-rental-cell__thumb {
   position: absolute;
   top: 3.66%;     /* 6/164 */
@@ -72,7 +69,7 @@
   z-index: 0;
 }
 
-/* Frame outer — fill card */
+
 .frog-cards-grid .frog-rental-cell__frame-outer {
   position: absolute;
   inset: 0;
@@ -82,7 +79,7 @@
   pointer-events: none;
 }
 
-/* Frame inner — inset by ratio */
+
 .frog-cards-grid .frog-rental-cell__frame-inner {
   position: absolute;
   top: 3.66%;
@@ -93,7 +90,7 @@
   pointer-events: none;
 }
 
-/* Badge — scale proportionally (126/164 = 76.8% of card width) */
+
 .frog-cards-grid .frog-rental-cell__badge {
   position: absolute;
   bottom: -18%;
@@ -104,7 +101,7 @@
   z-index: 3;
 }
 
-/* Emotion — scale proportionally (45/164 = 27.4%) */
+
 .frog-cards-grid .my-frog-card__emotion {
   position: absolute;
   top: 8.5%;     /* 14/164 */
@@ -114,7 +111,7 @@
   z-index: 3;
 }
 
-/* Info section — flow layout below avatar, not absolute */
+
 .frog-cards-grid .my-frog-card__info {
   position: relative;
   width: 100%;
@@ -136,12 +133,12 @@
   padding: 24px 8px 12px;
 }
 
-/* Name — smaller font for grid */
+
 .frog-cards-grid .my-frog-card__name {
   font-size: 14px;
 }
 
-/* ID — smaller font for grid */
+
 .frog-cards-grid .my-frog-card__id {
   font-size: 10px;
 }

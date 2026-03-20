@@ -21,7 +21,7 @@
 }
 
 /* ================================================================
-   POPUP OVERLAY — Dark backdrop + centered popup container
+   POPUP OVERLAY
    ================================================================ */
 .popup-overlay {
   position: fixed;
@@ -45,7 +45,7 @@
 }
 
 /* ================================================================
-   POPUP CONTENT — The card inside the overlay
+   POPUP CONTENT
    ================================================================ */
 .popup-content {
   position: relative;
@@ -60,7 +60,6 @@
   transform: translateY(0) scale(1);
 }
 
-/* Override game-frame when used as popup */
 .popup-content .game-frame {
   max-height: 90dvh;
   overflow-y: auto;

@@ -1,13 +1,9 @@
 /* ==========================================================================
    Frogverse — Typography
-   Fonts: Inter (primary) + Cormorant (display/headers)
-   Extracted from Figma design tokens
    ========================================================================== */
 
-/* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Inter:wght@400;500;700&display=swap');
 
-/* Base typography */
 body {
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
@@ -16,10 +12,9 @@ body {
   color: var(--color-text);
 }
 
-/* ---- Display / Header Styles (Cormorant) ---- */
 .header-1 {
   font-family: var(--font-family-display);
-  font-size: var(--font-size-md);    /* 18px */
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -27,72 +22,68 @@ body {
 
 .header-3 {
   font-family: var(--font-family-display);
-  font-size: var(--font-size-sm);    /* 14px */
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* ---- Title Styles (Inter Bold) ---- */
 .title-1 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-sm);    /* 14px */
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
 .title-2 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-xs);    /* 12px */
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
 .title-3 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-base);  /* 16px */
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
 .title-4 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-lg);    /* 20px */
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
-/* ---- Body Style (Inter Medium) ---- */
 .body-regular {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-base);  /* 16px */
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
 }
 
-/* ---- Text Styles (Inter Regular) ---- */
 .text-1 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-xs);    /* 12px */
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-tight);
 }
 
 .text-2 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-2xs);   /* 10px */
+  font-size: var(--font-size-2xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-tight);
 }
 
 .text-3 {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-3xs);   /* 8px */
+  font-size: var(--font-size-3xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-tight);
 }
 
-/* ---- Utility Classes ---- */
 .font-regular { font-weight: var(--font-weight-regular); }
 .font-medium { font-weight: var(--font-weight-medium); }
 .font-bold { font-weight: var(--font-weight-bold); }

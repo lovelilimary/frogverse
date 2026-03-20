@@ -1,12 +1,9 @@
 /* ==========================================================================
    Frogverse — Base / App Shell
-   Shared page fundamentals: .app container, .page wrapper, device simulator,
-   bottom navigation, safe-area helpers.
    ========================================================================== */
 
 /* ================================================================
    APP CONTAINER
-   Root wrapper for every page. Centers content, sets dark theme.
    ================================================================ */
 .app {
   position: relative;
@@ -20,7 +17,6 @@
   color: var(--color-text-white);
 }
 
-/* Hide all scrollbars globally — content still scrollable */
 .app *,
 .app {
   scrollbar-width: none;
@@ -34,8 +30,6 @@
 
 /* ================================================================
    PAGE WRAPPER
-   Every screen's <main> element uses this class.
-   Provides consistent padding and flex layout.
    ================================================================ */
 .page {
   position: relative;
@@ -48,14 +42,7 @@
 }
 
 /* ================================================================
-   FULL-SCREEN BACKGROUND SYSTEM
-   Reusable blurred background image with gradient overlays.
-   Usage:
-     <div class="page__bg">
-       <img src="…" class="page__bg-img" aria-hidden="true">
-       <div class="page__bg-top"></div>
-       <div class="page__bg-bottom"></div>
-     </div>
+   FULL-SCREEN BACKGROUND
    ================================================================ */
 .page__bg {
   position: absolute;
@@ -98,8 +85,6 @@
 
 /* ================================================================
    DEVICE SIMULATOR
-   On desktop (>500px), frames the app in a phone-sized container.
-   On mobile, fully transparent (display: contents).
    ================================================================ */
 .device-simulator {
   display: contents;
@@ -142,7 +127,6 @@
 
 /* ================================================================
    BOTTOM NAVIGATION BAR
-   Fixed bar at screen bottom. Shared across pages.
    ================================================================ */
 .bottom-nav {
   position: fixed;
@@ -192,7 +176,6 @@
 
 /* ================================================================
    TOP HEADER BAR
-   Fixed header with gradient fade. Shared across pages.
    ================================================================ */
 .top-header {
   position: fixed;
@@ -235,7 +218,7 @@
 }
 
 /* ================================================================
-   PAGE HEADER — Inner page header (Back + Title + Close)
+   PAGE HEADER — Back + Title + Close
    ================================================================ */
 .page-header {
   position: relative;

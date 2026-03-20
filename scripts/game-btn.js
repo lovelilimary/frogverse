@@ -1,23 +1,11 @@
-/**
- * Frogverse — Game Button & Frame Helper
- * 
- * Auto-injects the ticket-notch SVG shape into .game-btn elements
- * and filled notch-shape backgrounds into .game-frame--filled elements.
- * 
- * SVGs are generated dynamically based on actual element dimensions
- * so that the concave corner notches always keep their shape
- * regardless of element width or height.
- * 
- * NOTE: .game-frame border uses pure CSS border-image.
- *       .game-frame--filled adds a JS-generated SVG background fill.
- */
-
 let _uid = 0;
 const uid = (p) => `${p}${++_uid}`;
 
-/* ================================================================
-   SHARED — Notch path builder (works for any radius)
-   ================================================================ */
+const BTN_R = 6;
+const BTN_K = BTN_R * 0.5523;
+const FRAME_R = 15;
+const FRAME_K = FRAME_R * 0.5523;
+
 function buildNotchPath(w, h, r, k) {
   return [
     `M ${w - r} 0`,
@@ -32,12 +20,6 @@ function buildNotchPath(w, h, r, k) {
     `Z`
   ].join(' ');
 }
-
-/* ================================================================
-   BUTTON NOTCH — Small radius (6px) for buttons
-   ================================================================ */
-const BTN_R = 6;
-const BTN_K = BTN_R * 0.5523;
 
 function buttonSVG(w, h) {
   const gid = uid('bg');
@@ -68,13 +50,6 @@ function applyBg(btn) {
   });
 }
 
-/* ================================================================
-   FRAME FILL — Large radius (15px) matching Frame.svg border
-   Generates a filled notch-shape SVG behind the frame content
-   ================================================================ */
-const FRAME_R = 15;
-const FRAME_K = FRAME_R * 0.5523;
-
 function frameFillSVG(w, h) {
   const path = buildNotchPath(w, h, FRAME_R, FRAME_K);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;z-index:-1;pointer-events:none;">
@@ -83,7 +58,6 @@ function frameFillSVG(w, h) {
 }
 
 function applyFrameFill(frame) {
-  // offsetWidth/Height already includes border (20px each side)
   const w = frame.offsetWidth;
   const h = frame.offsetHeight;
   if (w === 0 || h === 0) return;
@@ -98,9 +72,6 @@ function applyFrameFill(frame) {
   fill.innerHTML = frameFillSVG(w, h);
 }
 
-/* ================================================================
-   INIT
-   ================================================================ */
 function initGameButtons() {
   document.querySelectorAll('.game-btn').forEach(applyBg);
   document.querySelectorAll('.game-frame--filled').forEach(applyFrameFill);

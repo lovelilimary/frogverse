@@ -1,10 +1,9 @@
 /* ==========================================================================
    Frogverse — Shared Page Styles
-   Common patterns used across inner pages (My Frog, Wallet, Leaderboard, etc.)
    ========================================================================== */
 
 /* ================================================================
-   PAGE SHELL — Full-screen overlay page
+   PAGE SHELL
    ================================================================ */
 .page-shell {
   position: relative;
@@ -18,10 +17,7 @@
 }
 
 /* ================================================================
-   CARD SHELL — Page-level game-frame overrides
-   The frame comes from .game-frame (components.css).
-   .card-content adds the dark interior (components.css).
-   This section only provides page-level padding & layout overrides.
+   CARD SHELL
    ================================================================ */
 .card-content {
   padding: 26px 20px 20px;
@@ -32,7 +28,7 @@
 }
 
 /* ================================================================
-   CARD HEADER — Back + Title + Close
+   CARD HEADER
    ================================================================ */
 .card-header {
   display: flex;
@@ -42,7 +38,6 @@
   height: 28px;
   margin-bottom: 16px;
 
-  /* Sticky header — stays visible while card-content scrolls */
   position: sticky;
   top: -26px;
   z-index: 10;
@@ -63,7 +58,6 @@
   margin: 0;
 }
 
-/* HexTech button (Back / Close) */
 .hex-btn {
   width: 28px;
   height: 28px;
@@ -101,7 +95,7 @@
 }
 
 /* ================================================================
-   MONEY CELL — Label + Value row
+   MONEY CELL
    ================================================================ */
 .money-cell {
   display: flex;
@@ -127,7 +121,7 @@
 }
 
 /* ================================================================
-   INFO ROW — Icon + Label + Value
+   INFO ROW
    ================================================================ */
 .info-row {
   display: flex;
@@ -167,7 +161,7 @@
 }
 
 /* ================================================================
-   TAB BAR — Two-button tab switcher
+   TAB BAR
    ================================================================ */
 .tab-bar {
   display: flex;
@@ -182,7 +176,7 @@
 }
 
 /* ================================================================
-   SECTION CARD — Inner card section with rounded background
+   SECTION CARD
    ================================================================ */
 .section-card {
   background: rgba(255, 255, 255, 0.05);
@@ -214,7 +208,7 @@
 }
 
 /* ================================================================
-   BACKDROP BLUR — Full page overlay
+   BACKDROP BLUR
    ================================================================ */
 .page-backdrop {
   position: fixed;
@@ -226,14 +220,12 @@
 }
 
 /* ================================================================
-   CARD HEADER — Flush variant (no padding)
-   Replaces style="padding:0;" on .card-header
+   CARD HEADER VARIANTS
    ================================================================ */
 .card-header--flush {
   padding: 0;
 }
 
-/* Transparent variant — for use on top of hero images */
 .card-header--transparent {
   background: transparent;
   position: absolute;
@@ -246,8 +238,7 @@
 }
 
 /* ================================================================
-   MODAL OVERLAY — Full-screen dimmed backdrop
-   Used in my-frog-detail modals, feed success
+   MODAL OVERLAY
    ================================================================ */
 .modal-overlay {
   display: none;
@@ -272,7 +263,7 @@
 }
 
 /* ================================================================
-   MODAL TEXT — Title, subtitle, notice
+   MODAL TEXT
    ================================================================ */
 .modal-title {
   font-family: var(--font-family-display);
@@ -305,7 +296,7 @@
 }
 
 /* ================================================================
-   CONFIRM ACTIONS — Button pair (Cancel + Confirm)
+   CONFIRM ACTIONS
    ================================================================ */
 .confirm-actions {
   display: flex;

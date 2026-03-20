@@ -15,7 +15,7 @@
 .frog-detail-content::-webkit-scrollbar-thumb { background: rgba(221,175,74,0.3); border-radius: 2px; }
 
 /* ================================================================
-   HERO — Frog image with gradient overlay
+   HERO
    ================================================================ */
 .frog-detail-hero {
   position: relative;
@@ -58,7 +58,6 @@
   object-fit: cover;
 }
 
-/* Gradient overlay at bottom of hero for readability */
 .frog-detail-hero::after {
   content: '';
   position: absolute;
@@ -71,7 +70,6 @@
   pointer-events: none;
 }
 
-/* Gold bar at bottom of hero */
 .frog-detail-hero__gold-bar {
   position: absolute;
   bottom: 0;
@@ -82,7 +80,6 @@
   z-index: 3;
 }
 
-/* Rank Badge — overlapping bottom of hero */
 .frog-detail-hero__badge {
   position: absolute;
   bottom: -7%;
@@ -138,7 +135,7 @@
 }
 
 /* ================================================================
-   STATS GRID — 2×4 layout
+   STATS GRID
    ================================================================ */
 .frog-stats-grid {
   display: grid;
@@ -154,7 +151,6 @@
   flex-direction: column;
   gap: 5px;
   justify-content: center;
-  width: 140px;
 }
 
 .frog-stat-card__header {
@@ -250,7 +246,6 @@
   font-style: normal;
 }
 
-/* Status Badge — Hungry, Healthy, etc. */
 .frog-status-badge {
   font-family: 'Cormorant', var(--font-family-display);
   font-size: 14px;
@@ -432,9 +427,6 @@
 /* ================================================================
    MODAL OVERLAY
    ================================================================ */
-/* Modal overlay inherits display:none from pages.css.
-   .modal-overlay--visible sets display:flex.
-   Only override positioning + alignment here. */
 .modal-overlay {
   position: absolute;
   inset: 0;

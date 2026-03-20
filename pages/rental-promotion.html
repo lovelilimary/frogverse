@@ -32,16 +32,20 @@
 
             <!-- ============ STEP INDICATOR ============ -->
             <div class="step-indicator">
-              <div class="step-indicator__circle step-indicator__circle--active" id="step1">1</div>
-              <div class="step-indicator__line step-indicator__line--active"></div>
-              <div class="step-indicator__circle" id="step2">2</div>
+              <div class="step-indicator__item">
+                <div class="step-indicator__circle step-indicator__circle--active" id="step1">1</div>
+                <span class="step-indicator__label step-indicator__label--active">Choose<br>Frog</span>
+              </div>
               <div class="step-indicator__line"></div>
-              <div class="step-indicator__circle" id="step3">3</div>
-            </div>
-            <div class="step-indicator__labels">
-              <span class="step-indicator__label step-indicator__label--active">Choose Frog</span>
-              <span class="step-indicator__label">Confirm</span>
-              <span class="step-indicator__label">Done</span>
+              <div class="step-indicator__item">
+                <div class="step-indicator__circle" id="step2">2</div>
+                <span class="step-indicator__label">Confirm</span>
+              </div>
+              <div class="step-indicator__line"></div>
+              <div class="step-indicator__item">
+                <div class="step-indicator__circle" id="step3">3</div>
+                <span class="step-indicator__label">Done</span>
+              </div>
             </div>
 
             <!-- ============ STEP 1: Choose Frog ============ -->
@@ -253,7 +257,7 @@
                 </div>
               </div>
 
-              <button class="game-btn game-btn--green promo-step__continue" onclick="window.location.href='my-frog.html'">
+              <button class="game-btn game-btn--gold promo-step__continue" onclick="window.location.href='my-frog.html'">
                 <span class="game-btn__text">View My Frogs</span>
               </button>
             </div>

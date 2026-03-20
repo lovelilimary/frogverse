@@ -23,8 +23,6 @@
   border-radius: 2px;
 }
 
-/* hex-btn__asset styles → see components.css */
-
 /* ================================================================
    PROMOTION BANNER
    ================================================================ */
@@ -41,6 +39,7 @@
   transition: background var(--transition-fast);
   cursor: pointer;
   overflow: hidden;
+  min-height: 80px;
 }
 
 .promo-banner:hover {
@@ -128,7 +127,7 @@
 }
 
 /* ================================================================
-   RENTAL CARDS GRID — 2 column using frog-rental-cell2
+   RENTAL CARDS GRID
    ================================================================ */
 .rental-grid {
   display: flex;
@@ -138,15 +137,13 @@
   margin-bottom: 16px;
 }
 
-/* Make frog-rental-cell2 cards responsive within the rental grid */
 .rental-grid .frog-rental-cell2 {
   width: calc(50% - 5px);
   box-sizing: border-box;
 }
 
 /* ================================================================
-   RENTAL INFO SECTIONS — How It Works + Important Notes
-   Figma: 338×214 and 338×156 dark rounded containers
+   RENTAL INFO SECTIONS
    ================================================================ */
 .rental-info-section {
   background: rgba(0, 0, 0, 0.6);
@@ -155,7 +152,6 @@
   margin-bottom: 12px;
 }
 
-/* Header — Icon + title */
 .rental-info-section__header {
   display: flex;
   align-items: center;
@@ -179,7 +175,7 @@
 }
 
 /* ================================================================
-   HOW IT WORKS — 2×2 Step Grid
+   HOW IT WORKS — Step Grid
    ================================================================ */
 .rental-steps-grid {
   display: flex;
@@ -227,7 +223,7 @@
 }
 
 /* ================================================================
-   IMPORTANT NOTES — Bullet list
+   IMPORTANT NOTES
    ================================================================ */
 .rental-notes {
   font-family: var(--font-family-primary);
@@ -242,77 +238,91 @@
 }
 
 /* ================================================================
-   STEP INDICATOR — Shared for promotion wizard
+   STEP INDICATOR
    ================================================================ */
 .step-indicator {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 0;
+  gap: 2px;
   margin: 20px auto;
   padding: 0 40px;
 }
 
+.step-indicator__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 36px;
+  flex-shrink: 0;
+}
+
 .step-indicator__circle {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid #BDBDBD;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-family-primary);
-  font-size: 14px;
-  font-weight: var(--font-weight-bold);
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  color: #BDBDBD;
   flex-shrink: 0;
   background: transparent;
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .step-indicator__circle--active {
-  border-color: #269F38;
-  background: #269F38;
-  color: #fff;
+  border-color: #51FF51;
+  background: transparent;
+  color: #51FF51;
 }
 
 .step-indicator__circle--done {
-  border-color: #269F38;
-  color: #269F38;
-}
-
-.step-indicator__line {
-  flex: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 0 4px;
-}
-
-.step-indicator__line--active {
-  background: #269F38;
-}
-
-.step-indicator__labels {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 28px;
-  margin-top: 6px;
+  border-color: #51FF51;
+  color: #51FF51;
 }
 
 .step-indicator__label {
   font-family: var(--font-family-primary);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
-  width: 60px;
+  width: 40px;
+  line-height: normal;
 }
 
 .step-indicator__label--active {
-  color: #269F38;
+  color: #51FF51;
+}
+
+.step-indicator__line {
+  width: 67px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.step-indicator__line::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.step-indicator__line--active::after {
+  background: #51FF51;
 }
 
 /* ================================================================
-   NFT LIST — for promotion wizard step 1
+   NFT LIST
    ================================================================ */
 .nft-list {
   display: flex;
@@ -399,10 +409,8 @@
   margin-left: 8px;
 }
 
-/* qty-stepper styles → see components.css */
-
 /* ================================================================
-   CONFIRM ACTIONS — Two buttons side by side
+   CONFIRM ACTIONS
    ================================================================ */
 .confirm-actions {
   display: flex;

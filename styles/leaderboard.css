@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* ================================================================
-   PODIUM — Top 3 display with SVG badge banners
+   PODIUM
    ================================================================ */
 .podium {
   display: flex;
@@ -21,7 +21,7 @@
   position: relative;
 }
 
-/* Banner wrap — positions content over the SVG badge */
+
 .podium__banner-wrap {
   position: relative;
   display: flex;
@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-/* SVG badge image — fills the banner area */
+
 .podium__badge-svg {
   display: block;
   width: 100%;
@@ -37,7 +37,7 @@
   pointer-events: none;
 }
 
-/* ---- Avatar — circular, positioned over the SVG badge ---- */
+
 .podium__avatar {
   position: absolute;
   border-radius: 50%;
@@ -55,7 +55,7 @@
 
 
 
-/* ---- Name + Score — positioned inside the banner ---- */
+
 .podium__name {
   position: absolute;
   font-family: var(--font-family-display);
@@ -80,8 +80,7 @@
 }
 
 /* ================================================================
-   PODIUM — 1ST PLACE (center, taller)
-   SVG viewBox: 132×258, display: 110×235
+   PODIUM — 1ST PLACE
    ================================================================ */
 .podium__slot--1st {
   z-index: 2;
@@ -96,7 +95,6 @@
   width: 52px;
   height: 52px;
   border: 2px solid #ddaf4a;
-  /* Positioned inside the SVG crown circle area */
   top: 11%;
   left: 50%;
   transform: translateX(-50%);
@@ -118,8 +116,7 @@
 }
 
 /* ================================================================
-   PODIUM — 2ND PLACE (left, shorter)
-   SVG dimensions narrower, shorter banner
+   PODIUM — 2ND PLACE
    ================================================================ */
 .podium__slot--2nd .podium__banner-wrap {
   width: 96px;
@@ -148,7 +145,7 @@
 }
 
 /* ================================================================
-   PODIUM — 3RD PLACE (right, shorter)
+   PODIUM — 3RD PLACE
    ================================================================ */
 .podium__slot--3rd .podium__banner-wrap {
   width: 96px;
@@ -198,7 +195,6 @@
   position: relative;
   min-height: 65px;
   transition: background var(--transition-fast);
-  /* Ticket-notch mask: 6px radius circular cutouts at all 4 corners */
   --notch: 6px;
   -webkit-mask:
     radial-gradient(circle var(--notch) at 0 0, #0000 98%, #000) 0 0 / 51% 51% no-repeat,
@@ -229,7 +225,7 @@
   z-index: 1;
 }
 
-/* Shared ::after for top-3 ranked cells — inner fill with notch */
+
 .lb-cell--gold::after,
 .lb-cell--silver::after,
 .lb-cell--bronze::after {
@@ -250,7 +246,7 @@
     radial-gradient(circle var(--inner-notch) at 100% 100%, #0000 98%, #000) 100% 100% / 51% 51% no-repeat;
 }
 
-/* Rank-specific: cell bg = stroke color, ::after bg = gradient fill */
+
 .lb-cell--gold {
   background: #FFE18F;
 }
@@ -272,7 +268,7 @@
   background: linear-gradient(90deg, #8A6638 0%, #562E11 100%);
 }
 
-/* Default cells (rank 4+) */
+
 .lb-cell:not(.lb-cell--gold):not(.lb-cell--silver):not(.lb-cell--bronze):not(.lb-cell--you) {
   background: #4B4B4B;
 }
@@ -281,7 +277,7 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* "Your Rank" special row */
+
 .lb-cell--you {
   background: linear-gradient(135deg, rgba(253, 204, 52, 0.15) 0%, rgba(255, 115, 60, 0.1) 100%);
   border: 1px solid rgba(221, 175, 74, 0.3);
@@ -298,14 +294,13 @@
   line-height: 1.4;
   min-width: 37px;
   text-align: center;
-  /* Gold gradient text */
   background: linear-gradient(180deg, #ddaf4a 0%, #ffe18f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ---- Avatar ---- */
+
 .lb-cell__avatar {
   width: 45px;
   height: 45px;
@@ -337,7 +332,7 @@
   object-fit: cover;
 }
 
-/* ---- Info ---- */
+
 .lb-cell__info {
   flex: 1;
   min-width: 0;
@@ -370,7 +365,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-/* ---- Score ---- */
+
 .lb-cell__score {
   display: flex;
   flex-direction: column;

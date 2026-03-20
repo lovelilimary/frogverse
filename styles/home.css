@@ -1,23 +1,9 @@
 /* ==========================================================================
    Frogverse — Home Screen Styles
-   Matching Figma node 269:9836 — 402px frame
-   
-   Layout reference (from Figma):
-     Frame: 402 × 874px
-     Top Header: 54px height
-     Profile Section: 741px height (top: 54px)
-     Bottom Nav: 79px height
-     
-   All positions are relative to the profile section (741px area).
-   Responsive: uses percentage-based positioning so it scales from 360-430px.
-   
-   NOTE: .app, .top-header, .bottom-nav are in base.css
    ========================================================================== */
 
 /* ================================================================
    MAIN CONTENT AREA
-   Figma: Profile section — 741px height at 402px width
-   Positioned below 54px header, above 79px bottom nav
    ================================================================ */
 .home-main {
   position: relative;
@@ -30,7 +16,6 @@
   background: #000;
 }
 
-/* ---- Background Image (bg-main.webp) ---- */
 .home-main__bg {
   position: absolute;
   inset: 0;
@@ -43,7 +28,6 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* Figma: 282.52% width, 102.56% height */
   width: 283%;
   height: 103%;
   object-fit: cover;
@@ -56,7 +40,6 @@
   top: 0;
   left: 0;
   right: 0;
-  /* Figma: 61px */
   height: 61px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   z-index: 1;
@@ -67,17 +50,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  /* Figma: 218px / rotated gradient from black */
   height: 218px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 24.7%, transparent 100%);
   z-index: 1;
 }
 
 /* ================================================================
-   FROG CHARACTER — Main Frog Image
-   Figma: 688.25 × 635.77px at -3.13px, 72.23px (within 682px container)
-   The image is MUCH wider than the frame, centered.
-   688.25 / 402 = 171% of frame width
+   FROG CHARACTER
    ================================================================ */
 .frog-character {
   position: relative;
@@ -88,15 +67,12 @@
   z-index: 1;
   flex: 0 0 auto;
   min-height: 0;
-  /* Figma top: 72.23px from profile section top */
   padding-top: calc(72.23 / 402 * 100%);
-  /* Negative margin to overlap content below */
   margin-bottom: calc(-200 / 402 * 100%);
   overflow: visible;
 }
 
 .frog-character__img {
-  /* Figma: 688.25px wide / 402 frame = 171.2% */
   width: 171%;
   max-width: none;
   height: auto;
@@ -105,15 +81,10 @@
 }
 
 /* ================================================================
-   FROG INFO BADGE — using FrogInfoHome component
-   Figma Container: left:150px from 682px container = left:10px from 402px frame
-   FrogInfo: left:0, top:0 within container, 187×67px
-   But our component is 246×87px, scale = 187/246 = 0.76
+   FROG INFO BADGE
    ================================================================ */
 .frog-info-wrapper {
   position: absolute;
-  /* Align avatar circle center (43.5px in) with home-btn center (32px in from left:10px)
-     → left = 10 - (43.5 - 32) = -1.5px ≈ 0  */
   top: calc(16 / 741 * 100%);
   left: 0;
   z-index: 5;
@@ -122,48 +93,33 @@
 
 
 /* ================================================================
-   SIDE MENU BUTTONS — using HomeButton component
-   Figma Container: 379px wide, left:150px from 682 center
-   → so left side at (402/2) - (682/2) + 150 = 10px from frame left
-   → right side at 10 + 315 = 325px from frame left
-   
-   Buttons at top:88px and top:175px within container
+   SIDE MENU BUTTONS
    ================================================================ */
 .side-buttons {
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* Figma: gap = 175 - 88 - 64 = 23px ≈ 24px */
   gap: calc(23 / 741 * var(--app-height));
   z-index: 5;
 }
 
 .side-buttons--left {
-  /* Figma: left edge of container = left:~10px from frame */
   left: calc(10 / 402 * 100%);
-  /* Figma: top:88px within container that starts at top:16px → 88+16 = 104px from profile top */
   top: calc(104 / 741 * 100%);
 }
 
 .side-buttons--right {
-  /* Figma: right buttons at left:315px within 379px container, starting at frame left:10px
-     → 10 + 315 = 325px from frame left
-     → right edge = 402 - 325 - 64 = 13px from right */
   right: calc(13 / 402 * 100%);
   top: calc(104 / 741 * 100%);
 }
 
 /* ================================================================
    TOKEN BADGES
-   Figma: centered, top:397px from main content top (which is 682px centered)
-   → 397px from profile section top
-   Each: 71.49 × 73.42px, gap: 13px
    ================================================================ */
 .token-badges {
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  /* Figma: gap 13px */
   gap: calc(13 / 402 * 100%);
   padding: 0;
   margin-top: 0;
@@ -173,7 +129,6 @@
 }
 
 .token-badge {
-  /* Figma: 71.49 × 73.42px → ~17.8% of 402 width */
   width: calc(71.49 / 402 * 100vw);
   max-width: 76px;
   aspect-ratio: 71.49 / 73.42;
@@ -195,10 +150,6 @@
 
 /* ================================================================
    FEED SECTION
-   Figma: starts at y:483 within main, width:321px, centered
-   bg: rgba(24,24,27,0.75), border-radius: 20px
-   padding: 10px 33px
-   gap: 10px between children
    ================================================================ */
 .feed-section {
   position: relative;
@@ -206,13 +157,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Figma: gap 10px */
   gap: 10px;
-  /* Figma: padding 10px 33px */
   padding: 10px calc(33 / 321 * 100%);
-  /* Standard spacing between sections */
   margin: 12px auto 0;
-  /* Figma: width 321px / 402 frame = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
   background: rgba(24, 24, 27, 0.75);
@@ -221,7 +168,6 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* ---- Progress Bar ---- */
 .feed-section__progress {
   width: 100%;
 }
@@ -251,9 +197,7 @@
   box-shadow: 0 0 8px rgba(81, 255, 81, 0.4);
 }
 
-/* ---- Text ---- */
 .feed-section__reminder {
-  /* Figma: Inter Regular 12px, white, text-shadow */
   font-family: var(--font-family-primary);
   font-size: 12px;
   font-weight: var(--font-weight-regular);
@@ -264,9 +208,7 @@
   line-height: 1;
 }
 
-/* ---- Timer ---- */
 .feed-section__timer {
-  /* Figma: Inter Bold 20px, #ffe18f, text-shadow */
   font-family: var(--font-family-primary);
   font-size: 20px;
   font-weight: var(--font-weight-bold);
@@ -286,28 +228,22 @@
   opacity: 0.8;
 }
 
-/* Feed Button — Figma: 210px wide */
 .feed-btn-game {
   width: 210px;
 }
 
 /* ================================================================
    STATS SECTION
-   Figma: width 321px, gap 42px, each stat 79px wide
    ================================================================ */
 .stats-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  /* Figma: gap 42px — but with space-between on 321px with 3×79px = 237px, 
-     remaining 84px / 2 = 42px gaps */
   padding: 0;
   position: relative;
   z-index: 2;
-  /* Figma: 321px / 402 = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
-  /* Standard spacing between sections */
   margin: 12px auto 0;
   line-height: 1;
 }
@@ -316,7 +252,6 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  /* Figma: each 79px wide / 321 container = 24.6% */
   width: calc(79 / 321 * 100%);
 }
 
@@ -329,7 +264,6 @@
 }
 
 .stat-item__label {
-  /* Figma: Cormorant Bold 18px, gradient #ddaf4a → #ffe18f, letter-spacing -0.36px */
   font-family: var(--font-family-display);
   font-size: 18px;
   font-weight: var(--font-weight-bold);
@@ -342,7 +276,6 @@
 }
 
 .stat-item__value {
-  /* Figma: Inter Regular 12px, white */
   font-family: var(--font-family-primary);
   font-size: 12px;
   font-weight: var(--font-weight-regular);
@@ -352,21 +285,14 @@
 
 /* ================================================================
    XP SECTION
-   Figma: within 321px container, 40px height
-   Progress bar: 6px height at y:17, full width
-   Labels above and below
-   Level badge: centered, below bar
    ================================================================ */
 .xp-section {
   padding: 0;
   position: relative;
   z-index: 2;
-  /* Figma: 321px / 402 = 79.85% */
   max-width: calc(321 / 402 * 100%);
   width: 100%;
-  /* Standard spacing between sections */
   margin: 12px auto 0;
-  /* Total height: ~40px in Figma */
   height: 40px;
 }
 
@@ -378,14 +304,12 @@
 }
 
 .xp-section__label {
-  /* Figma: Inter Regular 10px, rgba(255,255,255,0.5) */
   font-size: 10px;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1;
 }
 
 .xp-section__current {
-  /* Figma: Inter Regular 10px, white */
   font-size: 10px;
   color: var(--color-text-white);
   line-height: 1;
@@ -398,7 +322,6 @@
 
 .xp-section__bar-track {
   width: 100%;
-  /* Figma: 6px height */
   height: 6px;
   background: #333;
   border-radius: 3px;
@@ -414,7 +337,6 @@
 }
 
 .xp-section__level-badge {
-  /* Figma: centered below bar, bg #ffbb28, text 7px black */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -435,15 +357,13 @@
 
 .xp-section__min,
 .xp-section__max {
-  /* Figma: Inter Regular 10px, rgba(255,255,255,0.5) */
   font-size: 10px;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1;
 }
 
 /* ================================================================
-   FEED MODAL — Inline panel (replaces Token/Feed/Stats/XP sections)
-   Border-radius 15px matches the outer curve of the game-frame SVG
+   FEED MODAL — Inline panel
    ================================================================ */
 .feed-modal-inline {
   position: relative;
@@ -581,8 +501,7 @@
 }
 
 /* ================================================================
-   FEED SUCCESS OVERLAY (post-feed confirmation)
-   Figma node: 269:9960
+   FEED SUCCESS OVERLAY
    ================================================================ */
 .feed-success-overlay {
   position: fixed;

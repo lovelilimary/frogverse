@@ -16,7 +16,7 @@
 #stageFrogs   { z-index: 20; }
 
 /* ================================================================
-   LOADING BACKGROUND (swirl pattern)
+   LOADING BACKGROUND
    ================================================================ */
 .loading-bg {
   position: absolute;
@@ -31,7 +31,7 @@
 }
 
 /* ================================================================
-   CURTAIN (left/right panels)
+   CURTAIN
    ================================================================ */
 .curtain {
   position: absolute;
@@ -57,7 +57,7 @@
 }
 
 /* ================================================================
-   DRAPE OVERLAY (valance + side curtain drapes)
+   DRAPE OVERLAY
    ================================================================ */
 .drape {
   position: absolute;
@@ -173,7 +173,7 @@
   object-fit: contain;
 }
 
-/* Frog Prince Consort — back right */
+
 .frog--prince-consort {
   width: 137%;
   height: auto;
@@ -183,7 +183,7 @@
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
 }
 
-/* Frog Princess — back left (flipped) */
+
 .frog--princess {
   width: 140%;
   height: auto;
@@ -194,7 +194,7 @@
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
 }
 
-/* Frog Queen — right middle */
+
 .frog--queen {
   width: 144%;
   height: auto;
@@ -204,7 +204,7 @@
   filter: drop-shadow(0 4px 30px rgba(0,0,0,1));
 }
 
-/* Frog Prince — left middle (flipped) */
+
 .frog--prince {
   width: 158%;
   height: auto;
@@ -215,7 +215,7 @@
   filter: drop-shadow(0 4px 30px rgba(0,0,0,1));
 }
 
-/* Frog King — center front */
+
 .frog--king {
   width: 190%;
   height: auto;
