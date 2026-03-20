@@ -206,13 +206,13 @@
 
               <!-- Confirmation checkbox -->
               <div class="promo-confirm-check">
-                <label class="game-checkbox game-checkbox--checked" id="confirmCheck"></label>
+                <span class="game-checkbox" role="checkbox" aria-checked="false" tabindex="0" id="confirmCheck"></span>
                 <span class="promo-confirm-check__text">I confirm the order of 5 Frogs of the same type and agree to the terms. Transaction cannot be reversed after confirmation.</span>
               </div>
 
               <!-- Actions -->
-              <button class="game-btn game-btn--gold promo-step__continue" onclick="goToStep(3)">
-                <span class="game-btn__text">Confirm Payment</span>
+              <button class="game-btn game-btn--gold game-btn--disabled promo-step__continue" id="btnConfirmPayment" disabled>
+                <span class="game-btn__text">Rent</span>
               </button>
             </div>
 
@@ -272,6 +272,11 @@
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
   <script>
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'rental.html';
+    });
+  </script>
+  <script>
     // Step wizard navigation
     function goToStep(step) {
       // Hide all steps
@@ -298,6 +303,48 @@
         l.classList.toggle('step-indicator__label--active', i + 1 === step || i + 1 < step);
       });
     }
+
+    // Confirm checkbox toggle → enable/disable Confirm Payment button
+    (function() {
+      const checkbox = document.getElementById('confirmCheck');
+      const btn = document.getElementById('btnConfirmPayment');
+      const btnText = btn.querySelector('.game-btn__text');
+
+      function updateBtn() {
+        const checked = checkbox.classList.contains('game-checkbox--checked');
+        if (checked) {
+          btn.disabled = false;
+          btn.classList.remove('game-btn--disabled');
+          btnText.textContent = 'Confirm Payment';
+          btn.onclick = function() { goToStep(3); };
+        } else {
+          btn.disabled = true;
+          btn.classList.add('game-btn--disabled');
+          btnText.textContent = 'Rent';
+          btn.onclick = null;
+        }
+        // Re-draw SVG background after text change
+        if (typeof applyBg === 'function') {
+          setTimeout(function() { applyBg(btn); }, 50);
+        }
+      }
+
+      checkbox.addEventListener('click', function() {
+        const isChecked = this.classList.toggle('game-checkbox--checked');
+        this.setAttribute('aria-checked', isChecked);
+        updateBtn();
+      });
+
+      checkbox.addEventListener('keydown', function(e) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+
+      // Initial state
+      updateBtn();
+    })();
   </script>
 </body>
 </html>

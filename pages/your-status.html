@@ -52,7 +52,7 @@
             </div>
 
             <!-- ============ XP FORMULA ============ -->
-            <div class="ys-section" data-aos="fade-up" data-aos-delay="50">
+            <div class="ys-section" data-aos="fade-up">
               <h3 class="ys-section__title">XP Formula</h3>
               <div class="ys-money-row">
                 <div class="ys-money-row__left">
@@ -71,7 +71,7 @@
             </div>
 
             <!-- ============ ALL LEVEL ============ -->
-            <div class="ys-section ys-section--levels" data-aos="fade-up" data-aos-delay="100">
+            <div class="ys-section ys-section--levels" data-aos="fade-up">
               <h3 class="ys-section__title ys-section__title--large">All Level</h3>
 
               <!-- Level 1 (Newbie) — Cup -->
@@ -333,7 +333,7 @@
             </div>
 
             <!-- ============ HOW IT WORKS ============ -->
-            <div class="ys-section ys-section--info" data-aos="fade-up" data-aos-delay="150">
+            <div class="ys-section ys-section--info" data-aos="fade-up">
               <h3 class="ys-section__title ys-section__title--large">How It Works</h3>
               <ul class="ys-info-list ys-info-list--blue">
                 <li>
@@ -360,7 +360,7 @@
             </div>
 
             <!-- ============ HOW TO EARN XP FAST ============ -->
-            <div class="ys-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="ys-section" data-aos="fade-up">
               <h3 class="ys-section__title ys-section__title--large">How to Earn XP Fast</h3>
               <ul class="ys-info-list">
                 <li>Rent more frogs (King gives most XP when renting)</li>
@@ -383,5 +383,13 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('btnBack').addEventListener('click', () => {
+      history.back();
+    });
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'home.html';
+    });
+  </script>
 </body>
 </html>

@@ -46,7 +46,7 @@
             </div>
 
             <!-- ============ ACTIVITY HISTORY ============ -->
-            <div class="section-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-card" data-aos="fade-up">
               <div class="section-card__header flex-between mb-12">
                 <h3 class="wallet-section-title m-0">Activity History</h3>
                 <span class="pr-feed-count">66 Feeds</span>
@@ -157,5 +157,13 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('btnBack').addEventListener('click', () => {
+      history.back();
+    });
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'home.html';
+    });
+  </script>
 </body>
 </html>

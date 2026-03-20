@@ -62,7 +62,7 @@
           <div class="frog-cards-grid" id="frogCardsGrid">
 
             <!-- Card 1: Frog King — Hungry (gold frame) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
@@ -81,7 +81,7 @@
             </div>
 
             <!-- Card 2: Frog Queen — Angry (gold frame) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-queen.png" alt="Frog Queen">
@@ -100,7 +100,7 @@
             </div>
 
             <!-- Card 3: Frog Prince — Happy (silver frame) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-prince.png" alt="Frog Prince">
@@ -121,7 +121,7 @@
             </div>
 
             <!-- Card 4: Frog Princess — Hungry (silver frame) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-princess.png" alt="Frog Princess">
@@ -142,7 +142,7 @@
             </div>
 
             <!-- Card 5: Frog Consort — Angry (silver frame) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card frog-rental-cell__frog-card--silver">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-consort.png" alt="Frog Consort">
@@ -163,7 +163,7 @@
             </div>
 
             <!-- Card 6: Frog King — Happy (gold frame, duplicate) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
@@ -182,7 +182,7 @@
             </div>
 
             <!-- Card 7: Frog King — Happy (gold frame, duplicate) -->
-            <div class="my-frog-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="my-frog-card" data-aos="fade-up">
               <div class="my-frog-card__avatar-area">
                 <div class="frog-rental-cell__frog-card">
                   <img class="frog-rental-cell__thumb" src="../assets/thumbs/avt-king.png" alt="Frog King">
@@ -223,9 +223,26 @@
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
   <script>
+    // Navigation — Back & Close
+    document.getElementById('btnBack').addEventListener('click', () => {
+      history.back();
+    });
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'home.html';
+    });
+
+    // Frog cards → Detail page
+    document.querySelectorAll('.my-frog-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        window.location.href = 'my-frog-detail.html';
+      });
+    });
+
     // Tab switching
     document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         document.querySelectorAll('.tab-btn').forEach(b => {
           b.classList.remove('active');
           b.classList.remove('game-btn--green');

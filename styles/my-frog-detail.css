@@ -20,7 +20,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  overflow: hidden;
+  overflow: visible;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
@@ -84,7 +84,7 @@
 /* Rank Badge — overlapping bottom of hero */
 .frog-detail-hero__badge {
   position: absolute;
-  bottom: -18px;
+  bottom: -7%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
@@ -415,11 +415,17 @@
 }
 
 .frog-detail-actions__btn-icon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   vertical-align: middle;
-  margin-right: 4px;
-  margin-top: -2px;
+  flex-shrink: 0;
+}
+
+.frog-detail-actions__btn .game-btn__text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ================================================================

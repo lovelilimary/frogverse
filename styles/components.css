@@ -144,6 +144,30 @@
 }
 
 /* ================================================================
+   DISABLED STATE — All button variants
+   Usage: Add .game-btn--disabled class or native disabled attribute.
+   Grays out the button and blocks interaction.
+   ================================================================ */
+.game-btn--disabled,
+.game-btn:disabled,
+.game-btn[disabled] {
+  --btn-fill-top: #3a3a3a;
+  --btn-fill-bottom: #252525;
+  --btn-stroke: #4a4a4a;
+  pointer-events: none;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.game-btn--disabled .game-btn__text,
+.game-btn:disabled .game-btn__text,
+.game-btn[disabled] .game-btn__text {
+  background: none !important;
+  -webkit-text-fill-color: #777 !important;
+  color: #777 !important;
+}
+
+/* ================================================================
    GREEN BUTTON — Green1
    Default:  #269F38 → #253D2B, stroke white overlay
    Hover:    #67F47C → #347646, stroke white overlay

@@ -32,7 +32,7 @@
             </div>
 
             <!-- ============ OVERVIEW SECTION ============ -->
-            <div class="section-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-card" data-aos="fade-up">
               <h3 class="wallet-section-title mb-12">Overview</h3>
               <div class="dash-stats-grid">
                 <div class="dash-stat-card">
@@ -55,11 +55,11 @@
             </div>
 
             <!-- ============ LEVEL & XP SECTION ============ -->
-            <div class="section-card dash-level-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="section-card dash-level-card" data-aos="fade-up">
               <!-- Details link -->
               <div class="dash-level-card__header">
                 <span></span>
-                <a href="#" class="dash-details-link">
+                <a href="your-status.html" class="dash-details-link">
                   <img src="../assets/icons/Info.svg" alt="" class="info-row__hint" style="margin-right:4px;">
                   Details
                 </a>
@@ -118,10 +118,10 @@
             </div>
 
             <!-- ============ PENDING REWARDS ============ -->
-            <div class="section-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="section-card" data-aos="fade-up">
               <div class="section-card__header">
                 <h3 class="wallet-section-title m-0">Pending Rewards</h3>
-                <a href="#" class="dash-details-link" style="font-size:13px;">View All</a>
+                <a href="pending-rewards.html" class="dash-details-link" style="font-size:13px;">View All</a>
               </div>
 
               <div class="dash-rewards-list">
@@ -173,5 +173,10 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'home.html';
+    });
+  </script>
 </body>
 </html>

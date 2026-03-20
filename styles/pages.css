@@ -227,6 +227,18 @@
   padding: 0;
 }
 
+/* Transparent variant — for use on top of hero images */
+.card-header--transparent {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 16px 20px;
+  margin-bottom: 0;
+}
+
 /* ================================================================
    MODAL OVERLAY — Full-screen dimmed backdrop
    Used in my-frog-detail modals, feed success

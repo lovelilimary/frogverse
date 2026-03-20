@@ -30,7 +30,7 @@
             </div>
 
             <!-- ============ PODIUM SECTION ============ -->
-            <div class="podium" data-aos="fade-up" data-aos-delay="100">
+            <div class="podium" data-aos="fade-up">
               <!-- 2nd Place (left) -->
               <div class="podium__slot podium__slot--2nd">
                 <div class="podium__banner-wrap">
@@ -69,7 +69,7 @@
             </div>
 
             <!-- ============ LEADERBOARD LIST ============ -->
-            <div class="lb-list" data-aos="fade-up" data-aos-delay="200">
+            <div class="lb-list" data-aos="fade-up">
 
               <!-- Rank 1 (highlighted gold) -->
               <div class="lb-cell lb-cell--gold">
@@ -195,7 +195,7 @@
             </div>
 
             <!-- Your Rank (Special highlighted row — fixed at bottom) -->
-            <div class="lb-cell lb-cell--you" data-aos="fade-up" data-aos-delay="300">
+            <div class="lb-cell lb-cell--you" data-aos="fade-up">
               <div class="lb-cell__your-rank">
                 <span>Your</span>
                 <span>Rank</span>
@@ -226,5 +226,10 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="../scripts/game-btn.js"></script>
   <script src="../scripts/main.js"></script>
+  <script>
+    document.getElementById('btnClose').addEventListener('click', () => {
+      window.location.href = 'home.html';
+    });
+  </script>
 </body>
 </html>
